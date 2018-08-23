@@ -1,0 +1,77 @@
+<video id='videoShow' enable-progress-gesture="{{false}}" class='video' src='{{allVideoArray[allVideoArrayIndex].videoUrl}}' autoplay='{{true}}' objectFit='fill' controls="{{false}}" loop='true'>
+</video>
+<canvas canvas-id='canvas' class='canvas' bindtouchstart='touchS' bindtouchmove="touchM" bindtouchend='touchE'>
+  <cover-image class='videoended' src='../../../static/imgs/back-home.png' catchtap="goToHome" hidden='{{isHome}}'></cover-image>
+  <!-- 试衣秀详情 -->
+  <cover-view direction="all" class="global-cart" bindtap='jumpToProductDetail'>
+    <cover-image class='cover-image' src='../../../static/imgs/xq_gwc@2x.png'></cover-image>
+  </cover-view>
+  <cover-view class='icon-content'>
+    <cover-view class='icon'>
+      <cover-view class='check-icon' bindtap='checkLike'>
+        <cover-image wx:if="{{allVideoArray[allVideoArrayIndex].isLike==0}}" src='../../../static/imgs/xq_wdz.png'></cover-image>
+        <cover-image wx:else src='../../../static/imgs/xq_dz.png'></cover-image>
+      </cover-view>
+      <cover-view>{{allVideoArray[allVideoArrayIndex].likeNum}}</cover-view>
+    </cover-view>
+    <cover-view class='icon'>
+      <cover-view class='check-icon'>
+        <cover-image src='../../../static/imgs/xq_sy@2x.png'></cover-image>
+      </cover-view>
+      <cover-view>{{allVideoArray[allVideoArrayIndex].commission}}</cover-view>
+    </cover-view>
+    <cover-view wx:if="{{!isShowMore}}">
+      <cover-view class='icon share-icon'>
+        <button class='check-share' open-type="share">
+          <cover-image class='check-icon' src='../../../static/imgs/xq_fx@2x.png' bindtap='onShareAppMessage'></cover-image>
+        </button>
+        <cover-view>分享</cover-view>
+      </cover-view>
+      <cover-view class='icon' bindtap='toChat'>
+        <cover-view class='check-icon'>
+          <cover-image src='../../../static/imgs/xq_lt@2x.png'></cover-image>
+        </cover-view>
+        <cover-view>聊天</cover-view>
+      </cover-view>
+    </cover-view>
+    <cover-view class='icon' wx:else>
+      <cover-view class='check-icon' bindtap='showShowMore'>
+        <cover-image src='../../../static/imgs/xq_gd@2x.png'></cover-image>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+  <cover-view class="info">
+    <cover-view class="f-user-info">
+      <cover-view class="f-user-avatar">
+        <cover-image mode="aspectFill" src="{{allVideoArray[allVideoArrayIndex].avatar}}"></cover-image>
+      </cover-view>
+    </cover-view>
+    <cover-view class="goods-content">
+      <cover-view class="goods-title" bindtap='jumpToProductDetail'>{{allVideoArray[allVideoArrayIndex].goodsName}}</cover-view>
+      <cover-view class="f-shop-info">
+        <cover-view class="shop-icon">
+          <cover-image src='../../../static/imgs/xq_md@2x.png'></cover-image>
+        </cover-view>
+        <cover-view class="shop-name">{{allVideoArray[allVideoArrayIndex].shopName}}</cover-view>
+      </cover-view>
+    </cover-view>
+  </cover-view>
+</canvas>
+
+<cover-view class="commodity_screen" bindtap='hideShowMore' wx:if="{{showModalStatus}}"></cover-view>
+<cover-view class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <cover-view class='swiper-content'>
+    <button class='swiper-tab' open-type="share">
+      <cover-image src='../../../static/imgs/wdsy_fx@2.png'></cover-image>
+      <cover-view class='swiper-text'>分享</cover-view>
+    </button>
+    <button class='swiper-tab' bindtap='jumpToAssociationClothing'>
+      <cover-image src='../../../static/imgs/xq_bj@2x.png'></cover-image>
+      <cover-view class='swiper-text'>重新关联</cover-view>
+    </button>
+    <button class='swiper-tab' bindtap='deleteFittingShow'>
+      <cover-image src='../../../static/imgs/xq_sc@2x.png'></cover-image>
+      <cover-view class='swiper-text'>解除关联</cover-view>
+    </button>
+  </cover-view>
+</cover-view>

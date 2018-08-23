@@ -1,0 +1,119 @@
+/* pages/dressingroom/associationClothing/index.wxss */
+.body{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  text-align: center;
+  color: rgb(175, 175, 175);
+}
+
+.title{
+  width: 550rpx;
+  height: 80rpx;
+  position: relative;
+  font-size: 32rpx;
+  display: block;
+  line-height: 80rpx;
+  margin: 30rpx;
+}
+
+.title view:before, .title view:after{
+  background: rgb(175, 175, 175);
+  content: "";
+  height: 1px;
+  width: 100rpx;
+  position: absolute;
+  top: 50%;
+}
+
+.title view:after{
+  left: 70%;
+}
+
+.title view:before{
+  right: 70%;
+}
+
+button{
+  width: 415rpx;
+  background-color: rgb(74, 193, 199);
+  color: white;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 35rpx;
+  border-radius: 30rpx;
+  margin: 30rpx;
+}
+
+.content, .select-box{
+  width: 650rpx;
+}
+
+.content{
+  font-size: 30rpx;
+  text-align: left;
+}
+
+.select-box{
+  display: flex;
+  height: 450rpx;
+  margin-bottom: 30rpx;
+}
+
+.left, .right{
+  width: 280rpx;
+  overflow: hidden;
+}
+
+.left{
+  position: relative;
+}
+
+.left>image{
+  position: absolute;
+  top: 85rpx;
+  left: -85rpx;
+  height: 280rpx;
+  width: 450rpx;
+  transform:rotate(90deg);
+}
+
+.notSelect{
+  height: 450rpx;
+  border: 3px dashed rgb(175, 175, 175);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.notSelect > view::after, .notSelect > view::before{
+  content: "";
+  background-color: rgb(175, 175, 175);
+  position: absolute;
+}
+
+.notSelect > view::after{
+  width: 120rpx;
+  height: 3px;
+  top: calc(50% - 1.5px);
+  left: calc(50% - 60rpx);
+}
+
+.notSelect > view::before{
+  height: 120rpx;
+  width: 3px;
+  top: calc(50% -  60rpx);
+  left: calc(50% - 1.5px);
+}
+
+image{
+  width: 280rpx;
+  height: 450rpx;
+}
+
+.center{
+  width: 90rpx;
+  height: 100%;
+  padding: 20rpx;
+}

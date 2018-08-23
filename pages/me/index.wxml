@@ -1,0 +1,69 @@
+<!--pages/me/index.wxml-->
+<scroll-view scroll-y="true" class="me-content page"  wx:if="{{showModalStatus !== null && showModalStatus}}">
+  <view class="logo-box">
+    <navigator url='../conversations/index' class='conversations'>
+    <image src='../../static/imgs/wd_xx.png'></image>
+    <view class='remind' wx:if = '{{hasUnread}}'></view>
+    </navigator>
+      <image src='{{userHeader!=null?userHeader:""}}'></image>
+      <view>{{userName != null ? userName : ""}}</view>
+  </view>
+  <view class="action-box">
+    <view class="action-item" bindtap='gotoTryOrder'>
+      <view class="action-icon">
+        <image src="../../static/imgs/gr_wdsy@2x.png"></image>
+      </view>
+      <view class="action-name">我的试衣</view>
+    </view>
+    <view class="action-item" bindtap='gotoVideoOrder'>
+      <view class="action-icon">
+        <image src="../icons/myprice.png"></image>
+      </view>
+      <view class="action-name">我的询价</view>
+    </view>
+    <view class="action-item" bindtap='gotoMyOrder'>
+      <view class="action-icon">
+        <image src="../icons/myshopping.png"></image>
+      </view>
+      <view class="action-name">我的购物</view>
+    </view>
+    <view class="action-item" bindtap='gotoRefundOrder'>
+      <view class="action-icon">
+        <image src="../icons/myback.png"></image>
+      </view>
+      <view class="action-name">退货/退款</view>
+    </view>
+  </view>
+  <navigator url="./myWallet/myProfit/index">
+    <image mode='aspectFill' class='icon-box' src="../../static/imgs/gr_sy@2x.png">
+    </image>
+    <view>收益记录</view>
+    <view class='navigator-arrow'></view>
+  </navigator>
+  <navigator url="./myWallet/index?earn={{earn}}">
+    <image mode='aspectFill' class='icon-box' src="../../static/imgs/gr_qb@2x.png">
+    </image>
+    <view>我的钱包</view>
+    <view class='navigator-arrow'></view>
+  </navigator>
+  <navigator url="../myEvaluate/index">
+    <image mode='aspectFill' class='icon-box' src="../../static/imgs/evaluate.png">
+    </image>
+    <view>评价管理</view>
+    <view class='navigator-arrow'></view>
+  </navigator>
+
+  <navigator url="setting/index?openId={{openId}}">
+    <image mode='aspectFill' class='icon-box' src="../../static/imgs/myset.png">
+    </image>
+    <view>设置</view>
+    <view class='navigator-arrow'></view>
+  </navigator>
+</scroll-view>
+
+<!-- 授权 -->
+<view class='authorization-box' wx:if="{{showModalStatus !== null && !showModalStatus}}">
+  <icon type='info' size='50'></icon>
+  <view>为了更好的体验，此应用需要获取您的昵称、头像等基本信息授权。</view>
+  <button open-type="getUserInfo" class='authorization' bindgetuserinfo='getUserInfo'>确定授权</button>
+</view>

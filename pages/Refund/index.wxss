@@ -1,0 +1,148 @@
+/* pages/Refund/index.wxss */
+
+.reason-group {
+  width: 750rpx;
+  min-height: 210rpx;
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.reason-group label {
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+radio {
+  position: relative;
+  top: -2rpx;
+  transform: scale(0.7);
+}
+
+.refund-box {
+  border-top: 1px solid #f3f3f3;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  position: relative;
+}
+
+.type-text {
+  width: 200rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #b2b2b2;
+}
+
+.type-group {
+  position: absolute;
+  top: 0;
+  left: 240rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 450rpx;
+  /* display: grid; */
+  grid-template-columns: 200rpx 200rpx 50rpx;
+}
+
+.reason-box {
+  width: 690rpx;
+  background-color: #f3f3f3;
+  padding: 30rpx;
+  box-sizing: border-box;
+  color: #b2b2b2;
+}
+
+.content {
+  width: 630rpx;
+  min-height: 240rpx;
+  line-height: 80rpx;
+}
+
+.reason-box:after {
+  content: "";
+  display: table;
+}
+
+.image {
+  width: 100rpx;
+  height: 150rpx;
+  margin-right: 20rpx;
+}
+
+.icon {
+  display: inline-block;
+  width: 100rpx;
+  height: 150rpx;
+  line-height: 150rpx;
+  font-size: 100rpx;
+  color: #808080;
+  box-sizing: border-box;
+  vertical-align: bottom;
+}
+
+.btn-area {
+  width: 550rpx;
+  height: 70rpx;
+  margin-left: 70rpx;
+  border-radius: 40rpx;
+  margin-bottom: 50rpx;
+  margin-top: 50rpx;
+  overflow: hidden;
+}
+
+button {
+  background-color: #4bc2ca;
+  color: white;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
+  text-align: center;
+  transform: scale(1.2);
+}
+
+.goodsImages {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.fa-photo {
+  width: 135rpx;
+  height: 135rpx;
+  font-size: 100rpx;
+  border-radius: 10rpx;
+  color: #cecece;
+  text-align: center;
+  border: 10rpx dashed #cecece;
+  margin: 5rpx;
+  line-height: 135rpx;
+}
+
+.imgbox {
+  position: relative;
+  width: 140rpx;
+  height: 140rpx;
+  margin: calc((100% - 610rpx)/8);
+  margin-bottom: 20rpx;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 10rpx;
+  overflow: hidden;
+  float: left;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 5rpx;
+  top: 5rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 15rpx;
+  background-color: #4bc2ca;
+  color: white;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+}

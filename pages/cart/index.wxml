@@ -1,0 +1,68 @@
+<!--pages/cart/index.wxml-->
+<import src="../template/index.wxml" />
+<view class="page cart-content">
+    <!-- 没有数据 -->
+    <view class='no-data-box' wx:if='{{total === 0}}'>
+      <image class='no-data-image' src='../../static/imgs/box.png'></image>
+      <view class='no-data-text'>空空如也，快去添加商品吧</view>
+    </view>
+  <view class='select-all' wx:if='{{total > 0}}'>
+    <checkbox-group bindchange='selectallchange'>
+      <view class="check-all">
+        <label>
+          <checkbox hidden value='all'/>全选
+          <view class='checkall-box'>
+            <image class='check-icon' src="../icons/{{selectAll?'check.png':'checkno.png'}}"></image>
+          </view>
+        </label>
+      </view>
+
+    </checkbox-group>
+  </view>
+  <scroll-view scroll-y="true" class="products-box" wx:if="{{total>0}}">
+    <view class="select-group">
+      <checkbox-group name="checkbox" bindchange='selectgroupchange'>
+        <block wx:for="{{items}}" wx:for-item='item' wx:for-index='index' wx:key="{{item.id}}" data-index="{{index}}">
+          <swider-left is-open='{{item.isOpen}}' index='{{index}}' binddelConversation='delConversation' bindconversationTouchstart='touchstart'>
+            <view class="check-item {{item.quality==0?'disable-choose':''}}">
+              <label>
+                <checkbox hidden value='{{index}}' checked="{{item.checked}}" wx:if="{{item.quality != 0}}" />
+                <view class="check-content">
+                  <view class="img-box" catchtap='jumpToProductDetail' data-index="{{index}}">
+                    <image src="{{item.imageUrl}}"></image>
+                  </view>
+                  <view class="text-box">
+                    <view class="text-title">
+                      {{item.goodsName}}
+                    </view>
+                    <view class="text-price" wx:if="{{item.quality == 0}}" style='color:#c3c3c3;'>
+                      ￥{{item.price}}
+                    </view>
+                    <view class="text-price" wx:if="{{item.quality != 0}}">
+                      ￥{{item.price}}
+                    </view>
+                    <view class="text-type">
+                      {{item.color}} {{item.size}}
+                    </view>
+                  </view>
+                </view>
+                <view class='check-box'>
+                  <image class='check-icon' src="../icons/{{item.checked?'check.png':'checkno.png'}}" mode="aspectFit"></image>
+                </view>
+                <view class="buy-count">
+                  <template is="goodsCount" data="{{...item,index}}"></template>
+                </view>
+              </label>
+            </view>
+          </swider-left>
+        </block>
+      </checkbox-group>
+    </view>
+  </scroll-view> 
+  <view class="foot-box" wx:if='{{total > 0}}'>
+    <view>合计：
+      <text class='total'>￥{{sumPrice}}</text>
+    </view>
+    <view class="foot-item buy" bindtap="buy">结算</view>
+  </view>
+</view>

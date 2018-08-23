@@ -1,0 +1,55 @@
+/* pages/tryOrder/orderInfo/index.wxss */
+@import "../../template/index.wxss";
+
+.refund-title {
+  height: 50rpx;
+  width: 100%;
+  padding: 20rpx 14.5px;
+  display: block;
+  background-color: #fff;
+  border-bottom: 1rpx solid #E6E5E5;
+}
+
+.goods-message1 {
+  padding:15rpx 14.5px;
+  background-color: #fff;
+}
+
+.goods-price {
+  font-size: 18px;
+  color: #fea201;
+  font-weight: bold;
+}
+
+.sumPrice {
+  float: right;
+  margin-right: 40rpx;
+}
+
+.weixin{
+  width: 60rpx;
+  height: 60rpx;
+  border:3rpx solid #5fc8ce;
+  color:#49C4CB;
+  background: #fff;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 55rpx;
+  margin-top:20rpx;
+  margin-left: 20rpx;
+  padding:0;
+}
+
+.goods-img{
+  position: relative;
+}
+
+.video-image{
+  height: 100rpx;
+  width: 150rpx;
+  position: absolute;
+  top: 25rpx;
+  left: -25rpx;
+  transform: rotate(90deg);
+}

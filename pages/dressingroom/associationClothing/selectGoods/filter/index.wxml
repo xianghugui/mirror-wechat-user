@@ -1,0 +1,33 @@
+<!--pages/dressingroom/associationClothing/selectGoods/filter/index.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <scroll-view>
+    <view>
+      <view class='tab-content'>
+        <view class="sort">全部分类</view>
+      </view>
+      <view class='tab-content'>
+        <radio-group name="allclassify" class='swiper-content choose-box'>
+          <label class="swiper-tab {{classId === item.classId?'checkedTab':''}}" wx:for="{{classList}}"
+           wx:key="{{item.classId}}" bindtap='selectClass' data-id='{{item.classId}}'>
+              <radio hidden checked="{{classId === item.classId}}"/>{{item.name}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view>
+      <view class='tab-content'>
+        <view class="sort">品牌</view>
+      </view>
+      <view class='tab-content'>
+        <radio-group name="brandTabs" class='swiper-content choose-box'>
+          <label class="swiper-tab {{brandId === item.brandId?'checkedTab':''}}" wx:for="{{brandList}}" 
+          wx:key="{{item.brandId}}" bindtap='selectBrand' data-id='{{item.brandId}}'>
+              <radio hidden checked="{{brandId === item.brandId}}" />{{item.name}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+  </scroll-view>
+  <button class='button-style reset' formType="reset">重置</button>
+  <button class='button-style sumbit' formType="submit">确定</button>
+</form>

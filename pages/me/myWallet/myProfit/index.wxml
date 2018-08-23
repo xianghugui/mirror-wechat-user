@@ -1,0 +1,37 @@
+<!--pages/myProfit/index.wxml-->
+<view class="page">
+  <view class="tabs-box">
+    <view id="1" class="tabs-item {{curIndex==1?'active-class':''}}" bindtap="tabhandle">
+      试衣秀收益
+    </view>
+    <view id="0" class="tabs-item  {{curIndex==0?'active-class':''}}" bindtap="tabhandle">
+      购物返现
+    </view>
+  </view>
+  <view>
+    <view class="balance-box">
+      <view class="balance-text">{{totalRecord}}</view>
+      <view class="balance-title">总收益</view>
+    </view>
+  </view>
+  <scroll-view scroll-y class='scroll-box' lass="order-profit" bindscrolltolower="lower">
+    <view class="order-item" wx:for="{{profitList}}" wx:for-item='item' wx:for-index='index' wx:key="{{index}}" catchtap="gotoProductDetail" data-goodsid='{{item.goodsId}}'>
+      <view class="seller-info">
+        <view class="order-name">
+          <image mode='aspectFit' wx:if="{{curIndex==1}}" class="order-icon" src='../../../../static/imgs/fx_x@2x.png'></image>
+          <image mode='aspectFit' wx:if="{{curIndex==0}}" class="order-icon" src='../../../../static/imgs/fx_f@2x.png'></image>
+          {{curIndex==1?'收益':'返现'}}
+        </view>
+        <view class="product-title">
+          {{item.goodsName}}
+        </view>
+        <view class="order-date">{{item.createTime}}</view>
+      </view>
+      <view class="profit-num">
+        <span>+{{curIndex==1?item.commission:item.cashBach}}</span>
+      </view>
+    </view>
+    <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
+    <view class="hasMoreData {{total !== 0 && profitList.length === total?'hasMoreDataDisPlay':''}}">暂无更多数据</view>
+  </scroll-view>
+</view>

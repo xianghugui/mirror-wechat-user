@@ -1,0 +1,67 @@
+<!--pages/dressingroom/index.wxml-->
+<view class='page' catchtap='cancelDelete'>
+  <!--导航栏  -->
+  <view class='navigationBar'>
+    <view class='title {{navigationBar?"selectNavigationBar":""}}' bindtap='leftTabbar'>我的试衣库</view>
+    <view class='title {{!navigationBar?"selectNavigationBar":""}}' bindtap='rightTabbar'>我的试衣秀</view>
+    <view class='underline {{navigationBar?"selectUnderline":""}}'></view>
+    <view class='underline {{!navigationBar?"selectUnderline":""}}'></view>
+  </view>
+  <!--我的试衣库  -->
+  <block wx:if="{{navigationBar}}">
+    <!--如果没有数据展示  -->
+    <view class="null-content" wx:if='{{total !== null && total === 0}}'>
+      <view class="empty-icon">
+        <image src="../icons/empty.png"></image>
+      </view>
+      <view class="tip-box">
+        暂无试衣视频
+        <span class="get-video" bindtap="facehandle">立即获取</span>
+      </view>
+    </view>
+    <movable-area class='movable-area page' wx:else>
+      <movable-view direction="all" class='global-cart'>
+        <image src='../../static/imgs/sy_sb@2x.png' catchtap="facehandle">
+        </image>
+      </movable-view>
+      <scroll-view class='video-area' scroll-y bindscrolltolower="videoShowLower" lower-threshold='20'>
+        <block wx:for='{{items}}' wx:for-item='item' wx:for-index='index' wx:key='{{item.videoId}}'>
+          <view class='videoshow-box' bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" catchtap='toMyVideoKu' data-index='{{index}}' bindlongtap='showDeleteIcon'>
+            <image mode='aspectFill' class='videoshow-image' src='{{item.videoImageUrl}}'></image>
+            <image class='delete-icon' wx:if="{{index==deleteIndex}}" src='../../static/imgs/xq_sc@2x.png' bindtap='deleteVideo'></image>
+            <image class='videoshow-play' wx:else src='../icons/play.png'></image>
+            <view class='mask' catchtap='cancelDelete' wx:if="{{index==deleteIndex}}"></view>
+          </view>
+        </block>
+        <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
+        <view class='noData' hidden='{{total === 0 || items.length !== total}}'>没有更多数据了</view>
+      </scroll-view>
+    </movable-area>
+  </block>
+  <!--我的试衣秀  -->
+  <block wx:else>
+    <!-- 没有数据时展示 -->
+    <view class='no-data-box' wx:if='{{videoShowTotal === 0}}'>
+      <image class='no-data-image' src='../../static/imgs/association.png'></image>
+      <view class='no-data-text'>亲,请到试衣库秀衣吧</view>
+    </view>
+    <scroll-view class='videoshow-scroll' scroll-y bindscrolltolower="videoShowLower" lower-threshold='20' wx:else>
+      <block wx:for='{{videoShowList}}' wx:for-item='item' wx:for-index='index' wx:key='{{item.videoId}}'>
+        <view class='videoshow-box' bindtap='toMyVideoShow' data-index='{{index}}'>
+          <image mode='aspectFill' class='videoshow-image' src='{{item.videoImageUrl}}'></image>
+          <image class='videoshow-play' src='../icons/play.png'></image>
+          <view class='videoshow-lick'>
+            <image src='../../static/imgs/wdsyx_dz@2x.png'></image>
+            {{item.likeNum}}
+          </view>
+          <view class='videoshow-cashBach'>
+            <image src='../../static/imgs/wdsyx_sy@2x.png'></image>
+            {{item.commission}}
+          </view>
+        </view>
+      </block>
+      <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
+      <view class='noData' hidden='{{videoShowTotal === 0 || videoShowList.length !== videoShowTotal}}'>没有更多数据了</view>
+    </scroll-view>
+  </block>
+</view>

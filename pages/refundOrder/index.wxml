@@ -1,0 +1,48 @@
+<!--pages/refundOrder/index.wxml-->
+<view class="page">
+  <view class='tabs-box'>
+    <view class='tabs-item {{item.checked ? "active-class" : ""}}' wx:for='{{title}}' wx:for-item='item' wx:key='index' bindtap='titleClick' data-index='{{index}}'>{{item.name}} </view>
+  </view>
+  <scroll-view scroll-y bindscrolltolower="lower" lower-threshold='20'>
+    <!-- 没有数据时展示 -->
+    <view class='no-data-box' wx:if='{{total === 0}}'>
+      <image class='no-data-image' src='../../static/imgs/no-order.png'></image>
+      <view class='no-data-text'>抱歉，没有找到退货信息</view>
+    </view>
+    <view class='order-item' wx:for='{{orderList}}' wx:for-item='item' wx:key='{{item.refundId}}'
+      wx:for-index='order_index'>
+      <view class='infoTop' bindtap='jumpOrderInfo' data-id='{{item.refundId}}' data-index='{{order_index}}'>
+        <view class='videoImage'>
+          <image class='{{index === 1 ? "video-image": "order-image"}}' mode='aspectFill' src='{{item.imageSrc}}'></image>
+        </view>
+        <view class='info'>
+          <view class='goods-name' wx:if="{{item.type != 2}}">{{item.goodsName}}</view>
+          <view class='price textOrange' wx:if="{{item.price!=null}}">￥{{item.price}}</view>
+          <view class='size'>{{item.color}} {{item.size}} ×{{item.num}}
+            <view class='status right textGreen' wx:if="{{item.refundType==0 && item.status==5 && item.refundType!=0}}">完成退款</view>
+            <view class='status right textGreen' wx:elif="{{item.refundType==0 && item.type==1 && item.status==5}}">完成退货</view>
+            <view class='status right textGreen' wx:else>{{status[item.status]}}</view>
+          </view>
+        </view>
+        <view class="navigator-arrow"></view>
+      </view>
+      <view class='infoMid' wx:if="{{item.price!=null}}">
+        共计
+        <text class='textOrange'>{{item.num}} </text>件商品 共计：
+        <text class='textOrange'>{{item.price*100*item.num/100}}</text>
+      </view>
+      <view class='infoBottom' wx:if="{{item.status != 3}}">
+        <button class='weixin fa fa-weixin' open-type="contact" wx:if="{{item.status != 3 || item.status != 6}}"/> 
+        <view class="action-area">
+          <form bindsubmit='shipment' report-submit data-id="{{item.refundId}}" data-index='{{index}}' data-status='{{item.status}}' data-refundType='{{item.refundType}}' data-type='{{item.type}}' wx:if='{{item.status == 1 && (item.remindTime == null || item.remindTime > nowDate)}}'>
+            <button formType="submit" class="action-item" class='action-item btncolor'>提醒商家收货</button>
+          </form>
+          <view wx:if='{{item.status == 0}}' data-id='{{item.refundId}}' bindtap='gotoRefund' class='action-item btncolor' data-index='{{order_index}}'>查看退货地址</view>
+          <view wx:if='{{item.status == 0}}' class="action-item" data-id='{{item.refundId}}' bindtap='cancel' data-index='{{order_index}}'>取消</view>
+        </view>
+      </view>
+    </view>
+    <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
+    <view class="hasMoreData" wx:if="{{orderList.length == total && orderList.length>0}}">暂无更多数据</view>
+  </scroll-view>
+</view>

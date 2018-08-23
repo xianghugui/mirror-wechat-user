@@ -1,0 +1,23 @@
+<!--pages/message/index.wxml-->
+<view class='no-data-box' wx:if='{{total === 0}}'>
+  <image class='no-data-image' src='../../static/imgs/conversations.png'></image>
+  <view class='no-data-text'>暂没有资讯哦！</view>
+</view>
+<block wx:for="{{messageList}}" wx:key="{{item.id}}">
+  <view class="message-content">
+    <view class="message-item" bindtap='jumpToMessageInfo' data-id="{{item.id}}">
+      <rich-text wx:if="{{item.imageSrc == null}}" class="message-text" nodes="{{item.content}}">
+      </rich-text>
+      <view wx:else class='describe-div'>
+        <image class='front-cover' mode="widthFix" src='{{item.imageSrc}}'></image>
+      </view>
+      <view class="message-title">
+        {{item.title}}
+      </view>
+      <view class="message-time">
+        {{item.createTime}}
+      </view>
+    </view>
+  </view>
+</block>
+<view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>

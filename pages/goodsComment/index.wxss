@@ -1,0 +1,98 @@
+/* pages/goodsComment/index.wxss */
+
+/* 星级评分 */
+
+.star-out {
+  height: 250rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.star-out>text {
+  margin-right: 20rpx;
+}
+
+.star-image {
+  font-size: 70rpx;
+  padding: 10rpx;
+}
+
+.fa-star-o {
+  color: #cecece;
+}
+
+.fa-star {
+  color: #f2d174;
+}
+
+.reason-box {
+  background-color: #f7f7f7;
+}
+
+textarea{
+  width: 100%;
+  height: 400rpx;
+  padding: 22rpx;
+  min-height: 150rpx;
+  box-sizing: border-box;
+}
+
+/* 添加评论图片 */
+
+.img-v {
+  width: 100%;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.goodsImages {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.fa-photo {
+  width: 140rpx;
+  height: 140rpx;
+  font-size: 100rpx;
+  border-radius: 10rpx;
+  margin-left: 22rpx;
+  margin-bottom: 22rpx;
+  color: #cecece;
+  text-align: center;
+  line-height: 140rpx;
+  border: 10rpx dashed #cecece;
+}
+
+.imgbox {
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+  margin-left: 22rpx;
+  margin-bottom: 22rpx;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 5rpx;
+  right: 10rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 15rpx;
+  background-color: red;
+  color: white;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 30rpx;
+}
+
+button {
+  background-color: #4bc2ca;
+  width: 550rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  color: white;
+  line-height: 80rpx;
+  margin-top: 80rpx;
+  margin-bottom: 60rpx;
+}

@@ -1,0 +1,70 @@
+<!--pages/tryOrder/orderInfo/index.wxml-->
+<import src="../../template/index.wxml" />
+<!-- 播放弹出框 -->
+<video id="myVideo" objectFit="fill" class='videoplayer' src='{{orderDetail.videoSrc}}' controls="{{true}}" autoplay wx:if="{{isPlay}}" bindfullscreenchange="fullscreenchange" bindended="videoended" bindtap="controltoggle">
+  <cover-image src="../../icons/close.png" class="closeVideo" hidden="{{closeHidden}}" bindtap="closeVideo">
+
+  </cover-image>
+</video>
+<scroll-view scroll-y="true" class="page">
+  <view class='navbar'>
+    <view class='show-navbar' style='font-size:40rpx;padding-top:25px;'>{{buttonList[orderDetail.status].status}}</view>
+    <view wx:if="{{orderDetail.status == 3}}" class='show-navbar'>
+      还剩{{countdown}}自动确认收货
+    </view>
+    <view wx:if="{{orderDetail.status == 1}}" class='show-navbar'>
+      还剩{{countdown}}自动取消订单
+    </view>
+  </view>
+  <view class='user-message' wx:if="{{orderDetail.userName!=null}}">
+    <icon class='fa  fa-map-marker'></icon>
+    <view class='user-content'>
+      <view class='user-div'>
+        <span>收货人：{{orderDetail.userName}}</span>
+        <span style="float:right;">电话：{{orderDetail.userPhone}}</span>
+      </view>
+      <view class='user-div'>
+        <span>收货地址：{{orderDetail.userAddress}}</span>
+      </view>
+    </view>
+  </view>
+  <view class='goods-info'>
+    <view class='goods-message1'>
+      <view class="videoImage-box" bindtap="videoPlay" wx:if="{{orderDetail.videoSrc!=null}}">
+        <image mode="aspectFill" class="goods-img" src="{{orderDetail.imageSrc}}"></image>
+        <icon class="play"></icon>
+      </view>
+      <view class='goods-content'>
+        <view class="goods-title">{{orderDetail.goodsName}}</view>
+        <view class="goods-price"  style="float:right;" wx:if="{{orderDetail.goodsPrice!=null}}">￥{{orderDetail.goodsPrice}}</view>
+        <view class="goods-size"  style="float:right;">{{orderDetail.goodsColor}} {{orderDetail.goodsSize}} x{{orderDetail.goodsNumber}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='order-info'>
+    <view wx:if="{{orderDetail.videoOrderId!=null}}">询价编号：{{orderDetail.videoOrderId}}</view>
+    <view wx:if="{{orderDetail.createTime!=null}}">询价时间：{{orderDetail.createTime}}</view>
+    <view wx:if="{{orderDetail.updateTime!=null}}">报价时间：{{orderDetail.updateTime}}</view>
+    <view wx:if="{{orderDetail.paymentTime!=null}}">付款时间：{{orderDetail.paymentTime}}</view>
+    <view wx:if="{{orderDetail.theDeliveryTime!=null}}">发货时间：{{orderDetail.theDeliveryTime}}</view>
+    <view wx:if="{{orderDetail.expressName!=null}}">快递公司：{{orderDetail.expressName}}</view>
+    <view wx:if="{{orderDetail.expressNumber!=null}}">快递单号：{{orderDetail.expressNumber}}</view>
+  </view>
+</scroll-view>
+<view class='operation' wx:if="{{showVideoModalStatus==false}}">
+  <icon class='fa fa-weixin'></icon>
+  <view class="action-area">
+    <view class="action-item btncolor " bindtap='yes' wx:if="{{orderDetail.status == 1}}">立即购买</view>
+    <form bindsubmit='remind' report-submit data-id="{{orderDetail.orderId}}" wx:if='{{orderInfo.status == 2 && orderInfo.assignOrderTime < nowDate && (orderInfo.remindTime == null || orderInfo.remindTime > nowDate)}}'>
+      <button formType="submit" class="action-item" class='action-item btncolor'>提醒发货</button>
+    </form>
+    <view class="action-item btncolor " bindtap='yes' wx:if="{{orderDetail.status == 3}}">确定收货</view>
+    <!-- <view class="action-item btncolor " bindtap='yes' wx:if="{{orderDetail.status == 4}}">详情</view> -->
+    <view class="action-item" bindtap='no' wx:if="{{orderDetail.status == 0}}">取消</view>
+    <view class="action-item" bindtap='no' wx:if="{{orderDetail.status == 1}}">取消</view>
+    <view class="action-item" bindtap='no' wx:if="{{orderDetail.status == 2}}">退款</view>
+    <view class="action-item" bindtap='no' wx:if="{{orderDetail.status == 3}}">退货／退款</view>
+  </view>
+</view>
+<!-- 微信弹出框 -->
+<template is="weixinPembayaran" data="{{showModalStatus,priceSum,userEarn,disabled}}"></template>

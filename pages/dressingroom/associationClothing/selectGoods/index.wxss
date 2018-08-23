@@ -1,0 +1,294 @@
+/* pages/dressingroom/associationClothing/selectGoods/index.wxss */
+
+page {
+  color: rgb(50, 50, 50);
+}
+
+.sys-search {
+  height: 100rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: rgb(50, 50, 50);
+  font-size: 30rpx;
+}
+
+.search-box {
+  text-align: center;
+  height: 62rpx;
+  width: 480rpx;
+  line-height: 62rpx;
+  border-radius: 40rpx;
+  display: flex;
+  justify-content: flex-end;
+  background:rgb(243, 243, 243);
+  position: relative;
+}
+
+
+.close-icon {
+  width: 37rpx;
+  height: 37rpx;
+  position: absolute;
+  top: 12.5rpx;
+  right: 20rpx;
+  z-index: 10;
+}
+
+.search-input {
+  height: 100%;
+  width: 480rpx;
+}
+
+.filtrate {
+  width: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-box {
+  position: absolute;
+  top: 16rpx;
+  left: 120rpx;
+}
+
+.sys-s-icon, .icon-box {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.sys-s-text {
+  margin-left: 10rpx;
+}
+
+scroll-view {
+  position: absolute;
+  top: 100rpx;
+  width: 100%;
+  height: calc(100% - 100rpx);
+  background-color: #f1f1f1;
+}
+
+.left-box {
+  width: 368rpx;
+  float: left;
+}
+
+.right-box {
+  width: 382rpx;
+  float: right;
+}
+
+.img-box {
+  width: 354rpx;
+  margin-left: 14rpx;
+  margin-top: 14rpx;
+  border-radius: 4px;
+  overflow: hidden;
+  /* box-shadow: 0 4rpx 24rpx 0 rgba(0,0,0,.6); */
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 20rpx;
+  position: relative;
+  /* transition:all linear 0.3s; */
+}
+
+.img-box > image {
+  width: 100%;
+  height: 446rpx;
+  /* transition:all linear 0.3s; */
+}
+
+.img-box:last-child {
+  margin-bottom: 28rpx;
+}
+
+.cashBach-title {
+  background-color: rgb(255, 130, 38);
+  border-radius: 5px;
+  color: white;
+  width: 50rpx;
+  float: left;
+  margin-right: 5rpx;
+}
+
+.cashBach-text {
+  height:40rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+  border: 1rpx solid rgb(255, 130, 38);
+  border-left: none;
+  box-sizing: content-box;
+  border-radius: 5px;
+  color: rgb(255, 130, 38);
+  display: inline-block;
+  text-align: center;
+  padding-right: 5rpx;
+  margin: 20rpx 10rpx 0 0;
+}
+
+.goods-content {
+  width: 100%;
+  font-size: 30rpx;
+  box-sizing: border-box;
+}
+
+.goods-content:before {
+  content: "";
+  display: table;
+}
+
+.goods-title {
+  box-sizing: border-box;
+  padding-left: 10rpx;
+  margin: 20rpx 0;
+}
+
+.goods-info {
+  /* height: 34rpx; */
+  overflow: hidden;
+  position: relative;
+}
+
+.goods-info:after {
+  content: "";
+  display: table;
+}
+
+.goods-price {
+  position: relative;
+  bottom: 0rpx;
+  left: 0rpx;
+  color: #40c9cf;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.goods-volome {
+  position: absolute;
+  bottom: 0rpx;
+  right: 0rpx;
+  color: #909090;
+  box-sizing: border-box;
+  padding-left: 10rpx;
+}
+
+.mask {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(1, 1, 1, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.mask-image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.mask-button {
+  width: 250rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  background-color: rgb(0, 198, 61);
+  color: white;
+  margin-top: 120rpx;
+  margin-bottom: 130rpx;
+}
+
+.noData {
+  width: 100%;
+  height: 80rpx;
+  color: #bbbbbb;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  text-align: center;
+  clear: both;
+}
+
+.no-data-box{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #bbbbbb;
+  font-size: 30rpx;
+}
+
+.no-data-image{
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 30rpx;
+}
+
+.refresh {
+  position: fixed;
+  bottom: 30rpx;
+  left: calc(50% - 30rpx);
+  width: 60rpx;
+  height: 60rpx;
+  color: #3fc0c5;
+  font-size: 60rpx;
+  animation: refresh 1.5s linear 0s infinite;
+}
+
+.refresh {
+  position: fixed;
+  bottom: 30rpx;
+  left: calc(50% - 30rpx);
+  width: 60rpx;
+  height: 60rpx;
+  color: #3fc0c5;
+  font-size: 60rpx;
+  animation: refresh 1.5s linear 0s infinite;
+}
+
+.iconShiftLeft{
+  animation: iconShiftLeft 0.3s linear;
+  -webkit-animation: iconShiftLeft 0.3s linear;
+  left: 20rpx;
+}
+
+.iconShiftRight{
+  animation: iconShiftRight 0.3s linear;
+  -webkit-animation: iconShiftRight 0.3s linear;
+  left: 120rpx;
+}
+
+@keyframes iconShiftLeft{
+  from{
+    left: 120rpx;
+  }
+  to{
+    left: 20rpx;
+  }
+}
+
+@keyframes iconShiftRight{
+  from{
+    left: 20rpx;
+  }
+  to{
+    left: 120rpx;
+  }
+}
+
+@keyframes refresh {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

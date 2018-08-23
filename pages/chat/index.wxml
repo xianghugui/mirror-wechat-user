@@ -1,0 +1,54 @@
+<!--pages/chat/index.wxml-->
+<scroll-view scroll-y scroll-top="{{scrollTop}}" id='scroll'>
+  <view id='message-bottom'>
+    <block wx:for="{{messageList}}" wx:for-item='item' wx:key='{{item.msg_id}}'>
+      <!--时间  -->
+      <view class='time'>{{item.ctime_ms}}</view>
+      <!--对方消息  -->
+      <view class='message_box' wx:if="{{item.content.from_id === userId}}">
+        <!--头像  -->
+        <image class='avatar' src='{{imageUrl}}'></image>
+        <!--文本消息  -->
+        <view class='message leftColor' wx:if="{{item.content.msg_type==='text'}}">
+        <view class='triangle-left'></view>
+          {{item.content.msg_body.text}}
+        </view>
+        <!--图片消息  -->
+        <image wx:else mode='aspectFit' src='{{item.content.msg_body.url}}' data-url="{{item.content.msg_body.url}}" bindtap='previewImage'></image>
+      </view>
+      <!--自己消息  -->
+      <view class='message_box right' wx:else>
+        <block wx:if="{{item.content.msg_type==='text'}}">
+          <!--消息卡片  -->
+          <block wx:if="{{item.content.msg_body.extras}}">
+            <view class='card' data-index="{{index}}" bindtap='toCardInfo' data-type='{{item.content.msg_body.extras.cardType}}'>
+              <image src='{{item.content.msg_body.extras.imageSrc[0].resourceUrl}}' class='cardImage' mode='aspectFit'></image>
+              <view class='cardInfo'>
+                <text class='cardName'>{{item.content.msg_body.extras.goodsName}}</text>
+                <text class='cardStatus'>￥{{item.content.msg_body.extras.price}}</text>
+              </view>
+            </view>
+          </block>
+          <!--文本消息  -->
+          <view wx:else class='message rightColor'>
+            <view class='triangle-right'></view>
+            {{item.content.msg_body.text}}
+          </view>
+        </block>
+        <!--图片消息  -->
+        <image wx:else mode='aspectFit' src='{{item.content.msg_body.url}}' data-url="{{item.content.msg_body.url}}" bindtap='previewImage'></image>
+        <!--头像  -->
+        <image class='avatar' src='{{avatar}}'></image>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+<form bindsubmit="formSubmit">
+  <view class='send_view'>
+    <image src='../../static/imgs/dh_tp.png' class='send-image' bindtap='sendPictures'></image>
+    <input name="message" value='{{message}}' class='send_input'></input>
+    <button class='send_button' formType="submit" disabled="{{disabled}}">
+      {{disabled ? "发送中" : "发送"}}
+    </button>
+  </view>
+</form>

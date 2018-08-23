@@ -1,0 +1,2 @@
+/* pages/dressingroom/associationClothing/selectGoods/filter/index.wxss */
+@import "../../../../product/filtrate/index.wxss";

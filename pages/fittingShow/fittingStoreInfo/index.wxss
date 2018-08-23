@@ -1,0 +1,47 @@
+/* pages/fittingShow/fittingStoreInfo/index.wxss */
+@import '../../dressingroom/index.wxss';
+page {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.video-box {
+  width: 100%;
+  height: 100%;
+}
+
+.video-swiper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition-duration: 800ms;
+  transition-timing-function: linear;
+}
+
+.global-cart {
+  border-radius: 0;
+  position: absolute;
+  left: calc(100% - 120rpx);
+  top: calc(100% - 140rpx);
+}
+
+.cover-image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.canvas {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+}

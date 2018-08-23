@@ -1,0 +1,37 @@
+<!--pages/me/setting/address/index.wxml-->
+<view class="page">
+  <scroll-view class="address-box" scroll-y>
+  <!-- 没有数据时展示 -->
+    <view class='no-data-box' wx:if='{{addressList.length === 0}}'>
+      <image class='no-data-image' src='../../../../static/imgs/address.png'></image>
+      <view class='no-data-text'>您还没有添加地址</view>
+    </view>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <view wx:for='{{addressList}}' wx:for-item='item' wx:key='{{uId}}' class='addressLint {{item.selected?"selected-box":""}}' bindtap='selectAddress' data-id='{{item.uId}}'>
+        <view class='name'>{{item.userName}}</view>
+        <view class='phone'>{{item.phone}}</view>
+        <view class='address'>{{item.address}}</view>
+        <view class='operating'>
+          <view class="radio-box">
+            <label>
+              <radio class='radio' color="#4bc2ca" checked='{{item.checked}}' value='{{item.uId}}'></radio><span class="address-text">默认地址</span>
+            </label>
+          </view>
+          <view class="action-box" catchtap='delBind' data-addressid='{{item.uId}}' data-index='{{index}}'>
+            <image class='action-image' src='../../../../static/imgs/gr_sz_dz_bj@2x.png'></image>
+            <view>删除</view>
+          </view>
+          <view class="action-box" catchtap='editBind' data-index='{{index}}'>
+            <image class='action-image' src='../../../../static/imgs/gr_sz_dz_sc@2x.png'></image>
+            <view>编辑</view>
+          </view>
+        </view>
+      </view>
+    </radio-group>
+  </scroll-view>
+  <view class="addressButton">
+    <navigator url='../editaddress/index'>
+      <view class="address-btn">添加新地址</view>
+    </navigator>
+  </view>
+</view>

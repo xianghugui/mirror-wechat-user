@@ -1,0 +1,90 @@
+<!--pages/product/index.wxml-->
+<movable-area class="product-content">
+  <movable-view direction="all" class="global-cart" bindtap='toCart'>
+    <image src='../../static/imgs/xq_gwc@2x.png'></image>
+    <view class="globalcart-num">{{cartnum}}</view>
+  </movable-view>
+  <view class="search" hidden="{{isSearch}}">
+    <view class="search-box">
+      <image class="icon-box {{iconAnimation !== null ? (iconAnimation ? 'iconShiftLeft': 'iconShiftRight') : ''}}" src="../icons/mysearch.png"></image>
+      <input class="search-input" bindfocus="focus" bindblur="blur" type='text' bindblur="bindSearch" bindconfirm="bindSearch" bindinput="bindinput" placeholder='按商品名搜索' value='{{searchStr}}'></input>
+      <image hidden='{{close}}' class="close-icon" src='../../static/imgs/spxq_cn_gb@2x.png' bindtap='clearInput'></image>
+    </view>
+  </view>
+
+  <view class="navbar">
+    <block wx:for="{{tabs}}" wx:key="index">
+      <view id="{{index}}" style="background-color:{{index==0?'#fff':''}};" class="navbar-item {{curIndex == index? 'active-class' : ''}}" catchtap="tabhandle">
+        <view class='sys-s-icon' wx:if="{{index === 4}}">
+          <image class='select-icon' src='../../static/imgs/syx_sx@2x.png' wx:if="{{index === 4}}"></image>
+        </view>
+        {{item.name}}
+        <view class='sys-s-icon' wx:if="{{index === 2}}">
+          <image class='up-icon' src='../../static/imgs/{{saleSort && curIndex == index?"active-up":"up"}}.png'></image>
+          <image class='down-icon' src='../../static/imgs/{{!saleSort && curIndex == index?"active-down":"down"}}.png'></image>
+        </view>
+        <view class='sys-s-icon' wx:if="{{index === 3}}">
+          <image class='down-icon' src='../../static/imgs/{{!curSort && curIndex == index?"active-down":"down"}}.png'></image>
+          <image class='up-icon' src='../../static/imgs/{{curSort && curIndex == index?"active-up":"up"}}.png'></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 商品内容 -->
+  <scroll-view class="content-box" scroll-y bindscrolltolower="onReachBottom">
+    <!-- 没有数据 -->
+    <view class='no-data-box' wx:if='{{total === 0}}'>
+      <image class='no-data-image' src='../../static/imgs/nodata.png'></image>
+      <view class='no-data-text'>抱歉，没有找到商品</view>
+    </view>
+    <view class="left-box">
+      <block wx:for="{{productsList}}" wx:key="item.id">
+        <view wx:if="{{index%2==0}}" class="img-box" catchtap="jumpToProductDetail" data-id='{{item.id}}'>
+          <image mode='widthFix' src="{{item.imagePath}}" data-index="{{index}}"></image>
+          <view class="goods-content">
+            <view class="goods-title">{{item.goodsName}}</view>
+            <view class="goods-info">
+              <span class="goods-price">￥{{item.price}}</span>
+              <span class="goods-volome">销量：{{item.sales}}</span>
+            </view>
+            <view class="goods-fan" wx:if="{{(item.cashBach != null && item.cashBach != 0) || item.isShow!=0}}">
+              <span wx:if="{{item.cashBach != null && item.cashBach != 0}}">
+                <label class='goumai'>
+                  <span class='fan'>返</span>购买立返{{item.cashBach}}元</label>
+                <view class='xiu' wx:if="{{(item.isShow != 0 && item.isShow!=null) || curIndex==1}}">
+                  <image wx:if="{{(item.isShow != 0 && item.isShow!=null) || curIndex==1}}" src='../../static/imgs/fx_x@2x.png'></image>
+                </view>
+              </span>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="right-box">
+      <block wx:for="{{productsList}}" wx:key="item.id">
+        <view wx:if="{{index%2==1}}" class="img-box" catchtap="jumpToProductDetail" data-id='{{item.id}}'>
+          <image mode='widthFix' src="{{item.imagePath}}" data-index="{{index}}"></image>
+          <view class="goods-content">
+            <view class="goods-title">{{item.goodsName}}</view>
+            <view class="goods-info">
+              <span class="goods-price">￥{{item.price}}</span>
+              <span class="goods-volome">销量：{{item.sales}}</span>
+            </view>
+            <view class="goods-fan" wx:if="{{(item.cashBach != null && item.cashBach != 0) || item.isShow!=0}}">
+              <span wx:if="{{item.cashBach != null && item.cashBach != 0}}">
+                <label class='goumai'>
+                  <span class='fan'>返</span>购买立返{{item.cashBach}}元</label>
+              </span>
+              <view class='xiu' wx:if="{{(item.isShow != 0 && item.isShow!=null) || curIndex==1}}">
+                <image src='../../static/imgs/fx_x@2x.png'></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <!-- </view> -->
+    <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
+    <view class="hasMoreData" wx:if="{{productsList.length == total && productsList.length>0}}">暂无更多数据 </view>
+  </scroll-view>
+</movable-area>

@@ -1,0 +1,71 @@
+<!--pages/tryOrder/orderInfo/index.wxml-->
+<import src="../../template/index.wxml" />
+<view class="page">
+  <scroll-view class="orderDetail-content" scroll-y="true">
+    <view class='navbar'>
+      <view class='show-navbar' style='font-size:40rpx;padding-top:25px;'>{{orderStatus[orderDeatil.status]}}</view>
+      <view wx:if="{{orderDeatil.status == 3}}" class='show-navbar'>
+        还有{{countdown}}自动确认收货
+      </view>
+      <view wx:if="{{orderDeatil.status == 0}}" class='show-navbar'>
+        还有{{countdown}}自动取消订单
+      </view>
+    </view>
+    <view class='user-message'>
+      <icon class='fa  fa-map-marker'></icon>
+      <view class='user-content'>
+        <view class='user-div'>
+          <view>收货人：{{orderDeatil.userName}}</view>
+          <view>电话：{{orderDeatil.userPhone}}</view>
+        </view>
+        <view class='user-div'>
+          <span>收货地址：{{orderDeatil.userAddress}}</span>
+        </view>
+      </view>
+    </view>
+    <view class='goods-info'>
+      <view class='goods-message1'>
+        <image class='goods-img' mode="aspectFill" src='{{orderDeatil.imageSrc[0].resourceUrl}}' wx:if="{{orderDeatil.imageSrc[0].resourceUrl!=null}}"></image>
+        <view class='goods-content'>
+          <view class="goods-title">{{orderInfo.goodsName}}</view>
+          <view class="goods-price">￥{{orderInfo.price}}</view>
+          <view class="goods-size">{{orderInfo.color}} {{orderInfo.size}} x{{orderInfo.num}}</view>
+        </view>
+      </view>
+      <view class='goods-message2'>
+        订单总价
+        <view class="goods-price" style="float:right;">{{orderInfo.price*100*orderInfo.num/100}}</view>
+      </view>
+      <view class='goods-message3'>
+        购买付款
+        <text class="goods-price" style="float:right;">{{orderInfo.price*100*orderInfo.num/100}}</text>
+      </view>
+    </view>
+    <view class='order-info'>
+      <view>订单编号：{{orderDeatil.orderId}}</view>
+      <view>创建时间：{{orderDeatil.createTime}}</view>
+      <view wx:if="{{orderDeatil.buyTime != null}}">付款时间：{{orderDeatil.buyTime}}</view>
+      <view wx:if="{{orderDeatil.fahuoTime != null}}">发货时间：{{orderDeatil.fahuoTime}}</view>
+      <view wx:if="{{orderDeatil.expressName != null}}">快递公司：{{orderDeatil.expressName}}</view>
+      <view wx:if="{{orderDeatil.expressNumber != null}}">快递单号：{{orderDeatil.expressNumber}}</view>
+      <view wx:if="{{orderDeatil.shouhuoTime != null}}">收货时间：{{orderDeatil.shouhuoTime}}</view>
+    </view>
+  </scroll-view>
+  <view class='operation'>
+    <icon class='fa fa-weixin' bindtap='toChat'></icon>
+    <view class="action-area">
+      <view class="action-item btncolor " bindtap='buy' wx:if="{{orderDeatil.status == 0}}">立即付款</view>
+      <view class="action-item btncolor " bindtap='remind' wx:if="{{orderInfo.status == 2 && orderInfo.assignOrderTime < nowDate && (orderInfo.remindTime == null || orderInfo.remindTime > nowDate)}}">提醒发货</view>
+      <form bindsubmit='remind' report-submit data-id="{{orderDeatil.orderId}}" data-index='{{index}}' wx:if='{{orderDeatil.status == 2 && (orderDeatil.remindTime == null || orderDeatil.remindTime > nowDate)}}'>
+      </form>
+       <view wx:if='{{orderDeatil.status == 3}}' class='action-item btncolor' bindtap='receipt'>确定收货</view>
+      <view class="action-item btncolor " bindtap='goodsComment' wx:if="{{orderDeatil.status == 4}}">评价</view>
+      <view class="action-item" bindtap='cancel' wx:if="{{orderDeatil.status == 0}}">取消</view>
+      <view class="action-item" bindtap='gotoRefund' wx:if="{{orderDeatil.status == 1 || orderDeatil.status == 2}}">退款</view>
+      <view class="action-item" bindtap='gotoRefund' wx:if="{{orderDeatil.status == 3}}">退货／退款</view>
+    </view>
+  </view>
+
+</view>
+<!-- 微信弹出框 -->
+<template is="weixinPembayaran" data="{{showModalStatus,priceSum,userEarn,disabled}}"></template>

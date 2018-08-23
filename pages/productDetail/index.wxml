@@ -1,0 +1,264 @@
+<!--pages/productDetail/index.wxml-->
+<import src="../template/index.wxml" />
+<scroll-view scroll-y="true" style="height:calc({{scrollHeight}}px - 100rpx);background-color:#f3f3f3;" lower-threshold='1' bindscrolltolower="onReachBottom">
+  <view class='cart-icon' bindtap='toCart'>
+    <image src='../../static/imgs/fx_xq_gwc@2x.png'></image>
+    <view class="globalcart-num">{{cartnum}}</view>
+  </view>
+  <view class="product-box">
+    <swiper indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{'140rpx'}}" next-margin="{{'140rpx'}}"
+      circular bindchange="swiperChange">
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item.resourceUrl}}" class="slide-image {{swiperIndex == index ? 'active' : ''}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="goods-info">
+    <view class="product-title">{{goodsInfo.goodsName}}</view>
+    <view class="price-text">
+      ￥{{goodsInfo.price}}
+      <span wx:if="{{goodsInfo.cashBach != 0}}">
+        <label class='goumai'>
+          <span class='fan'>返</span>购买立返{{goodsInfo.cashBach}}元</label>
+      </span>
+      <view class="salevolume">销量：{{goodsInfo.sales}}</view>
+    </view>
+  </view>
+
+  <view class="type-text" bindtap="representFrame">
+    <label>平台承诺</label>
+    <image class='commitment-icon' src='../../static/imgs/spxq_zp@2x.png'></image>
+    <label class='commitment-message'>正品保障</label>
+    <image class='commitment-icon' src='../../static/imgs/spxq_7t@2x.png'></image>
+    <label class='commitment-message'>七天包退</label>
+    <image class='commitment-icon' src='../../static/imgs/spxp_fp@2x.png'></image>
+    <label class='commitment-message'>同城24小时</label>
+    <view class='navigator-arrow'></view>
+  </view>
+
+  <!-- 规格型号 -->
+  <view class="type-text" bindtap="choosetype">
+    <view class="text-title">规格型号</view>
+    <view class="text-value">{{goodsSpec.color}} {{goodsSpec.size}} {{goodsSpec.curCount}}</view>
+    <view class='navigator-arrow'></view>
+  </view>
+
+  <!-- 平台承诺弹出框 -->
+  <view class="represent-frame">
+    <!-- 自定义弹出框 -->
+    <view class="modal-mask" bindtap='onCancel' catchtouchmove='onCancel' wx:if="{{showModal}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal}}">
+      <image class="close" src='../../static/imgs/spxq_cn_gb@2x.png' bindtap='onCancel'></image>
+      <view class="modal-title">平台承诺</view>
+      <view class="modal-content">
+        <view class='commitment'>
+          <view class='modal-left'>
+            <image src='../../static/imgs/spxq_cn_zp@2x.png'></image>
+          </view>
+          <view class='modal-right'>
+            <view class='commitment-title'>正品保障</view>
+            <label class='commitment-content'>衣魅欧推荐的品牌服装全部经过品牌商授权，您可以放心购买
+            </label>
+          </view>
+        </view>
+        <view class='commitment'>
+          <view class='modal-left'>
+            <image src='../../static/imgs/spxq_cn_7t@2x.png'></image>
+          </view>
+          <view class='modal-right'>
+            <view class='commitment-title'>七天内包退</view>
+            <label class='commitment-content'>在您签收货物后七天内，衣魅欧合作商家承诺七天内无理由退货
+            </label>
+          </view>
+        </view>
+        <view class='commitment'>
+          <view class='modal-left'>
+            <image src='../../static/imgs/spxq_cn_fp@2x.png'></image>
+          </view>
+          <view class='modal-right'>
+            <view class='commitment-title'>同城24小时必达</view>
+            <label class='commitment-content'>凡是平台上的品牌服装在当地有线下合作门店，您所购商品可在24小时内送达
+            </label>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- detail标签 -->
+  <view class="tabs-box">
+    <view id="0" class="tabs-item {{curIndex==0?'active-class':''}}" bindtap="tabhandle">
+      商品详情
+    </view>
+    <view id="1" class="tabs-item  {{curIndex==1?'active-class':''}}" bindtap="tabhandle">
+      评价（{{userCommentTotal}}）
+    </view>
+    <view id="2" class="tabs-item  {{curIndex==2?'active-class':''}}" bindtap="tabhandle">
+      在卖商家
+    </view>
+    <view id="3" class="tabs-item  {{curIndex==3?'active-class':''}}" bindtap="tabhandle" wx:if="{{showUserId==null}}">
+      试衣秀
+    </view>
+  </view>
+  <view class="tabcontent-box" style="height:{{curHeight}}px;box-sizing:border-box;">
+    <view id="describe" class="evaluate-content" wx:if="{{curIndex==0}}">
+      <rich-text class='describe' nodes="{{describe}}"></rich-text>
+    </view>
+
+    <view id="evaluate" class="evaluate-content" wx:if="{{curIndex==1}}">
+      <view class="evaluate-item" wx:if="{{userCommentList.length>0}}" wx:for="{{userCommentList}}" wx:key="index" wx:for-index='parentindex'>
+        <view class="user-info">
+          <view class="user-img">
+            <image mode="aspectFill" src="{{item.avatar}}"></image>
+          </view>
+          <view class="user-name">{{item.userName}}</view>
+          <view class='user-star'>
+            <block wx:for="{{star}}" wx:key="{{index}}" wx:for-item="{{star}}">
+              <view class="star-image fa {{item.star > index ?selectedSrc: normalSrc}}" data-key="{{index}}">
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class="user-message">
+          <view class="message-text">
+            {{item.content}}
+          </view>
+          <view class="message-img" wx:if="{{item.imageList.length>0}}">
+            <view class="img-box {{(index+3)%4==0?'mrlr':''}} {{(index+3)%5==0?'mrr':''}}" wx:for="{{item.imageList}}" wx:for-item="imageList" wx:key="index" wx:if="{{item.imageList.length>0}}" wx:for-index='index'>
+              <image mode="aspectFill" src="{{imageList.resourceUrl}}" bindtap='previewImage' data-parentindex='{{parentindex}}' data-index='{{index}}'></image>
+            </view>
+          </view>
+          <view class="date-box">
+            {{item.createTime}}
+            <span style="margin-left:30rpx;">{{item.color}} {{item.size}}</span>
+          </view>
+        </view>
+      </view>
+      <view class='evaluate-no' wx:if="{{userCommentTotal == 0 || userCommentList.length == userCommentTotal}}">{{userCommentTotal == 0?'暂无评论':'暂无更多评论'}}</view>
+    </view>
+
+    <view id="seller" class="seller-box" wx:if="{{curIndex==2}}">
+      <view wx:if="{{sellerList.length>0}}" wx:for="{{sellerList}}" wx:key="{{item.shopId}}" class="seller-item">
+        <view class="sellerLogo">
+          <image src="{{item.imageUrl}}"></image>
+        </view>
+        <view class="seller-info">
+          <view class="seller-id">
+            {{item.shopName}}
+          </view>
+          <view class="seller-address">
+            地址：{{item.address}}
+          </view>
+        </view>
+        <view class="distance-box" bindtap='map' data-index='{{index}}'>
+          <view class="distance-icon fa fa-location-arrow">
+            <!-- <image src="../icons/distance.png"></image> -->
+          </view>
+          <view class="distance-text">
+            {{item.distance}}km
+          </view>
+        </view>
+      </view>
+      <view class='evaluate-no' wx:if="{{sellerList.length==0}}">暂无在卖商家</view>
+    </view>
+
+    <view id="fittingShow" class="fittingShow-content" wx:if="{{curIndex==3 && showUserId==null}}">
+      <view class='evaluate-no' wx:if="{{fittingShowListTotal===0}}">暂无试衣秀</view>
+      <view>
+        <block wx:for="{{fittingShowList}}" wx:key="item.videoId">
+          <view class="f-img-box" bindtap="jumpToFittingShowInfo" data-index='{{index}}'>
+            <image mode='aspectFill' src="{{item.videoImageUrl}}" data-index="{{index}}"></image>
+            <view class='mini-play-box'>
+              <image class='play-icon' src='../icons/play.png'></image>
+            </view>
+            <view class="info">
+              <view class="f-user-info">
+                <view class="f-user-avatar">
+                  <image mode="aspectFill" src="{{item.avatar}}"></image>
+                </view>
+                <view class='f-user-inner'>
+                  <label class="f-user-name">{{item.userName}}</label>
+                  <label class="f-user-like">
+                    <label class='like-icon fa fa-heart-o'></label>
+                    <label class='likeNum'>{{item.likeNum}}</label>
+                  </label>
+                </view>
+              </view>
+              <view class="goods-content">
+                <view class="goods-title">{{item.goodsName}}</view>
+                <view class="f-shop-info">
+                  <view class="shop-icon">
+                    <image src='../../static/imgs/xq_md@2x.png'></image>
+                  </view>
+                  <label class="shop-name">{{item.shopName}}</label>
+                  <label class="shop-distance">{{item.distance}}</label>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+        <view class='hasMoreData' hidden='{{fittingShowListTotal === 0 && fittingShowList.length === fittingShowListTotal}}'>暂无更多数据</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<!-- </movable-area> -->
+
+<!-- 规格弹出框 -->
+<!-- 遮罩层 -->
+<view class="mask" wx:if="{{isChoosetype}}"></view>
+<view scroll-y="true" class="type-frame" wx:if="{{isChoosetype==true}}">
+  <view class="type-img">
+    <image src="{{imgUrls[0].resourceUrl}}"></image>
+  </view>
+  <view class="type-price">
+    <view class="typeprice-text">
+      ￥{{price}}
+    </view>
+    <view class="stock">库存：{{quality}}</view>
+  </view>
+  <scroll-view scroll-y="true" class="typeform">
+    <form bindsubmit="formSubmit">
+      <view class="type-title">尺码</view>
+      <view class="choose-size">
+        <radio-group name="size" class='choose-box sizeradio-group' bindchange="sizeradioChange">
+          <label class="choose-item size-item {{item.checked?'borderShow1':''}}" wx:for="{{sizes}}" wx:key="{{index}}">
+            <radio hidden value="{{item.value}}" checked="{{item.checked}}" />{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="type-title">颜色</view>
+      <view class="choose-color">
+        <radio-group name="color" class='choose-box sizeradio-group' bindchange="colorradioChange">
+          <label class="choose-item color-item {{item.checked?'borderShow1':''}}" wx:for="{{colors}}" wx:key="{{index}}">
+            <radio hidden value="{{item.value}}" checked="{{item.checked}}" />{{item.value}}
+          </label>
+        </radio-group>
+      </view>
+      <view class="type-title count-box">
+        购买数量
+        <view class="buy-count">
+          <template is="goodsCount" data="{{...curCount[0],index,quality}}"></template>
+        </view>
+      </view>
+      <view class="typebtn-area">
+        <button formType="submit">确定</button>
+      </view>
+    </form>
+  </scroll-view>
+
+  <view class="close-btn" bindtap="closeTypeframe">
+    <image src="../../static/imgs/spxq_cn_gb@2x.png"></image>
+  </view>
+</view>
+<view class="foot">
+  <view class='chatTitle'>有任何问题，可以联系客服哦</view>
+  <view class="foot-item">
+    <button class='weixin fa fa-weixin' open-type="contact" /> 客服
+  </view>
+  <view class="foot-right">
+    <view class="addtoCard" bindtap="addtoCard">加入购物车</view>
+    <view class="buy" bindtap="buy">立即购买</view>
+  </view>
+</view>

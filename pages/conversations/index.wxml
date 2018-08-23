@@ -1,0 +1,23 @@
+<!--pages/conversation/index.wxml-->
+<block wx:for='{{conversations}}' wx:for-item='item' wx:for-index='index' wx:key='{{item.userId}}'>
+  <swider-left is-open='{{item.isOpen}}' itemid='{{item.userId}}' index='{{index}}' binddelConversation='delConversation' bindconversationTouchstart='touchstart' bindtodo='toChat'>
+    <view class='userInfo'>
+      <image class='avatar' src='{{item.avatar}}'></image>
+      <view class='info'>
+        <view class='info-top'>
+          <view class='name'>{{item.name}}</view>
+          <view class='time'>{{item.mtime}}</view>
+        </view>
+        <view class='info-bottom'>
+          <view class='message'>{{item.message}}</view>
+          <view class='remind' wx:if='{{item.unread_msg_count > 0}}'>{{item.unread_msg_count}}</view>
+        </view>
+      </view>
+    </view>
+  </swider-left>
+</block>
+<!-- 没有数据时展示 -->
+<view class='no-data-box' wx:if='{{total === 0}}'>
+  <image class='no-data-image' src='../../static/imgs/conversations.png'></image>
+  <view class='no-data-text'>没有会话消息</view>
+</view>

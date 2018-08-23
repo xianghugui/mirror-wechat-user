@@ -1,0 +1,84 @@
+{
+  "pages": [
+    "pages/fittingShow/index",
+    "pages/fittingShow/fittingShowInfo/index",
+    "pages/fittingShow/fittingStoreInfo/index",
+    "pages/discover/index",
+    "pages/faceRetrieval/index",
+    "pages/dressingroom/index",
+    "pages/dressingroom/associationClothing/index",
+    "pages/dressingroom/associationClothing/selectGoods/index",
+    "pages/dressingroom/associationClothing/selectGoods/filter/index",
+    "pages/me/index",
+    "pages/selectVideo/index",
+    "pages/myEvaluate/index",
+    "pages/myOrder/index",
+    "pages/cart/index",
+    "pages/confirmOrder/index",
+    "pages/figureInfo/index",
+    "pages/product/index",
+    "pages/product/filtrate/index",
+    "pages/productDetail/index",
+    "pages/message/index",
+    "pages/message/messageInfo/index",
+    "pages/me/setting/index",
+    "pages/me/setting/address/index",
+    "pages/me/setting/editaddress/index",
+    "pages/me/setting/figureInfo/index",
+    "pages/personCenter/index",
+    "pages/me/myWallet/index",
+    "pages/me/myWallet/myProfit/index",
+    "pages/me/myWallet/myConsumer/index",
+    "pages/me/myWallet/myWithdraw/index",
+    "pages/me/myWallet/withdraw/index",
+    "pages/videoOrder/index",
+    "pages/videoOrder/orderInfo/index",
+    "pages/videoOrder/video/index",
+    "pages/Refund/index",
+    "pages/refundOrder/index",
+    "pages/refundOrder/orderInfo/index",
+    "pages/myOrder/orderInfo/index",
+    "pages/goodsComment/index",
+    "pages/refundOrder/delivery/index",
+    "pages/chat/index",
+    "pages/conversations/index",
+    "pages/videoShare/index"
+  ],  
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "backgroundColor": "#232428",
+    "color": "#575966",
+    "selectedColor": "#48C6CF",
+    "list": [
+      {
+        "iconPath": "static/imgs/clothes.png",
+        "selectedIconPath": "static/imgs/clothes-s.png",
+        "pagePath": "pages/fittingShow/index",
+        "text": "试衣秀"
+      },
+      {
+        "iconPath": "static/imgs/sy_dh_fxw@2x.png",
+        "selectedIconPath": "static/imgs/sy_dh_fx@2x.png",
+        "pagePath": "pages/product/index",
+        "text": "发现"
+      },
+      {
+        "iconPath": "static/imgs/message.png",
+        "selectedIconPath": "static/imgs/message-s.png",
+        "pagePath": "pages/message/index",
+        "text": "资讯"
+      },
+      {
+        "iconPath": "static/imgs/me.png",
+        "selectedIconPath": "static/imgs/me-s.png",
+        "pagePath": "pages/me/index",
+        "text": "我的"
+      }
+    ]
+  }
+}

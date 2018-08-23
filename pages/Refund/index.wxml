@@ -1,0 +1,41 @@
+<!--pages/Refund/index.wxml-->
+<form bindsubmit="formSubmit">
+  <radio-group name='reason' class="reason-group" bindchange="reasonChange">
+    <label class="radio">
+      <radio value="商品质量问题" />商品质量问题
+    </label>
+    <label class="radio">
+      <radio value="不合身" />不合身
+    </label>
+    <label class="radio">
+      <radio value="其他" />其他
+    </label>
+  </radio-group>
+  <view class='refund-box'>
+    <view class='type-text'>选择类型</view>
+    <radio-group name='refundType' class="type-group" bindchange="typeChange">
+      <label class="radio" wx:if="{{status == 1 || status == 2}}">
+        <radio value="0" checked='true' />仅退款
+      </label>
+      <label class="radio" wx:if="{{status == 3}}">
+        <radio value="1" checked='true' />退货/退款
+      </label>
+    </radio-group>
+    <view class='reason-box'>
+      <textarea class="content" name='content' placeholder='请输入更详细的退货原因'></textarea>
+      <view class="img-v">
+        <block wx:for="{{imagesArray}}" wx:for-item="item" wx:key="resourceId">
+          <view class='imgbox'>
+            <image wx:if='{{item.resourceUrl != null}}' class='goodsImages' src="{{item.resourceUrl}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+            <image wx:else class='goodsImages' src="{{item}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+            <view class="delete-btn fa fa-close" data-index="{{index}}" catchtap="deleteImg"></view>
+          </view>
+        </block>
+        <image class="fa fa-photo upload-img-btn" bindtap="chooseImg"></image>
+      </view>
+    </view>
+    <view class="btn-area">
+      <button formType="submit" disabled='{{disabled}}'>提交申请</button>
+    </view>
+  </view>
+</form>

@@ -1,0 +1,41 @@
+<!--pages/order/index.wxml-->
+<view class="page">
+  <view class='select-content'>
+    <view class='select-title'>请选择你的试衣信息</view>
+    <form bindsubmit="formSubmit">
+    <scroll-view scroll-y="true" class="select-scroll">
+      <checkbox-group name="checkbox" class='select-box' bindchange="checkboxChange">
+      <block wx:for="{{items}}" wx:key="{{item.videoId}}">
+      <label class="select-item {{(index+2)%3==0?'mrlr':''}}">
+        <checkbox hidden value='{{item.videoId}}' checked="{{item.checked}}"/>
+        <image  class='select-img' src="{{item.videoImg}}"></image>
+        <view class='play-box'>
+          <image  class='play-icon' src='../icons/play.png'></image>
+        </view>
+        <view class='check-box' style="opacity:{{item.checked ? 1: 0}}">
+          <image  class='check-icon' src='../icons/checked.png'></image>
+        </view>
+        <view class='text-box'>
+          <view class='text-title'>{{item.shopName}}</view>
+          <view class='text-address'>{{item.address}}</view>
+          <view class='text-time'>{{item.createTime}}</view>
+        </view>
+      </label>
+      </block>
+      
+    </checkbox-group>
+    </scroll-view>
+    <checkbox-group class='select-all' bindchange='selectallchange'>
+      <label>
+        <checkbox value='all'/>全选
+      </label>
+    </checkbox-group>
+    
+    
+    <view class="btn-area">
+      <button type="primary" formType="submit">确定</button>
+    </view>
+    </form>
+    
+  </view>
+</view>

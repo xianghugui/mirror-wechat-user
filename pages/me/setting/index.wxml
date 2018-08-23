@@ -1,0 +1,21 @@
+<!--pages/me/setting/index.wxml-->
+<view class="page">
+  <!-- <navigator url="" hover-class="navigator-hover">支付密码
+    <view class="navigator-arrow"></view>
+  </navigator> -->
+  <navigator url="address/index" hover-class="navigator-hover">收货地址
+    <view class="navigator-arrow"></view>
+  </navigator>
+  <!-- <navigator url="figureInfo/index" hover-class="navigator-hover">身材信息
+    <view class="navigator-arrow"></view>
+  </navigator> -->
+  <!-- <navigator target="miniProgram" app-id='wxd03a517606aa7468' version='trial' hover-class="navigator-hover" extra-data='{{openId}}'>商家登录
+    <view class="navigator-arrow"></view>
+  </navigator> -->
+  <!-- <navigator url="" hover-class="navigator-hover">关于我们
+    <view class="navigator-arrow"></view>
+  </navigator>
+  <navigator url="" hover-class="navigator-hover">联系我们
+    <view class="navigator-arrow"></view>
+  </navigator> -->
+</view>

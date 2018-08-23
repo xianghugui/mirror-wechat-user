@@ -1,0 +1,126 @@
+/* pages/me/setting/address/index.wxss */
+
+page {
+  background-color: #f3f3f3;
+}
+
+.address-box {
+  height: calc(100% - 120rpx);
+}
+
+.addressLint {
+  margin-bottom: 30rpx;
+  padding: 36rpx 14.5px 0px 14.5px;
+  font-size: 32rpx;
+  line-height: 40rpx;
+  background-color: white;
+  color: #707070;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+
+.operating {
+  height: 80rpx;
+  font-size: 30rpx;
+  border-top: 1px solid #f3f3f3;
+  line-height: 60rpx;
+  color: rgb(50, 50, 50);
+}
+
+label {
+  display: inline-block;
+  font-size: 26rpx;
+}
+
+.address {
+  width: 100%;
+  min-height: 40rpx;
+  font-size: 28rpx;
+  margin-bottom: 36rpx;
+  margin-top: 36rpx;
+  line-height: 40rpx;
+  color: rgb(50, 50, 50);
+}
+
+.action-box {
+  height: 80rpx;
+  float: right;
+  margin-left: 60rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: 80rpx;
+}
+
+.action-image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+
+.addressButton {
+  width: 100%;
+  height: 120rpx;
+}
+
+.addressButton:before {
+  content: "";
+  display: table;
+}
+
+.address-btn {
+  width: 550rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 80rpx;
+  border-style: none;
+  background-color: #4bc2ca;
+  color: white;
+  margin: 20rpx auto;
+}
+
+.selected-box {
+  border: 1px solid #4bc2ca;
+}
+
+.name, .phone {
+  display: inline;
+  font-size: 36rpx;
+  color: rgb(51, 51, 51);
+}
+
+.phone {
+  float: right;
+}
+
+.radio-box {
+  margin-top: 10rpx;
+  float: left;
+}
+
+.radio {
+  transform: scale(0.7);
+}
+
+.address-text {
+  position: relative;
+  top: 3rpx;
+}
+
+.no-data-box{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #bbbbbb;
+  font-size: 30rpx;
+}
+
+.no-data-image{
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 30rpx;
+}

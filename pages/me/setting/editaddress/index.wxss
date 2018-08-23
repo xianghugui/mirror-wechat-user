@@ -1,0 +1,72 @@
+/* pages/me/setting/editaddress/index.wxss */
+.inputLint{
+  height: 100rpx;
+  width: 100%;
+  padding: 0 20rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #f3f3f3;
+  font-size:34rpx;
+  color:#434343;
+  box-sizing:border-box;
+}
+.inputTitle{
+  width: 200rpx;
+  overflow: hidden;
+}
+.inputTitleLeft{
+float:left;
+}
+.inputLongLint{
+  width: 300rpx;
+}
+.addressInfo{
+  min-height: 200rpx;
+  width: 750rpx;
+  border-bottom: 1px solid #f3f3f3;
+  padding: 0 20rpx;
+  box-sizing:border-box;
+  display:flex;
+  justify-content: space-between;
+}
+.oneLint{
+  width: calc(100% - 200rpx);
+  height: 100rpx;
+  float: right;
+}
+.detail-address{
+  font-size:34rpx;
+  margin-top:40rpx;
+}
+.twoLint{
+  width: calc(100% - 200rpx);
+  min-height: 200rpx;
+  overflow: hidden;
+  font-size:34rpx;
+  line-height:50rpx;
+  padding-top: 42rpx;
+}
+switch{
+  transform:scale(0.7);
+  float: right;
+}
+
+button{
+  width: 500rpx;
+  height:80rpx;
+  border-radius: 40rpx;
+  margin-top: 60rpx;
+  margin-left:125rpx;
+  overflow:hidden;
+  line-height:80rpx;
+  font-size:32rpx;
+  color: white;
+  background-color: #4BC2CA;
+}
+
+.fa-angle-right{
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 20rpx;
+  font-size: 40rpx;
+  float: right;
+}

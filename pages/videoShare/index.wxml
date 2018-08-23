@@ -1,0 +1,16 @@
+<!--pages/videoShare/index.wxml-->
+<video autoplay controls='{{false}}' objectFit="fill" src="{{videoInfo.md5}}" loop bindended="videoended" objectFit="fill">
+  <!--店铺名称时间  -->
+  <cover-view class='k-shop-info'>
+    <cover-view class='k-shop-name'>{{videoInfo.name}}</cover-view>
+    <cover-view class='k-shop-time'>{{videoInfo.createTime}}</cover-view>
+  </cover-view>
+  <!--分享  -->
+  <cover-view class='share-box'>
+    <button open-type="share" class='share-button'>
+      <cover-image src='../../static/imgs/wdsy_fx.png' class='share-image'>
+      </cover-image>
+    </button>
+  </cover-view>
+  <cover-image class='videoended' src='../../static/imgs/back-home.png' catchtap="goToHome" hidden='{{isHome}}'></cover-image>
+</video>

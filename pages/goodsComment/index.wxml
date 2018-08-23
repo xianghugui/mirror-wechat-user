@@ -1,0 +1,22 @@
+<!--pages/goodsComment/index.wxml-->
+<form bindsubmit="formSubmit">
+  <view class='star-out'>
+    <text>评分：</text>
+    <block wx:for="{{stars}}" wx:key="{{index}}">
+      <view class="star-image fa {{key > item ?selectedSrc: normalSrc}}" data-key="{{index}}" bindtap="selectStar">
+      </view>
+    </block>
+  </view>
+  <view class='reason-box'>
+    <textarea name='content' maxlength='{{200}}' placeholder='您如果觉得不错，麻烦给个好评哦'></textarea>
+    <view class="img-v">
+      <view class='imgbox' wx:for="{{imagesArray}}" wx:for-item="item" wx:key="resourceId">
+        <image wx:if='{{item.resourceUrl != null}}' class='goodsImages' src="{{item.resourceUrl}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+        <image wx:else class='goodsImages' src="{{item}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+        <view class="delete-btn fa fa-close" data-index="{{index}}" catchtap="deleteImg"></view>
+      </view>
+      <view class="fa fa-photo upload-img-btn" bindtap="chooseImg"></view>
+    </view>
+  </view>
+  <button formType="submit">提交评价</button>
+</form>

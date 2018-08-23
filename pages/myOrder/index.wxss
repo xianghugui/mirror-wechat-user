@@ -1,0 +1,305 @@
+/* pages/myOrder/index.wxss */
+@import "../template/index.wxss";
+
+page {
+  background-color: #f3f3f3;
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  color: rgb(50, 50, 50);
+}
+
+scroll-view {
+ position: absolute;
+ top: 85rpx;
+ left: 0; 
+ right: 0;
+ bottom: 0;
+ padding-top: 15rpx;
+}
+
+/* 标签 */
+.tabs-box {
+  display: flex;
+  justify-content: space-around;
+  background-color: #fff;
+}
+
+.tabs-item {
+  min-width: 140rpx;
+  font-size: 28rpx;
+  height: 85rpx;
+  line-height: 85rpx;
+  text-align: center;
+  position: relative;
+  flex: 1;
+}
+
+.active-class {
+  color: #51c5c7;
+}
+
+.active-class:before {
+  content: "";
+  width: 80%;
+  height: 6rpx;
+  position: absolute;
+  left: 10%;
+  bottom: 0;
+  background-color: #51c5c7;
+}
+/* 订单内容 */
+.order-item {
+  width: 750rpx;
+  overflow: hidden;
+  background-color: white;
+  box-sizing: border-box;
+  margin-bottom:15rpx;
+}
+
+.infoMid, .infoBottom {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.infoMid{
+  text-align: right;
+  padding-right: 30rpx;
+  box-sizing: border-box;
+  border-top: 1px solid #f3f3f3;
+  border-bottom: 1px solid #f3f3f3;
+  font-size: 30rpx;
+}
+
+.price{
+  font-weight: bold;
+}
+
+.infoTop{
+  height: 180rpx;
+  padding:15rpx 14.5px;
+  box-sizing: border-box;
+  display:flex;
+  position:relative;
+}
+
+.videoImage {
+  width: 100rpx;
+  height: 150rpx;
+  position: relative;
+}
+
+.info{
+  height: 150rpx;
+  width: calc(100% - 120rpx);
+  margin-left:20rpx;
+  display:flex;
+  flex-direction:column;
+  justify-content: space-between;
+  position:relative;
+  font-size:28rpx;
+}
+
+.goods-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;  
+  font-size: 32rpx;
+}
+
+.size {
+  color: rgb(175, 175, 175);
+  font-size: 26rpx;
+}
+.status{
+  position:absolute;
+  right:0;
+  bottom:0;
+}
+
+.textOrange {
+  color: rgb(255, 162, 0);
+  font-size: 36rpx;
+}
+.textGreen{
+  color: rgb(74, 196, 203);
+}
+
+
+.action-area{
+  height:60rpx;
+  margin:15rpx 0;
+  width:60%;
+  float:right;
+}
+.action-item {
+  height: 60rpx;
+  padding: 0rpx 20rpx;
+  border-radius: 60rpx;
+  background-color: white;
+  line-height: 57rpx;
+  text-align: center;
+  font-size:26rpx;
+  float: right;
+  margin-right: 20rpx;
+  overflow:hidden;
+  border: 3rpx solid #ddd;
+  box-sizing: border-box;
+}
+.btncolor{
+  background-color:rgb(74, 196, 203);
+  color: white; 
+  border-style: none;
+}
+.fa-weixin{
+  width: 60rpx;
+  height: 60rpx;
+  border:3rpx solid #5fc8ce;
+  color:#49C4CB;
+  background: #fff;
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 55rpx;
+  margin-top:17rpx;
+  margin-left:20rpx;
+  padding:0;
+}
+
+/* 遮罩层 */
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.commodity_attr_box {
+  width: 100%;
+  height:680rpx;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding: 20rpx;
+}
+
+.title-tile{
+  font-size: 35rpx;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.sumbit-button{
+  width: 450rpx;
+  margin-top: 150rpx;
+  text-align: center;
+  background-color: #00d6ff;
+  border-radius: 100rpx;
+  color: #fff;
+}
+.pembayaran-type{
+  padding: 30rpx;
+  border-bottom: 1px solid #ddd;
+}
+.pembayaran-icon{
+  width: 40rpx;
+  height: 40rpx;
+  padding: 10rpx;
+}
+.pembayaran-radio{
+  float: right;
+  margin-right: 30rpx;
+}
+.show-money{
+  padding-top: 20rpx;
+}
+.money{
+  float: right;
+  color: #00d6ff;
+  margin-right: 60rpx;
+  font-weight: bold;
+  font-size: 35rpx;
+}
+
+.close-image{
+  width:42rpx;
+  height:42rpx;
+  float: right;
+  margin-right: 40rpx;
+}
+
+.cashbach-box{
+  border-top: 1px solid #f3f3f3;
+  height: 80rpx;
+  width: 100%;
+  line-height: 80rpx;
+  display: flex;
+}
+
+.cashbach-image{
+  height: 42rpx;
+  width: 42rpx;
+  margin: 19rpx 20rpx;
+}
+
+.cashbach-content {
+  margin-right: 20rpx;
+  font-size: 28rpx;
+  color: rgb(51, 51, 51);
+  display: inline-block;
+}
+
+.cashbach-prompt{
+  font-size: 20rpx;
+  color: rgb(97, 97, 97);
+  display: inline-block;
+}
+
+.refresh{
+  position: fixed;
+  bottom: 30rpx;
+  left: calc(50% - 30rpx);
+  width: 60rpx;
+  height: 60rpx;
+  color: #3fc0c5;
+  font-size: 60rpx;
+  animation: refresh 1.5s linear 0s infinite
+}
+
+.no-data-box{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #bbbbbb;
+  font-size: 30rpx;
+}
+
+.no-data-image{
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 30rpx;
+}
+
+@keyframes refresh{
+  from{
+    transform: rotate(0)
+  }
+  to{
+    transform: rotate(360deg)
+  }
+}

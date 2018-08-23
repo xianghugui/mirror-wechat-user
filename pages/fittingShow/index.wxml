@@ -1,0 +1,58 @@
+<!--pages/fittingShow/index.wxml-->
+  <view class='sys-search'>
+    <view class='location-container' bindtap='loadCity'>
+      <image class='sys-s-icon' src='../../static/imgs/syx_wz@2x.png'></image>
+      <span class="sys-s-text">{{cityName}}</span>
+    </view>
+    <view class="search-box">
+      <image class="icon-box {{iconAnimation !== null ? (iconAnimation ? 'iconShiftLeft': 'iconShiftRight') : ''}}" src="../icons/mysearch.png"></image>
+      <input class="search-input {{iconAnimation?'search-input-right':'search-input-left'}}" bindfocus="focus" bindblur="blur" type='text' bindconfirm="bindSearch" bindinput="bindinput" placeholder='关键词搜索' value='{{searchStr}}'></input>
+      <image hidden='{{close}}' class="close-icon" src='../../static/imgs/spxq_cn_gb@2x.png' bindtap='clearInput'></image>
+    </view>
+    <view class='filtrate'>
+      <image class='sys-s-icon' src='../../static/imgs/syx_sx@2x.png'></image>
+      <span class="sys-s-text" bindtap="jumpToFiltrate">筛选</span>
+    </view>
+  </view>
+  <!-- 没有数据 -->
+    <view class='no-data-box' wx:if='{{total === 0}}'>
+      <image class='no-data-image' src='../../static/imgs/nodata.png'></image>
+      <view class='no-data-text'>抱歉，暂无试衣秀</view>
+    </view>
+  <view class='content'>
+      <block wx:for="{{videoList}}" wx:key="item.videoId">
+        <view class="f-img-box" bindtap="jumpToFittingShowInfo" data-index='{{index}}'>
+          <image mode='aspectFill' lazy-load src="{{item.videoImageUrl}}" data-index="{{index}}"></image>
+          <view class='mask'></view>
+          <view class='mini-play-box'>
+            <image class='play-icon' src='../icons/play.png'></image>
+          </view>
+          <view class="info">
+            <view class="f-user-info">
+              <view class="f-user-avatar">
+                <image mode="aspectFill" src="{{item.avatar}}"></image>
+              </view>
+              <view class='f-user-inner'>
+                <label class="f-user-name">{{item.userName}}</label>
+                <label class="f-user-like">
+                  <label class='like-icon fa fa-heart-o'></label>
+                  <label class='likeNum'>{{item.likeNum}}</label>
+                </label>
+              </view>
+            </view>
+            <view class="goods-content">
+              <view class="goods-title">{{item.goodsName}}</view>
+              <view class="f-shop-info">
+                <view class="shop-icon">
+                  <image src='../../static/imgs/xq_md@2x.png'></image>
+                </view>
+                <label class="shop-name">{{item.shopName}}</label>
+                <label class="shop-distance">{{item.distance}}KM</label>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
+    <view class="hasMoreData" wx:if="{{videoList.length == total && videoList.length>0}}">暂无更多数据</view>
+</view>

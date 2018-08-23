@@ -1,0 +1,62 @@
+<!--pages/product/filtrate/index.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <scroll-view>
+    <view>
+      <view class='tab-content'>
+        <view class="sort {{isChoose[0].checked?'':'sortDown'}}" bindtap='toggleDisplay' data-index="0">服装</view>
+      </view>
+      <view class='tab-content'>
+        <radio-group name="clothesTabs" class='swiper-content choose-box' bindchange="clothesChange">
+          <label class="swiper-tab {{item.checked?'checkedTab':''}}" wx:for="{{clothesTabs}}" wx:key="{{index}}" wx:for-index='index' wx:if="{{!isChoose[0].checked?index<8:clothesTabs}}">
+              <radio hidden value="{{index}}" checked="{{item.checked}}" />{{item.className}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+
+    <view>
+      <view class='tab-content'>
+        <view class="sort {{isChoose[3].checked?'':'sortDown'}}" bindtap='toggleDisplay' data-index="3">全部分类</view>
+      </view>
+      <view class='tab-content'>
+        <radio-group name="allclassify" class='swiper-content choose-box' bindchange="allclassifyChange">
+          <label class="swiper-tab {{item.checked?'checkedTab':''}}" wx:for="{{allclassify}}" wx:key="{{index}}" wx:for-index='index' wx:if="{{!isChoose[3].checked?index<8:allclassify}}">
+              <radio hidden value="{{index}}" checked="{{item.checked}}" />{{item.className}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view>
+      <view class='tab-content'>
+        <view class="sort {{isChoose[1].checked?'':'sortDown'}}" bindtap='toggleDisplay' data-index="1">品牌</view>
+      </view>
+      <view class='tab-content'>
+        <radio-group name="brandTabs" class='swiper-content choose-box' bindchange="brandChange">
+          <label class="swiper-tab {{item.checked?'checkedTab':''}}" wx:for="{{brandTabs}}" wx:key="{{index}}" wx:for-index='index' wx:if="{{!isChoose[1].checked?index<8:brandTabs}}">
+              <radio hidden value="{{index}}" checked="{{item.checked}}" />{{item.name}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+
+    <view>
+      <view class='tab-content'>
+        <view class="sort {{isChoose[2].checked?'':'sortDown'}}" bindtap='toggleDisplay' data-index="2">价格区间</view>
+      </view>
+      <view class='tab-content' wx:if="{{isChoose[2].checked}}">
+        <view class='price-content'>
+          <input class='price-input' type='digit' name="minPrice" placeholder="最低价" bindfocus="clearpriceRange" value='{{minPrice}}'></input>——
+          <input class='price-input' type='digit' name="maxPrice" placeholder="最高价" bindfocus="clearpriceRange" value='{{maxPrice}}'></input>
+        </view>
+        <radio-group name="priceRange" class='swiper-content choose-box' bindchange="priceRangeChange">
+          <label class="swiper-tab {{item.checked?'checkedTab':''}}" wx:for="{{priceRange}}" wx:key="{{index}}" wx:for-index='index'>
+              <radio hidden value="{{index}}" checked="{{item.checked}}"/>{{item.name}}
+          </label>
+        </radio-group>
+      </view>
+    </view>
+
+  </scroll-view>
+  <button class='button-style reset' formType="reset">重置</button>
+  <button class='button-style sumbit'formType="submit">确定</button>
+</form>

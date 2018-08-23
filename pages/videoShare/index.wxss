@@ -1,0 +1,17 @@
+/* pages/videoShare/index.wxss */
+@import '../dressingroom/index.wxss';
+
+video{
+  width:100%;
+  height:100%;
+  position: fixed;
+  top: 0;
+}
+
+.share-box{
+  top: 54px;
+}
+
+.videoended {
+  top: 118px;
+}

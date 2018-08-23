@@ -1,0 +1,87 @@
+<!--pages/figureInfo/index.wxml-->
+<view class='figureInfo-content'>
+  <view class="swiper-container">
+    <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" circular autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="index">
+        <swiper-item>
+          <image mode='aspectFill' src="{{item}}" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view class='application'>
+      <view class='application-title'>
+        适用场合
+      </view>
+      <view class='application-box'>
+        <checkbox-group name="applications" class='select-box' bindchange="applicationChange">
+          <label class="application-label {{item.checked ? 'borderShow' : ''}}" wx:for-items="{{applicationcheckboxItems}}" wx:key="{{item.applicationId}}">
+            <checkbox hidden value="{{item.applicationId}}" checked="{{item.checked}}"></checkbox>
+            {{item.applicationName}}
+          </label>
+          <view class='clear'></view>
+        </checkbox-group>
+      </view>
+    </view>
+    <view class='application'>
+      <view class='application-title'>
+        感兴趣的
+      </view>
+      <view class='application-box'>
+        <checkbox-group name="likes" class='select-box' bindchange="interestingChange">
+          <label class="application-label {{item.checked ? 'borderShow' : ''}}" wx:for-items="{{interestingcheckboxItems}}" wx:key="{{item.name}}">
+            <checkbox hidden value="{{item.goodsClassId}}" checked="{{item.checked}}"></checkbox>
+            {{item.className}}
+          </label>
+          <view class='clear'></view>
+        </checkbox-group>
+      </view>
+    </view>
+    <view class='application'>
+      <view class='application-title'>
+        性别
+      </view>
+      <view class='application-box'>
+        <radio-group name="sex" class='select-box' bindchange="sexChange">
+          <label class="application-label sex-label {{item.checked ? 'borderShow' : ''}}" wx:for-items="{{sexArray}}" wx:key="{{index}}">
+            <label>
+              <radio hidden value="{{item.name}}" checked="{{item.checked}}" />{{item.name}}
+            </label>
+          </label>
+        </radio-group>
+      </view>
+      <view class='clear'></view>
+    </view>
+
+    <view class='application'>
+      <view class='application-title'>
+        年龄
+      </view>
+      <view class='application-box'>
+        <radio-group name="age" class='select-box' bindchange="radioChange">
+          <label class="application-label {{item.checked ? 'borderShow' : ''}}" wx:for-items="{{ageArray}}" wx:key="{{index}}">
+            <label>
+              <radio hidden value="{{item.propertyId}}" checked="{{item.checked}}" />{{item.propertyName}}
+            </label>
+          </label>
+        </radio-group>
+      </view>
+      <view class='clear'></view>
+    </view>
+
+    <view class='form-item'>
+      <span class="input-text">身高</span>
+      <input name="height" class='input-css' placeholder="请输身高" value='{{height}}' />
+      <span class="input-text">cm</span>
+    </view>
+    <view class='form-item'>
+      <span class="input-text">体重</span>
+      <input name="weight" class='input-css' placeholder="请输体重" value='{{weight}}' />
+      <span class="input-text">kg</span>
+    </view>
+    <view class="btn-area">
+      <button type='primary' formType="submit">提交</button>
+    </view>
+  </form>
+</view>

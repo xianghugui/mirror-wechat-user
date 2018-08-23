@@ -1,0 +1,13 @@
+<!--pages/myWithdraw/index.wxml-->
+<scroll-view scroll-y="true" class="page"  bindscrolltolower="lower">
+  <view class="withdraw-item" wx:for="{{withdrawList}}" wx:for-item='item' wx:for-index='index' wx:key="{{index}}">
+    <view class="withdraw-title">提现到 {{item.bank}}</view>
+    <view class="withdraw-date">
+      {{item.createTime}}
+    </view>
+    <view class="withdraw-num">-{{item.money}}</view>
+    <view class="withdraw-status">
+      <span>{{item.status == 1 ? '提现成功' : '提现中'}}</span>
+    </view>
+  </view>
+</scroll-view>

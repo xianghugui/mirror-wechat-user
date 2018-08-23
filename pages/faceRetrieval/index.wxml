@@ -1,0 +1,46 @@
+<!--pages/faceRetrieval/index.wxml-->
+<view class="page">
+  <camera device-position="front" flash="off" binderror="error" class="normal-camera" wx:if="{{isPreview==false}}">
+    <cover-view class="up-mask"></cover-view>
+    <cover-view class="down-mask"></cover-view>
+    <cover-view class="left-mask"></cover-view>
+    <cover-view class="right-mask"></cover-view>
+    <cover-view class="left-top"></cover-view>
+    <cover-view class="left-lefttop"></cover-view>
+    <cover-view class="right-top"></cover-view>
+    <cover-view class="right-righttop"></cover-view>
+    <cover-view class="left-bottom"></cover-view>
+    <cover-view class="left-leftbottom"></cover-view>
+    <cover-view class="right-bottom"></cover-view>
+    <cover-view class="right-rightbottom"></cover-view>
+    <!-- 扫描条子 -->
+    <!-- <cover-view class="scanning-strip" style="top:{{curTop}}px;"></cover-view> -->
+  </camera>
+  <view class="preview" wx:if="{{isPreview==true}}">
+    <image mode="widthFix" src="{{src}}"></image>
+    <view id="upmask" class="up-mask"></view>
+    <view class="down-mask"></view>
+    <view class="left-mask"></view>
+    <view class="right-mask"></view>
+    <view class="left-top"></view>
+    <view class="left-lefttop"></view>
+    <view class="right-top"></view>
+    <view class="right-righttop"></view>
+    <view class="left-bottom"></view>
+    <view class="left-leftbottom"></view>
+    <view class="right-bottom"></view>
+    <view class="right-rightbottom"></view>
+    <!-- 扫描条子 -->
+    <view class="scanning-strip" style="top:{{curTop}}px;"></view>
+  </view>
+  <!-- 人脸检索按钮 -->
+  <view class="control-box">
+    <!-- <button class="icon-box" open-type="{{!hasPhone?'getPhoneNumber':''}}" bindgetphonenumber="{{!hasPhone?'getPhoneNumber':''}}" bindtap="{{hasPhone?'takePhoto':''}}"> -->
+    <button class="icon-box" bindtap="takePhoto">
+      <view class="ring-outer">
+        <view class="ring-inner"></view>
+      </view>
+      <view class="inner-circle">人脸检索中</view>
+    </button>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+<!--pages/message/messageInfo/index.wxml-->
+<view class='message-title'>
+  <span>{{messageInfo.title}}</span>
+</view>
+<view class='message-createTime'>
+  <span class='createTime-item'>{{messageInfo.createTime}}</span>
+</view>
+<view class='message-content'>
+  <rich-text class='content-item' nodes="{{messageInfo.content}}"></rich-text>
+</view>

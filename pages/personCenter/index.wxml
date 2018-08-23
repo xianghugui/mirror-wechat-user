@@ -1,0 +1,8 @@
+<!--pages/personCenter/index.wxml-->
+<view class='dressingroom-content'>
+  <video objectFit="fill" class='dressing-img' src='{{shareVideo.md5}}'></video>
+  <view class='shop-info'>
+    <view class='shop-name'>{{shareVideo.name}}</view>
+    <view class='shop-time'>{{shareVideo.createTime}}</view>
+  </view>
+</view>

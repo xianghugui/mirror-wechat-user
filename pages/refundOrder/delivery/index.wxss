@@ -1,0 +1,97 @@
+/* pages/order/delivery/index.wxss */
+page {
+  background-color: #f3f3f3;
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+}
+/* 用户收货地址信息 */
+.user-address{
+  width: 100%;
+  background-color: #fff;
+  margin-top: 15px;
+}
+.message{
+  display: block;
+  padding: 10px;
+}
+.user-message {
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #f3f3f3;
+  position:relative;
+}
+
+.fa-map-marker {
+  font-size: 50rpx;
+  width: 45px;
+  text-align: center;
+  position: absolute;
+  top: 35%;
+}
+
+.user-content {
+  margin-left: 45px;
+  margin-right: 45px;
+  height: 90px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.user-div{
+  display: block;
+  margin-top: 5px;
+}
+
+/* 快递单信息 */
+.expressCss{
+  background-color: #fff;
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  text-indent: 1em;
+  box-sizing: border-box;
+   position: relative;
+}
+
+.express-input{
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  text-indent: 0em;
+  position: absolute;
+  top: 0rpx;
+  left: 160rpx;
+}
+
+.express-button-div{
+  margin-top: 70rpx;
+}
+.express-button{
+  display: block;
+  width: 100%;
+  margin: 0px;
+  padding: 20rpx;
+}
+.button-css{
+  width: 250px;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  border: 1px solid #c3c3c3;
+  margin-top:30rpx;
+}
+.button1{
+  background:#42c8d1;
+  color: #fff;
+}
+
+.button2{
+  background:#ffffff;
+}
+
+.user-line{
+  padding: 10rpx 0rpx;
+}

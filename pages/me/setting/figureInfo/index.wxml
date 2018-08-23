@@ -1,0 +1,53 @@
+<!--pages/me/setting/figureInfo/index.wxml-->
+<view class="page">
+  <form bindsubmit="formSubmit">
+    <view class='inputLint'>
+      <text class='inputTitle'>身高</text>
+      <input name='height' class='oneLint' maxlength="3" type='number' value='{{height}}'></input>
+      <text class='unit'>cm</text>
+      <view class="navigator-arrow"></view>
+    </view>
+    <view class='inputLint'>
+      <text class='inputTitle'>体重</text>
+      <input name='weight' class='oneLint' maxlength="3" type='number' value='{{weight}}'></input>
+      <text class='unit'>kg</text>
+      <view class="navigator-arrow"></view>
+    </view>
+    <view class='inputLint'>
+      <text class='inputTitle'>胸围</text>
+      <input name='chest' class='oneLint' maxlength="3" type='number' value='{{chest}}'></input>
+      <text class='unit'>cm</text>
+      <view class="navigator-arrow"></view>
+    </view>
+    <view class='inputLint'>
+      <text class='inputTitle'>腰围</text>
+      <input name='waist' class='oneLint' maxlength="3" type='number' value='{{waist}}'></input>
+      <text class='unit'>cm</text>
+      <view class="navigator-arrow"></view>
+    </view>
+    <view class='inputLint'>
+      <text class='inputTitle'>臀围</text>
+      <input name='hip' class='oneLint' maxlength="3" type='number' value='{{hip}}'></input>
+      <text class='unit'>cm</text>
+      <view class="navigator-arrow"></view>
+    </view>
+    <view class='inputLint'>
+      <text>身份证正反照</text>
+    </view>
+    <view class='photos'>
+      <icon wx:if='{{positiveImage == null}}' class='photo fa fa-id-card-o' bindtap='addImage' data-index='0'></icon>
+      <view wx:else class='imagebox'>
+        <image class='photo' bindtap='previewImage' src='{{positiveImage}}' data-index='0'></image>
+        <icon class='fa fa-times-circle' bindtap='deleteImage' data-index='0'></icon>
+      </view>
+      <icon wx:if='{{NegativeImage == null}}' class='photo fa fa-id-card-o' bindtap='addImage' data-index='1'></icon>
+      <view wx:else class='imagebox'>
+        <image class='photo' bindtap='previewImage' src='{{NegativeImage}}' data-index='1'></image>
+        <icon class='fa fa-times-circle' bindtap='deleteImage'  data-index='1'></icon>
+      </view>
+    </view>
+    <view class="btn-area">
+      <button formType="submit">保存</button>
+    </view>
+  </form>
+</view>

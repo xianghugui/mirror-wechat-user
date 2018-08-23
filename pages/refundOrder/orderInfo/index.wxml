@@ -1,0 +1,44 @@
+<!--pages/tryOrder/orderInfo/index.wxml-->
+<import src="../../template/index.wxml" />
+<scroll-view scroll-y="true" class="page">
+  <view class='navbar'>
+    <view class='show-navbar' style='font-size:40rpx;padding-top:25px;'>{{buttonList[orderDeatil.status]}}</view>
+    <view class='show-navbar'>{{orderDeatil.dealTime==null?'':orderDeatil.dealTime}}</view>
+  </view>
+  <view class='refund-title'>
+    退款/退货信息
+  </view>
+  <view class='goods-message1'>
+    <view class='goods-img' wx:if='{{orderDeatil.type === 2}}'>
+      <image class='video-image' src='{{orderDeatil.goodsImage}}'></image>
+    </view>
+    <image wx:else class='goods-img' src='{{orderDeatil.goodsImage}}'></image>
+    <view class='goods-content'>
+      <span class='goods-price' wx:if="{{orderDeatil.price!=null}}">￥{{orderDeatil.price}}</span>
+      <span style="font-size:12px;color:#c0c0c0;">{{orderDeatil.color!== "undefined"?orderDeatil.color:""}} {{orderDeatil.size}} x{{orderDeatil.num}}</span>
+    </view>
+  </view>
+  <view class='refund-title' wx:if="{{orderDeatil.price!=null}}">
+    <text>退款总额</text>
+    <text class='goods-price sumPrice'>￥{{orderDeatil.price*100*orderDeatil.num/100}}</text>
+  </view>
+  <view class='order-info'>
+    <view>退货原因：{{orderDeatil.content}}</view>
+    <view style='color:red' wx:if="{{orderDeatil.altImageSrc != null && orderDeatil.altImageSrc.length > 0}}" bindtap="previewAltImage">
+      查看申请退货图片
+    </view>
+    <view wx:if="{{orderDeatil.price!=null}}">退款金额：{{orderDeatil.price}}</view>
+    <view>申请时间：{{orderDeatil.applicationTime}}</view>
+    <view>退款/退货编号：{{orderDeatil.refundId}}</view>
+  </view>
+</scroll-view>
+<view class='operation'>
+  <button class='weixin fa fa-weixin' open-type="contact" />
+  <view class="action-area">
+    <view class="action-item btncolor " bindtap='jumpToRefundAddress' wx:if="{{orderDeatil.status == 0}}">查看退货地址</view>
+    <view class="action-item" bindtap='cancel' wx:if="{{orderDeatil.status == 0}}">取消</view>
+    <form bindsubmit='shipment' report-submit wx:if='{{orderDeatil.status == 1 && orderDeatil.applicationTimestamp < nowData && (orderDeatil.remindTime == null || orderDeatil.remindTimeStamp > nowDate)}}'>
+      <button formType="submit" class="action-item" class='action-item btncolor'>提醒商家收货</button>
+    </form>
+  </view>
+</view>

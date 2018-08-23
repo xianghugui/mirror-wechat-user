@@ -1,0 +1,27 @@
+/* pages/sliderLeft/sliderLeft.wxss */
+/* pages/conversation/index.wxss */
+
+movable-area{
+  width: 1150rpx;
+  height: 180rpx;
+  display: flex;
+  margin-left: -200rpx;
+  justify-content: flex-end;
+}
+
+.conversation{
+  width: 950rpx;
+  height: 180rpx;
+  position: static;
+  display: flex;
+}
+
+.delete{
+  width: 200rpx;
+  height: 180rpx;
+  background: red;
+  color: white;
+  font-size: 45rpx;
+  line-height: 180rpx;
+  text-align: center;
+}

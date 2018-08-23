@@ -1,0 +1,37 @@
+<!--pages/discover/index.wxml-->
+<movable-area class="page">
+  <navigator url="/pages/cart/index">
+      <movable-view direction="all" class="global-cart fa fa-shopping-cart">
+        <view class="globalcart-num">{{cartnum}}</view>
+      </movable-view>
+    </navigator> 
+  <view class="navbar">
+      <block wx:for="{{tabs}}" wx:key="item.id">
+          <view id="{{item.uId}}" class="navbar-item {{curIndex == item.uId ? 'navbar-item-active' : ''}}" bindtap="navTabClick" data-level = '{{item.level}}'>
+            {{item.className}}
+          </view>
+      </block>
+  </view>
+  <scroll-view scroll-y="true" class="tab-content">
+    <view class="swiper-container">
+      <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" circular autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{imgUrls}}" wx:key="goodsId">
+          <swiper-item>
+            <image mode='aspectFill' src="{{item.imageUrl}}" bindtap='goodsInfo' data-goodsId = '{{item.goodsId}}'  data-level = '{{item.level}}'/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    
+    <view class="products-title"><span class="commend-text">为你推荐</span></view>
+    <view class="products-content">
+      <view class="products-item {{(index+2)%3==0?'mrlr':''}}" data-id="{{item.uId}}" wx:for="{{productList}}" wx:key="item.uId" bindtap="navigatorToProduct">
+        <view class="img-box">
+          <image src="{{item.imageUrl}}" ></image>
+        </view>
+        <view class="products-name">{{item.className}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</movable-area>
+

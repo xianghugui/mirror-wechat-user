@@ -1,0 +1,16 @@
+/* pages/refundOrder/index.wxss */
+@import '../myOrder/index.wxss';
+
+.video-image{
+  height: 100rpx;
+  width: 150rpx;
+  position: absolute;
+  top: 25rpx;
+  left: -25rpx;
+  transform: rotate(90deg); 
+}
+
+.order-image{
+  height: 100%;
+  width: 100%;
+}

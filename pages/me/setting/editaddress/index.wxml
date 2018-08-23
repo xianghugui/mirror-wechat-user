@@ -1,0 +1,33 @@
+<!--pages/me/setting/editaddress/index.wxml-->
+<view class="page">
+  <form bindsubmit="formSubmit">
+    <view class='inputLint'>
+      <text class='inputTitle'>收货人</text>
+      <input name='userName' class='oneLint' maxlength="12" value='{{name}}'></input>
+    </view>
+    <view class='inputLint'>
+      <text class='inputTitle'>联系电话</text>
+      <input name='phone' class='oneLint' maxlength="11" type='number' value='{{phone}}'></input>
+    </view>
+    <view class="inputLint">
+      <view class="inputTitleLeft">所选地区</view>
+      <picker name='address' mode="region" bindchange="bindRegionChange" value='{{address}}'>
+        <view class='oneLint'>
+          {{address[0]}} {{address[1]}} {{address[2]}}
+          <view class="fa fa-angle-right"></view>
+        </view>
+      </picker>
+    </view>
+    <view class='addressInfo'>
+      <view class='inputTitle detail-address'>详细地址</view>
+      <textarea name='addressInfo' placeholder='请输入详细地址信息' maxlength="90" class='twoLint' auto-height value='{{addressInfo}}'></textarea>
+    </view>
+    <view class='inputLint'>
+      <text>设置为默认地址</text>
+      <switch checked='{{status == 1}}' bindchange="switchChange"></switch>
+    </view>
+    <view class="btn-area">
+      <button formType="submit">保存</button>
+    </view>
+  </form>
+</view>

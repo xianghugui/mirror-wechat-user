@@ -1,0 +1,44 @@
+<video id='videoShow' class='video' src='{{allVideoArray[allVideoArrayIndex].videoUrl}}'  objectFit="fill" autoplay='{{true}}' controls="{{false}}" custom-cache="{{false}}" loop='true'>
+</video>
+<canvas canvas-id='fittingStoreInfo' class='canvas' bindtouchstart='touchS' bindtouchmove='touchM' bindtouchend='touchE'>
+  <cover-image class='videoended' src='../../../static/imgs/back-home.png' catchtap="goToHome" hidden='{{isHome}}'></cover-image>
+  <!-- 试衣库详情 -->
+  <!--店铺名称时间  -->
+  <cover-view class='k-shop-info'>
+    <cover-view class='k-shop-name'>{{allVideoArray[allVideoArrayIndex].shopName}}</cover-view>
+    <cover-view class='k-shop-time'>{{allVideoArray[allVideoArrayIndex].createTime}}</cover-view>
+  </cover-view>
+  <!--关联服装  -->
+  <cover-image wx:if="{{isShowMore}}" src='../../../static/imgs/syk_x@2x.png' class='goods-box' catchtap="clothinghandle">
+  </cover-image>
+  <!--询价  -->
+  <cover-image src='../../../static/imgs/sy_xj@2x.png' class='price-box' catchtap="pricehandle" style='{{isShowMore?"":"top: 108px;"}}'>
+  </cover-image>
+  <!--与店家聊天  -->
+  <cover-image src='../../../static/imgs/syk_lt@2x.png' class='chat-box' catchtap="chathandle" style='{{isShowMore?"":"top: 54px;"}}'>
+  </cover-image>
+  <!--分享  -->
+  <cover-view class='share-box'>
+  <button class='share-button' open-type="share" style='{{isShowMore?"":"top:162px;"}}'>
+    <cover-image src='../../../static/imgs/wdsy_fx.png' class='share-image'>
+    </cover-image>
+  </button>
+  </cover-view>
+  <!--视频删除  -->
+  <cover-image wx:if="{{isShowMore}}" src='../../../static/imgs/xyxq_sc.png' class='face-box' catchtap="deleteVideo">
+  </cover-image>
+
+  <cover-view class="mask-box" wx:if="{{isPriceDialog}}"></cover-view>
+  <cover-view class="price-dialogbox" wx:if="{{isPriceDialog}}">
+    <cover-view class='dialog-title'>选择型号</cover-view>
+    <cover-view name="size" class='size-box sizeradio-group'>
+      <cover-view class="size-item {{item.checked?'borderShow1':''}}" wx:for="{{sizes}}" wx:key="{{item.id}}" bindtap="sizeradioChange" data-index='{{index}}'>
+        {{item.name}}
+      </cover-view>
+    </cover-view>
+    <cover-view class="btn-area">
+      <cover-view class='btn-box' bindtap='formReset'>取消</cover-view>
+      <cover-view class='btn-box btn-submit' bindtap="formSubmit">确定</cover-view>
+    </cover-view>
+  </cover-view>
+</canvas>

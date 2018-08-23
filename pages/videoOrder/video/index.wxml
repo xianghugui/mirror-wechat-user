@@ -1,0 +1,2 @@
+<!--pages/videoOrder/video/index.wxml-->
+<video id='myVideo' src='{{videoSrc}}' autoplay objectFit="fill"></video>

@@ -1,0 +1,9 @@
+<!--pages/sliderLeft/sliderLeft.wxml-->
+<movable-area>
+  <movable-view class='conversation' catchtap='todo' direction='horizontal' x='{{x}}'
+   out-of-bounds='{{false}}' animation='{{false}}' data-index='{{index}}' data-itemid='{{itemid}}'
+    bind:touchstart='_touchstart' bind:touchend='_touchend' catch:change='_onChange'>
+    <slot></slot>
+    <view class='delete' catchtap='delConversation' data-index='{{index}}'>删除</view>
+  </movable-view>
+</movable-area>

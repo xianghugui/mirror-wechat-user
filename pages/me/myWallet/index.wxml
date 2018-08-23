@@ -1,0 +1,32 @@
+<!--pages/mywallet/index.wxml-->
+<view class="page">
+  <view class="balance-box">
+    <view class="balance-text">{{earn}}</view>
+    <view class="balance-title">钱包余额</view>
+    <navigator class="withdraw-cash" url='withdraw/index?earn={{earn}}'>提现</navigator>
+  </view>
+  <scroll-view scroll-y lass="order-profit" bindscrolltolower="lower" class='scroll-box'>
+    <view class="order-item" wx:for="{{tradingRecord}}" wx:for-item='item' wx:for-index='index' wx:key="{{item.id}}">
+      <view class="seller-info">
+        <view class="order-name">
+          <!--收益图标  -->
+          <image hidden="{{item.type !== 2}}" class="order-icon" src='../../../static/imgs/fx_x@2x.png'></image>
+          <!--返现图标  -->
+          <image hidden="{{item.type !== 3}}" class="order-icon" src='../../../static/imgs/fx_f@2x.png'></image>
+          {{transactionType[item.type]}}
+        </view>
+        <view class="product-title">
+          {{item.goodsName !== null ? item.goodsName : (item.type === 4 ? '提现到微信零钱' : '询价订单' )}}
+        </view>
+        <view class="order-date">{{item.createTime}}</view>
+      </view>
+      <view class="profit-num">
+      </view>
+      <view class="profit-num">
+        <span>{{item.type === 0 || item.type === 4 ? '-' : ''}}{{item.price}}</span>
+      </view>
+    </view>
+    <view class='refresh fa fa-spinner' hidden='{{hideRefreshStatus}}'></view>
+    <view class="hasMoreData {{total !== 0 && tradingRecord.length == total?'hasMoreDataDisPlay':''}}">暂无更多数据</view>
+  </scroll-view>
+</view>

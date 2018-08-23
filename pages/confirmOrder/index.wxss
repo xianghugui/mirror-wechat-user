@@ -1,0 +1,388 @@
+/* pages/confirmOrder/index.wxss */
+@import "../template/index.wxss";
+
+page {
+  background-color: #f3f3f3;
+  margin: 0;
+  padding: 0;
+  font-size: 30rpx;
+}
+
+.address-box {
+  min-height: 200rpx;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.marker{
+  height: 45rpx;
+  width: 45rpx;
+  margin: 0 30rpx;
+}
+
+.address-right{
+  margin: 0 40rpx;
+  height: 18rpx;
+  width: 18rpx;
+  border-width: 2rpx 2rpx 0 0;
+  border-color: #888888;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+}
+
+.user-info {
+  flex: 1;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding:20rpx 0;
+
+}
+
+.user-info-top{
+  display: flex;
+  justify-content: space-between;
+  font-size: 32rpx;
+  color: rgb(50, 50, 50);
+}
+
+.user-phone {
+  float: right;
+}
+
+.user-address {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: rgb(102, 102, 102);
+}
+
+.address-btn {
+  padding: 10rpx 20rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: rgb(102, 102, 102);
+  margin: auto;
+  border: 2rpx solid #eceaea;
+}
+
+.dash-box {
+  width: 100%;
+  height: 7rpx;
+  background-image: linear-gradient(to right, #ccc 0%, #ccc 50%, #fff 50%);
+  background-size: 100rpx 7rpx;
+  background-repeat: repeat-x;
+}
+
+.order-info-box {
+  font-size: 11px;
+  padding: 20px 14.5px 0px 14.5px;
+  background-color: #fff;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom:20rpx;
+}
+
+.goods-show {
+  height: 180rpx;
+  display: flex;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  box-sizing: border-box;
+}
+
+.goods-div {
+  height: 150rpx;
+  width: 100rpx;
+}
+
+.goods-img {
+  width: 100rpx;
+  height: 150rpx;
+  margin: 0;
+}
+
+.goods-text {
+  width: calc(100% - 200rpx);
+  height: 150rpx;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  top: 20px;
+  left: 140rpx;
+}
+
+.goods-title {
+  display: block;
+  font-size: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgb(50, 50, 50);
+}
+
+.price {
+  font-weight: bolder;
+  font-size: 36rpx;
+  color: rgb(255, 162, 0);
+}
+
+.time {
+  color: rgb(175, 175, 175);
+  font-size: 24rpx;
+}
+
+.number-div {
+  width: 100%;
+  height: 90rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
+  background-color: #fff;
+  border-top: 1rpx solid #eceaea;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 0;
+  margin-top: 20rpx;
+}
+
+.cashBach-box {
+  border-top: 1rpx solid #eceaea;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  color: rgb(51, 51, 51);
+}
+
+.cashBach-img {
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  top: 10rpx;
+  margin-right: 20rpx;
+}
+
+.cashBach-text {
+  font-size: 24rpx;
+  color: rgb(97, 97, 97);
+  margin-left: 20rpx;
+}
+
+.buy-text {
+  margin-left: 20rpx;
+  line-height: 70rpx;
+}
+
+.number-main {
+  position: relative;
+  top: 8%;
+}
+
+.order-submit {
+  height: 50px;
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0px;
+  line-height: 50px;
+  text-indent: 1em;
+  font-size: 32rpx;
+  color: rgb(102, 102, 102);
+}
+
+.submit-button {
+  width: 270rpx;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 34rpx;
+  border-radius: 0px;
+  color: #fff;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background-color: #4bc2ca;
+}
+
+/* 自定义弹出框 */
+
+.show-btn {
+  margin-top: 100rpx;
+  color: #2c2;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 43%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 50rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+
+.modal-input {
+  display: flex;
+  border-bottom: 1rpx solid #ddd;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+
+.input {
+  width: 100%;
+  height: 82rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+
+input-holder {
+  color: #666;
+  font-size: 28rpx;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  padding-bottom: 20rpx;
+}
+
+.btn {
+  width: 99px;
+  height: 35px;
+  text-align: center;
+  border-radius: 40rpx;
+  border: 1px solid #ddd;
+  line-height: 35px;
+  margin-left: 10.5%;
+}
+
+.btn-cancel {
+  color: #666;
+}
+
+.btn-confirm {
+  background-color: #00d6ff;
+  color: #f9f9f9;
+}
+
+.code {
+  width: 50%;
+  line-height: 82rpx;
+  color: #00d6ff;
+}
+
+/* 遮罩层 */
+
+.commodity_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.commodity_attr_box {
+  width: 100%;
+  height: 680rpx;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+  padding: 20rpx;
+}
+
+.title {
+  font-size: 35rpx;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* 微信支付 */
+
+.sumbit-button {
+  width: 450rpx;
+  margin-top: 150rpx;
+  text-align: center;
+  background-color: #00d6ff;
+  border-radius: 100rpx;
+  color: #fff;
+}
+
+.pembayaran-type {
+  padding: 30rpx;
+  border-bottom: 1px solid #ddd;
+}
+
+.pembayaran-icon {
+  width: 40rpx;
+  height: 40rpx;
+  padding: 10rpx;
+}
+
+.pembayaran-radio {
+  float: right;
+  margin-right: 30rpx;
+}
+
+.show-money {
+  padding-top: 20rpx;
+}
+
+.money {
+  float: right;
+  color: #00d6ff;
+  margin-right: 60rpx;
+  font-weight: bold;
+  font-size: 35rpx;
+}
+
+.close-image {
+  width: 42rpx;
+  height: 42rpx;
+  float: right;
+  margin-right: 40rpx;
+}

@@ -1,0 +1,65 @@
+<!--pages/confirmOrder/index.wxml-->
+<import src="../template/index.wxml" />
+<view class='address-box' bindtap='allAddress' wx:if="{{userAddress.length > 0}}">
+  <image class='marker' src='../../static/imgs/syx_wz@2x.png'></image>
+  <view class='user-info'>
+    <view class='user-info-top'>
+      <view class='user-name'>收货人：{{userAddress[0].userName}}</view>
+      <view class="user-phone">电话：{{userAddress[0].phone}}</view>
+    </view>
+    <view class='user-address'>
+      收货地址：{{userAddress[0].address}}
+    </view>
+  </view>
+  <view class="address-right"></view>
+</view>
+<view class='address-box' wx:else>
+  <view class="address-btn" bindtap='allAddress'>+添加地址</view>
+</view>
+<!-- 下划线 -->
+<view class="dash-box">
+</view>
+
+<scroll-view scroll-y="true">
+  <block wx:for="{{orderList}}" wx:key="orderId">
+    <view class='order'>
+      <view class='order-info-box' bindtap='jumpToProductDetail' data-index="{{index}}">
+        <view class='goods-div'>
+          <image class='goods-img' mode="aspectFill" src='{{item.carouselImage[0].resourceUrl}}'></image>
+        </view>
+        <view class='goods-text'>
+          <view class='goods-title'>
+            <span>{{item.goodsName}}</span>
+          </view>
+          <view class='goods-title'>
+            <span class="price">￥{{item.price}}</span>
+          </view>
+          <view class='goods-title'>
+            <view class="time">{{item.choseGoodsSpec.color}} {{item.choseGoodsSpec.size}}
+              <span style="float:right;">x{{num[index].num}}</span>
+            </view>
+          </view>
+        </view>
+        <view class='number-div'>
+          <view class='buy-text'>购买数量</view>
+          <template is="goodsCount" data="{{...num[index],index}}"></template>
+        </view>
+        <view class='cashBach-box' wx:if='{{item.cashBach > 0}}'>
+          <image class='cashBach-img' src='../../static/imgs/dd_f@2x.png'></image>返现{{item.cashBach}}元<span class='cashBach-text'>确认收货后立即返现</span>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+
+
+<view class='order-submit'>
+  <span>合计：
+    <span class="price">￥ {{priceSum}}</span>
+  </span>
+  <view class='submit-button' bindtap='submitButton'>{{submit ? '订单提交中' : '提交订单'}}</view>
+</view>
+
+
+<!-- 微信支付弹出  -->
+<template is="weixinPembayaran" data="{{showModalStatus,priceSum,userEarn,disabled}}"></template>

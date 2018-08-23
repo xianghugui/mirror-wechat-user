@@ -1,0 +1,15 @@
+/* pages/tryOrder/orderInfo/index.wxss */
+@import "../../template/index.wxss";
+.orderDetail-content{
+  width:100%;
+  height:calc(100% - 100rpx);
+}
+.order-info{
+  font-size:28rpx;
+  color:#B2B2B2;
+  padding:20rpx 14.5px;
+  line-height:50rpx;
+  background-color: #fff;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
+}

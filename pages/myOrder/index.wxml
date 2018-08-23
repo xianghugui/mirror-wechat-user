@@ -1,0 +1,56 @@
+<!--pages/myOrder/index.wxml-->
+<import src="../template/index.wxml" />
+<view class="page">
+  <view class='tabs-box'>
+    <view class='tabs-item {{item.checked ? "active-class" : ""}}' wx:for='{{title}}' wx:for-item='item' wx:for-index='index' wx:key='tabIndex' bindtap='titleClick' data-index='{{index}}'>{{item.name}} </view>
+  </view>
+  <scroll-view scroll-y bindscrolltolower="lower" lower-threshold='20'>
+    <!-- 没有数据时展示 -->
+    <view class='no-data-box' wx:if='{{total === 0}}'>
+      <image class='no-data-image' src='../../static/imgs/no-order.png'></image>
+      <view class='no-data-text'>抱歉，没有找到订单信息</view>
+    </view>
+    <view class='order-item' wx:for='{{orderList}}' wx:for-item='item' wx:key='{{item.orderId}}'>
+
+      <view class='infoTop' bindtap='jumpOrderInfo' data-index='{{index}}'>
+        <image class='videoImage' mode="aspectFill" src='{{item.imageSrc}}'></image>
+        <view class='info'>
+          <view class='goods-name'>{{item.goodsName}}</view>
+          <view class='price textOrange'>￥{{item.price}}</view>
+          <view class='size'>{{item.color}} {{item.size}} ×{{item.num}}
+            <view class='status right textGreen'>{{status[item.status]}}</view>
+          </view>
+        </view>
+      </view>
+      <view class='infoMid'>
+        共计
+        <text class='textOrange'> {{item.num}} </text>件商品 共计：
+        <text class='textOrange'>{{(item.price * 100 * item.num)/100}}</text>
+      </view>
+      <view class='infoBottom' wx:if="{{item.status != 6 && item.status != 5}}">
+        <!-- 跳转聊天界面  -->
+        <button class="fa fa-weixin" open-type="contact" wx:if="{{item.status != 6 && item.status != 4 && item.status != 5}}"></button>
+        <view class="action-area">
+          <view wx:if='{{item.status == 0}}' class='action-item btncolor' bindtap='buy' data-index='{{index}}'>立即付款</view>
+          <view class="action-item" wx:if='{{item.status == 0}}' data-id='{{item.orderId}}' bindtap='cancel' data-index='{{index}}'>取消</view>
+          <form bindsubmit='shipment' report-submit data-id="{{item.orderId}}" data-index='{{index}}' wx:if='{{item.status == 2 && item.assignOrderTime < nowDate && (item.remindTime == null || item.remindTime > nowDate)}}'>
+            <button formType="submit" class="action-item" class='action-item btncolor'>提醒发货</button>
+          </form>
+          <view class="action-item" wx:if='{{item.status == 2 || item.status == 1}}' data-id='{{item.orderId}}' data-status='{{item.status}}' bindtap='gotoRefund'>退款</view>
+          <view wx:if='{{item.status == 3}}' class='action-item btncolor' bindtap='receipt' data-id='{{item.orderId}}' data-index='{{index}}'>确定收货</view>
+          <view class="action-item btncolor" wx:if='{{item.status == 4}}' bindtap='goodsComment' data-index='{{index}}'>评价</view>
+          <view class="action-item" wx:if='{{item.status == 3}}' data-id='{{item.orderId}}' data-status='{{item.status}}' bindtap='gotoRefund'>退货/退款</view>
+        </view>
+      </view>
+      <view class='cashbach-box' wx:if='{{item.cashBach !== 0}}'>
+        <image class='cashbach-image' src='../../static/imgs/dd_f@2x.png'></image>
+        <span class='cashbach-content'>返现{{item.cashBach}}元</span>
+        <span class='cashbach-prompt'>确定收货后立即返现</span>
+      </view>
+    </view>
+    <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
+    <view class="hasMoreData" wx:if="{{orderList.length == total && orderList.length > 0}}">暂无更多数据</view>
+  </scroll-view>
+</view>
+<!-- 微信支付弹出  -->
+<template is="weixinPembayaran" data="{{showModalStatus,priceSum,userEarn,disabled}}"></template>

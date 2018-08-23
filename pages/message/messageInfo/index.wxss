@@ -1,0 +1,43 @@
+/* pages/message/messageInfo/index.wxss */
+
+.message-title {
+  text-align: center;
+  font-size: 36rpx;
+  padding: 50rpx 80rpx 40rpx 80rpx;
+  line-height: 50rpx;
+}
+
+.message-createTime {
+  padding: 0rpx 40rpx 40rpx 40rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.createTime-item {
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  background: #f2f2f2;
+  color: rgb(121, 121, 121);
+  border-radius: 25rpx;
+}
+
+.message-content {
+  padding:0rpx 30rpx 30rpx 30rpx;
+  font-size: 30rpx;
+  color: rgb(50, 50, 50);
+  line-height: 50rpx;
+  overflow: hidden;
+  margin: 0rpx;
+  text-align: justify;
+}
+
+/* ---------------------------富文本样式----------------------------- */
+.describe-img {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding-top: 10px;
+  text-align: center;
+}

@@ -1,0 +1,220 @@
+/* pages/faceRetrieval/index.wxss */
+.normal-camera{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:calc(100% - 100px);
+}
+.photo-camera,.preview{
+  position:fixed;
+  width:276px;
+  height:276px;
+  top:calc(50% - 188px);
+  left:calc(50% - 138px);
+}
+.preview{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:100000;
+}
+.preview image{
+  width:100%;
+  height:100%;
+}  
+/* 遮罩 */
+.up-mask{
+  width:100%;
+  height:calc(50% - 188px);
+  position:fixed;
+  top:0;
+  left:0;
+  background-color: #000;
+  opacity:0.3;
+  z-index:1000;
+}
+.left-top{  
+  position:fixed;
+  width:40px;
+  height:4px;
+  background-color: #36C5CA; 
+  left:calc(50% - 138px);
+  top:calc(50% - 188px - 4px);
+  z-index:1000;
+}
+.left-lefttop{
+  position:fixed;
+  width:4px;
+  height:40px;
+  background-color: #36C5CA; 
+  left:calc(50% - 138px - 4px);
+  top:calc(50% - 188px - 4px);
+  z-index:1000;
+}
+.right-top{  
+  position:fixed;
+  width:40px;
+  height:4px;
+  background-color: #36C5CA; 
+  right:calc(50% - 138px);
+  top:calc(50% - 188px - 4px);
+  z-index:1000;
+}
+.right-righttop{
+  position:fixed;
+  width:4px;
+  height:40px;
+  background-color: #36C5CA; 
+  right:calc(50% - 138px - 4px);
+  top:calc(50% - 188px - 4px);
+  z-index:1000;
+}
+.left-bottom{  
+  position:fixed;
+  width:40px;
+  height:4px;
+  background-color: #36C5CA; 
+  left:calc(50% - 138px);
+  top:calc(50% + 88px);
+  z-index:1000;
+}
+.left-leftbottom{
+  position:fixed;
+  width:4px;
+  height:40px;
+  background-color: #36C5CA; 
+  left:calc(50% - 138px - 4px);
+  top:calc(50% + 88px - 40px + 4px);
+  z-index:1000;
+}
+.right-bottom{  
+  position:fixed;
+  width:40px;
+  height:4px;
+  background-color: #36C5CA; 
+  right:calc(50% - 138px);
+  top:calc(50% + 88px);
+  z-index:1000;
+}
+.right-rightbottom{
+  position:fixed;
+  width:4px;
+  height:40px;
+  background-color: #36C5CA; 
+  right:calc(50% - 138px - 4px);
+  top:calc(50% + 88px - 40px + 4px);
+  z-index:1000;
+}
+.down-mask{
+  width:100%;
+  height:calc(50% - 188px);
+  position:fixed;
+  bottom:100px;
+  left:0;
+  background-color: #000;
+  opacity:0.3;
+  z-index:1000;
+}
+.left-mask{
+  width:calc(50% - 138px);
+  height:276px;
+  position:fixed;
+  left:0;
+  top:calc(50% - 188px);
+  background-color: #000;
+  opacity:0.3;
+  z-index:900;
+  box-sizing:border-box;
+}
+.right-mask{
+  width:calc(50% - 138px);
+  height:276px;
+  position:fixed;
+  right:0;
+  top:calc(50% - 188px);
+  background-color: #000;
+  opacity:0.3;
+  z-index:900;
+}
+/* 扫描条子css动画 */
+.scanning-strip{
+  width:276px;
+  height:4px;
+  position:fixed;
+  left:calc(50% - 138px);
+  top:calc(50% - 188px);  
+  background-color: #36C5CA;  
+  opacity:0.3;
+  z-index:10000;
+}
+/* 人脸检索按钮 */
+.control-box{
+  width:100%;
+  height:100px;
+  background-color: #212224;    
+  position:absolute; 
+  bottom:0;
+  z-index:900;
+}
+.icon-box{
+  width:94px;
+  height:94px;
+  padding:5px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  margin-left:-47px;
+  margin-top:-47px;
+  z-index:100;
+  border:1px solid #676768;
+  border-radius:50%;
+  box-sizing: border-box;
+}
+.ring-outer{
+  width:88px;
+  height:88px;
+  position:absolute;
+  left:50%;
+  top:50%;
+  margin-left:-44px;
+  margin-top:-44px;
+  z-index:100;
+  border-radius:50%;
+  /* background-color:#49BAC1; */
+  background: linear-gradient(to right,#fff,#36C5CA,#fff); /* 标准的语法 */
+  box-sizing: border-box;
+}
+.ring-inner{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  position:absolute;
+  top:9px;
+  left:9px;
+  background-color:#212224;
+}
+.img-icon{
+  width:100%;
+  height:100%;
+}
+.inner-circle{
+  width:60px;
+  height:60px;
+  line-height:60px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left:-30px;
+  margin-top:-30px;
+  border:1px solid #676768;
+  border-radius:50%;
+  box-sizing: border-box;
+  background-color: #212224;
+  color:#fff;
+  text-align:center;
+  font-size:24rpx;
+  z-index:200;
+}

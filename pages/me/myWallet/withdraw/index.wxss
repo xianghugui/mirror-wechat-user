@@ -1,0 +1,46 @@
+/* pages/me/myWallet/withdraw/index.wxss */
+page{
+   background-color: #f3f3f3; 
+   font-size:36rpx;
+}
+.withdraw{
+  width: 750rpx;
+  height: 500rpx;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.textColor{
+  color:#4bc2ca;
+}
+.lint{
+  width: 750rpx;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  background-color: white;
+}
+.lint,.can-withdraw, input{
+  height: 120rpx;
+  line-height: 120rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+input{
+  width:70%;
+}
+.btn-area{
+  width: 500rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  margin-top: 80rpx;
+  margin-left:125rpx;
+  overflow:hidden;
+}
+button{
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #4bc2ca;
+  transform:scale(1.2);
+  font-size:36rpx;
+  color: white;
+}

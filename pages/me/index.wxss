@@ -1,0 +1,149 @@
+/* pages/me/index.wxss */
+
+.me-content {
+  background-color: #f1f1f1;
+}
+
+.logo-box {
+  width: 100%;
+  height: 282rpx;
+  background-color: rgb(74, 196, 203);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.remind {
+  position: absolute;
+  top: 10rpx;
+  right: 15rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 10rpx;
+  background: red;
+}
+
+.logo-box image {
+  width: 110rpx;
+  height: 110rpx;
+  margin-left: calc(50% - 55rpx);
+  margin-top: 56rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.logo-box > view {
+  text-align: center;
+  height: 30rpx;
+  font-size: 30rpx;
+  line-height: 30rpx;
+  color: rgb(50, 50, 50);
+}
+
+.action-name {
+  text-align: center;
+  font-size: 30rpx;
+  color: #606060;
+}
+
+.action-box {
+  background-color: #fff;
+  padding: 36rpx 14.5px 30rpx 14.5px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.action-item {
+  width: 23%;
+}
+
+.action-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: calc(50% - 30rpx);
+  margin-bottom: 22rpx;
+}
+
+.action-icon image {
+  width: 100%;
+  height: 100%;
+}
+
+navigator {
+  height: 106rpx;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #fff;
+  font-size: 30rpx;
+  color: rgb(50, 50, 50);
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.icon-box {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.commodity_attr_box {
+  width: 300rpx;
+  height: 360rpx;
+  overflow: hidden;
+  margin: auto;
+  z-index: 2000;
+  background: #fff;
+  padding: 20rpx;
+  border-radius: 20rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.conversations {
+  background: none;
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  height: 60rpx;
+  width: 60rpx;
+  border: none;
+}
+
+.conversations > image{
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.authorization-box{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 32rpx;
+  text-align: center;
+  padding: 50rpx 50rpx;
+  box-sizing: border-box;
+  color: rgb(50, 50, 50);
+}
+
+.authorization-box > view{
+  margin: 50rpx 0;
+}
+
+.authorization {
+  width: 360rpx;
+  height: 80rpx;
+  padding: 0 60rpx;
+  border-radius: 8rpx;
+  line-height: 80rpx;
+  background: rgb(56, 140, 245);
+  color: #fff;
+}

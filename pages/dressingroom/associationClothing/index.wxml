@@ -1,0 +1,19 @@
+<!--pages/dressingroom/associationClothing/index.wxml-->
+<view class='body'>
+  <view class='title'><view>添加关联服装</view></view>
+  <view class='select-box'>
+    <view class='left'>
+      <image mode='aspectFill' src='{{videoInfo.videoImageUrl}}'></image>
+    </view>
+    <image mode='aspectFit' src='../../../static/imgs/xz-gljt@2x.png' class='center'></image>
+    <view class='right' bindtap='selectGoods'>
+    <image mode='aspectFill' hidden='{{goodsInfo === null}}' src='{{goodsInfo.imagePath[0].resourceUrl}}'></image> 
+    <view  hidden='{{goodsInfo !== null}}' class='notSelect'><view></view></view>
+    </view>
+  </view>
+  <button bindtap='submit' disabled='{{disable}}'>确认秀衣</button>
+  <view class='title'><view>秀衣明细提示</view></view>
+  <view class='content'>
+    <view>\t\t将试衣视频与平台合作的品牌服装关联后，即可展示在衣魅欧平台上或分享到微信群，但凡有人通过该视频链接下单，试衣分享者可获得{{goodsInfo === null ? '金额不等' : goodsInfo.commission}}的交易佣金（确认收货后），且金额可提现。</view>
+  </view>
+</view>

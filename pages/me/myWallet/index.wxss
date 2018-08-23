@@ -1,0 +1,64 @@
+/* pages/mywallet/index.wxss */
+@import './myProfit/index.wxss';
+
+page {
+  background-color: #f1f1f1;
+}
+
+.scroll-box{
+  width: 100%;
+  height: calc(100% - 300rpx);
+}
+
+.balance-box {
+  width: 100%;
+  height: 284rpx;
+  background-color: #36c5ca;
+  box-sizing: border-box;
+  position: relative;
+  margin-bottom: 20rpx;
+  margin-top: 0rpx;
+}
+
+.balance-text {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 66rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.balance-title {
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+}
+
+.withdraw-cash {
+  position: absolute;
+  right: 14.5px;
+  top: 40rpx;
+  color: #fff;
+  font-size: 34rpx;
+}
+
+/* 上拉加载动画 */
+.refresh{
+  position: fixed;
+  bottom: 30rpx;
+  left: calc(50% - 30rpx);
+  width: 60rpx;
+  height: 60rpx;
+  color: #3fc0c5;
+  font-size: 60rpx;
+  animation: refresh 1.5s linear 0s infinite
+}
+
+@keyframes refresh{
+  from{
+    transform: rotate(0)
+  }
+  to{
+    transform: rotate(360deg)
+  }
+}

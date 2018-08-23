@@ -1,0 +1,9 @@
+/* pages/me/setting/index.wxss */
+navigator{
+  height: 106rpx;
+  line-height: 106rpx;
+  font-size:36rpx;
+  padding: 0 14.5px;
+  border-bottom: 1px solid #f3f3f3;
+  position:relative;
+}

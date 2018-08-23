@@ -1,0 +1,359 @@
+/* pages/fittingShow/index.wxss */
+
+page {
+  background: #272727;
+}
+
+/* 搜索栏 */
+
+.sys-search {
+  height: 100rpx;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  color: rgb(187, 187, 187);
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.sys-s-icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.sys-s-text {
+  margin-left: 10rpx;
+}
+
+.location-container, .filtrate {
+  line-height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.search-box {
+  height: 62rpx;
+  width: 436rpx;
+  font-size: 28rpx;
+  line-height: 100rpx;
+  background: #454545;
+  border-radius: 40rpx;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.search-input {
+  height: 100%;
+  width: 100%;
+  padding: 0rpx 60rpx 0rpx 60rpx;
+}
+
+.search-input-left {
+  padding-left: 110rpx;
+}
+
+.icon-box {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  top: 17rpx;
+  left: 140rpx;
+}
+
+.close-icon {
+  width: 37rpx;
+  height: 37rpx;
+  position: absolute;
+  top: 12.5rpx;
+  right: 20rpx;
+}
+
+/* 视频列表 */
+
+.products-box {
+  width: 100%;
+  height: calc(100% - 100rpx);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.f-img-box {
+  width: 342rpx;
+  height: 549rpx;
+  margin-left: 22rpx;
+  margin-top: 20rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+}
+
+.iconShiftLeft {
+  animation: iconShiftLeft 0.3s linear;
+  -webkit-animation: iconShiftLeft 0.3s linear;
+  left: 20rpx;
+}
+
+.iconShiftRight {
+  animation: iconShiftRight 0.3s linear;
+  -webkit-animation: iconShiftRight 0.3s linear;
+  left: 140rpx;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  /* 重点*/
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1));
+}
+
+.f-img-box image {
+  height: 100%;
+  width: 100%;
+}
+
+.f-img-box > image:first-child {
+  position: absolute;
+  top: 103.5rpx;
+  left: -103.5rpx;
+  height: 342rpx;
+  width: 549rpx;
+  transform: rotate(90deg);
+}
+
+.f-img-box:last-child {
+  margin-bottom: 28rpx;
+}
+
+.mini-play-box {
+  width: 85rpx;
+  height: 85rpx;
+  position: absolute;
+  top: 30%;
+  left: calc(50% - 41.5rpx);
+}
+
+.mini-play-box image {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  width: 100%;
+  position: absolute;
+  bottom: 0rpx;
+  color: #fff;
+}
+
+.f-user-info {
+  width: 100%;
+  height: 45rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 6rpx;
+}
+
+.f-user-avatar {
+  width: 45rpx;
+  height: 45rpx;
+  border-radius: 50%;
+  overflow: hide;
+  position: absolute;
+  top: 0rpx;
+  left: 20rpx;
+}
+
+.f-user-avatar image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.f-user-inner {
+  width: calc(100% - 80rpx);
+  line-height: 45rpx;
+  font-size: 26rpx;
+  position: absolute;
+  top: 0rpx;
+  left: 70rpx;
+}
+
+.f-user-name {
+  font-weight: bold;
+}
+
+.f-user-name {
+  margin-left: 10rpx;
+}
+
+.f-user-like {
+  position: absolute;
+  right: 10rpx;
+}
+
+.goods-content {
+  width: 100%;
+  font-size: 23rpx;
+  box-sizing: border-box;
+  padding: 0rpx 20rpx;
+  color: rgb(255, 255, 255);
+}
+
+.goods-content:before {
+  content: "";
+  display: table;
+}
+
+.goods-title {
+  height: 34rpx;
+  line-height: 34rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  font-size: 24rpx;
+  margin-bottom: 10rpx;
+}
+
+.f-shop-info {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  margin-bottom: 16rpx;
+}
+
+.like-icon {
+  text-align: center;
+}
+
+.likeNum {
+  margin-left: 10rpx;
+}
+
+.shop-name {
+  width: 160rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: 16rpx;
+  position: absolute;
+  bottom: 0rpx;
+  left: 30rpx;
+}
+
+.shop-name, .shop-distance {
+  margin-left: 10rpx;
+  display: inline-block;
+  font-size: 20rpx;
+}
+
+.shop-distance {
+  position: absolute;
+  right: 10rpx;
+  bottom: 0rpx;
+}
+
+.shop-icon {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.hasMoreData {
+  width: 100%;
+  height: 50rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #c0c0c0;
+  display: inline-block;
+}
+
+.clear {
+  clear: both;
+}
+
+.no-data-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #bbb;
+  font-size: 30rpx;
+  position: absolute;
+  top: 0;
+}
+
+.no-data-image {
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 30rpx;
+}
+
+.refresh {
+  position: fixed;
+  bottom: 30rpx;
+  left: calc(50% - 30rpx);
+  width: 60rpx;
+  height: 60rpx;
+  color: #3fc0c5;
+  font-size: 60rpx;
+  animation: refresh 1.5s linear 0s infinite;
+}
+
+.dropDown-refresh {
+  position: fixed;
+  top: 120rpx;
+  width: 60rpx;
+  height: 60rpx;
+  color: #3fc0c5;
+  font-size: 60rpx;
+  animation: refresh 1.5s linear 0s infinite;
+  left: calc(50% - 30rpx);
+  z-index: 999;
+}
+
+.content {
+  margin-top: 100rpx;
+}
+
+@keyframes refresh {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes iconShiftLeft {
+  from {
+    left: 120rpx;
+  }
+
+  to {
+    left: 20rpx;
+  }
+}
+
+@keyframes iconShiftRight {
+  from {
+    left: 20rpx;
+  }
+
+  to {
+    left: 120rpx;
+  }
+}
