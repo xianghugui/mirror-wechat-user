@@ -86,8 +86,16 @@ Page({
   /**
    * 输入框失去焦点
    */
-  blur: function() {
-    if (this.data.searchStr.trim() == '') {
+  blur: function(e) {
+    if (e.detail.value !== '' && e.detail.value.trim() !== '') {
+      var searchStr = e.detail.value.replace(' ', '')
+      this.setData({
+        iconAnimation: true,
+        searchStr: searchStr,
+        productsList: []
+      })
+      this.getMusicInfo()
+    } else {
       this.setData({
         iconAnimation: false
       })
@@ -118,7 +126,8 @@ Page({
     const _self = this;
     this.setData({
       searchStr:"",
-      close: true
+      close: true,
+      iconAnimation: false
     },function(){
       _self.getMusicInfo();
     });
@@ -235,22 +244,6 @@ Page({
     }, function() {
       _self.getMusicInfo()
     })
-  },
-
-  //*搜索框响应事件
-  bindSearch: function(e) {
-    if (this.data.productsList.length === 0 || !this.data.close) {
-      var searchStr = e.detail.value.replace(' ', '')
-      this.setData({
-        searchStr: searchStr,
-        productsList: []
-      })
-      this.getMusicInfo()
-    } else {
-      this.setData({
-        iconAnimation: false
-      })
-    }
   },
 
   // 分页加载数据

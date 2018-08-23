@@ -53,10 +53,20 @@ Page({
   /**
    * 输入框失去焦点
    */
-  blur: function() {
-    this.setData({
-      iconAnimation: false
-    })
+  blur: function(e) {
+    if (e.detail.value !== '' && e.detail.value.trim() !== '') {
+      var searchStr = e.detail.value.replace(' ', '')
+      this.setData({
+        iconAnimation: true,
+        searchStr: searchStr,
+        videoList: []
+      })
+      this.loadfittingShow()
+    } else {
+      this.setData({
+        iconAnimation: false
+      })
+    }
   },
 
   /**
@@ -83,7 +93,8 @@ Page({
     const _self = this;
     this.setData({
       searchStr: "",
-      close: true
+      close: true,
+      iconAnimation: false
     }, function() {
       _self.loadfittingShow();
     });
@@ -113,23 +124,6 @@ Page({
     getApp().registered({}, function() {
       _self.getLocation();
     });
-  },
-
-  //*搜索框响应事件
-  bindSearch: function(e) {
-    //*如果输入空格自动删除
-    if (this.data.videoList.length === 0 || !this.data.close) {
-      var searchStr = e.detail.value.replace(' ', '')
-      this.setData({
-        searchStr: searchStr,
-        videoList: []
-      })
-      this.loadfittingShow()
-    } else {
-      this.setData({
-        iconAnimation: false
-      })
-    }
   },
 
   //加载试衣秀数据

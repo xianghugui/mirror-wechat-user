@@ -7,7 +7,7 @@
     </view>
     <view class="search-box">
       <image class="icon-box {{iconAnimation !== null ? (iconAnimation ? 'iconShiftLeft': 'iconShiftRight') : ''}}" src="../icons/mysearch.png"></image>
-      <input class="search-input {{iconAnimation?'search-input-right':'search-input-left'}}" bindfocus="focus" bindblur="blur" type='text' bindconfirm="bindSearch" bindinput="bindinput" placeholder='关键词搜索' value='{{searchStr}}'></input>
+      <input class="search-input" bindfocus="focus" bindblur="blur" type='text' bindinput="bindinput" placeholder='关键词搜索' value='{{searchStr}}'></input>
       <image hidden='{{close}}' class="close-icon" src='../../static/imgs/spxq_cn_gb@2x.png' bindtap='clearInput'></image>
     </view>
     <view class='filtrate'>

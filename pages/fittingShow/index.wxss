@@ -52,11 +52,7 @@ page {
 .search-input {
   height: 100%;
   width: 100%;
-  padding: 0rpx 60rpx 0rpx 60rpx;
-}
-
-.search-input-left {
-  padding-left: 110rpx;
+  padding: 0rpx 60rpx 0rpx 67rpx;
 }
 
 .icon-box {
@@ -64,7 +60,7 @@ page {
   height: 30rpx;
   position: absolute;
   top: 17rpx;
-  left: 140rpx;
+  left: 120rpx;
 }
 
 .close-icon {
@@ -104,7 +100,7 @@ page {
 .iconShiftRight {
   animation: iconShiftRight 0.3s linear;
   -webkit-animation: iconShiftRight 0.3s linear;
-  left: 140rpx;
+  left: 120rpx;
 }
 
 .mask {
