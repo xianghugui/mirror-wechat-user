@@ -1,97 +1,117 @@
 /* pages/order/delivery/index.wxss */
+
 page {
   background-color: #f3f3f3;
   font-size: 13px;
   margin: 0;
   padding: 0;
 }
+
 /* 用户收货地址信息 */
-.user-address{
+
+.user-address {
   width: 100%;
   background-color: #fff;
-  margin-top: 15px;
+  margin-top: 10px;
 }
-.message{
-  display: block;
-  padding: 10px;
+
+.message {
+  height: 80rpx;
+  width: 100%;
+  font-size: 26rpx;
+  color: rgb(50, 50, 50);
+  line-height: 80rpx;
+  margin-left: 30rpx;
 }
+
 .user-message {
   width: 100%;
   background-color: #fff;
   border-top: 1px solid #f3f3f3;
-  position:relative;
-}
-
-.fa-map-marker {
-  font-size: 50rpx;
-  width: 45px;
-  text-align: center;
-  position: absolute;
-  top: 35%;
-}
-
-.user-content {
-  margin-left: 45px;
-  margin-right: 45px;
-  height: 90px;
-  padding-top: 10px;
-  padding-bottom: 5px;
   position: relative;
 }
 
-.user-div{
+.marker {
+  width: 40rpx;
+  height: 45rpx;
+  position: absolute;
+  top: calc(50% - 22.5rpx);
+  left: 25rpx;
+}
+
+.user-content {
+  padding: 20rpx 30rpx 40rpx 90rpx;
+  position: relative;
+  text-align: justify;
+}
+
+.user-div {
   display: block;
   margin-top: 5px;
+  font-size: 30rpx;
+  color: rgb(102, 102, 102);
 }
 
 /* 快递单信息 */
-.expressCss{
+
+.expressCss {
   background-color: #fff;
   width: 100%;
-  height: 90rpx;
-  line-height: 90rpx;
-  font-size: 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 28rpx;
   text-indent: 1em;
   box-sizing: border-box;
-   position: relative;
+  position: relative;
 }
 
-.express-input{
+.express-input {
   width: 100%;
-  height: 90rpx;
-  line-height: 90rpx;
-  font-size: 30rpx;
+  height: 100rpx;
+  font-size: 28rpx;
+  line-height: 100rpx;
   text-indent: 0em;
   position: absolute;
   top: 0rpx;
   left: 160rpx;
 }
 
-.express-button-div{
+.item-title{
+  color: rgb(50, 50, 50);
+  margin-top: 20rpx;
+}
+
+.express-button-div {
   margin-top: 70rpx;
 }
-.express-button{
+
+.express-button {
   display: block;
   width: 100%;
   margin: 0px;
   padding: 20rpx;
 }
-.button-css{
+
+.button-css {
   width: 250px;
   border-radius: 40rpx;
   font-size: 30rpx;
   border: 1px solid #c3c3c3;
-  margin-top:30rpx;
+  margin-top: 30rpx;
 }
-.button1{
-  background:#42c8d1;
+
+.button1 {
+  background: #42c8d1;
   color: #fff;
 }
 
-.button2{
-  background:#ffffff;
+.button2 {
+  background: #fff;
 }
 
-.user-line{
+.user-name,.user-phone {
   padding: 10rpx 0rpx;
+  display: inline-block;
+  font-size: 30rpx;
+  color: rgb(51, 51, 51);
 }

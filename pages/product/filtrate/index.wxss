@@ -93,7 +93,7 @@
 }
 
 .button-style {
-  position: absolute;
+  position: fixed;
   bottom: 0rpx;
   width: 50%;
   height: 100rpx;
@@ -109,4 +109,11 @@
   background-color: rgb(66, 200, 209);
   color: #f5f6f7;
   right: 0rpx;
+}
+
+.content{
+  width: 100%;
+  height: calc(100% - 100rpx);
+  position: absolute;
+  top: 0;
 }

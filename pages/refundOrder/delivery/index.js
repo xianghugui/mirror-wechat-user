@@ -6,9 +6,10 @@ Page({
    */
   data: {
     logisticsList: [], //快递公司列表
-    userAddress: {},
+    shopInfo: {},
     orderId: 0,
     orderType: null, //0:我的购物1:试衣订单2:询价订单
+    width: 0, //user-name节点宽度
   },
 
   /**
@@ -21,13 +22,15 @@ Page({
     //加载商店地址
     getApp().requestGet('api/clientrefund/' + options.orderId + '/showClientRefundAddress', {}, header, function(res) {
       if (res.data.code == 200) {
+        var shopInfo = res.data.data
+        shopInfo.address = shopInfo.address.replace(/,/g, ' ')
         that.setData({
-          userAddress: res.data.data,
+          shopInfo: shopInfo,
           orderId: options.orderId,
           orderType: options.orderType
         });
       }
-    });
+    }, that.queryMultipleNodes());
 
     //加载快递公司
     getApp().requestGet('/api/videoOrder/queryLogistics', {}, {}, function(res) {
@@ -36,6 +39,18 @@ Page({
           logisticsList: res.data.data
         });
       }
+    })
+  },
+
+  queryMultipleNodes: function () {
+    const _self = this;
+    var query = wx.createSelectorQuery();
+    query.select('.user-name').boundingClientRect();
+    query.selectViewport().scrollOffset();
+    query.exec(function (res) {
+        _self.setData({
+          width:res[0].width
+        });
     })
   },
 
