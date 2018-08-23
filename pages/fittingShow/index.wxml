@@ -1,4 +1,5 @@
 <!--pages/fittingShow/index.wxml-->
+
   <view class='sys-search'>
     <view class='location-container' bindtap='loadCity'>
       <image class='sys-s-icon' src='../../static/imgs/syx_wz@2x.png'></image>
