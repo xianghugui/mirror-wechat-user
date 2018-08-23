@@ -26,7 +26,7 @@ Page({
     }],
     status: ['待付款', '待发货', '待发货', '待收货', '待评价', '已评价', '退款/退货', '关闭订单', '订单已取消'],
     url: [ null, 0, 2, 3, 4],
-    pageSize: 5,
+    pageSize: 10,
     orderList: [],
     total: null,
     //标记导航栏状态

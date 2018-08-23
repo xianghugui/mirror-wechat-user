@@ -6,7 +6,7 @@
 <block wx:for="{{messageList}}" wx:key="{{item.id}}">
   <view class="message-content">
     <view class="message-item" bindtap='jumpToMessageInfo' data-id="{{item.id}}">
-      <rich-text wx:if="{{item.imageSrc == null}}" class="message-text" nodes="{{item.content}}">
+      <rich-text wx:if="{{item.imageSrc == -1}}" class="message-text" nodes="{{item.content}}">
       </rich-text>
       <view wx:else class='describe-div'>
         <image class='front-cover' mode="widthFix" src='{{item.imageSrc}}'></image>

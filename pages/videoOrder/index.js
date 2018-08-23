@@ -24,7 +24,7 @@ Page({
     }],
     status: ['待报价', '待付款', '待发货', '待收货', '退回', '订单完成', '用户取消', '缺货'],
     url: [null, 0, 1, 2, 3],
-    pageSize: 5,
+    pageSize: 10,
     orderList: [],
     total: null,
     //付款遮罩层状态

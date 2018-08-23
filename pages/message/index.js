@@ -43,8 +43,8 @@ Page({
       //解析富文本
       for (var i = 0; i < data.length; i++) {
         data[i].imageSrc = common.exportSrc(data[i].content);
-        if (data[i].imageSrc == null){
-          messageInfo.content = common.textParsing(messageInfo.content);
+        if (data[i].imageSrc == -1){
+          data[i].content = common.textParsing(data[i].content);
         }
         data[i].createTime = common.formatDateTime(data[i].createTime);
       }

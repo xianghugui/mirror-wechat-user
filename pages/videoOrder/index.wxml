@@ -41,7 +41,7 @@
       </view>
     </view>
     <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
-    <view class="hasMoreData" wx:if="{{orderList.length == total && orderList.length>0}}">暂无更多数据</view>
+    <view class="hasMoreData" wx:if="{{orderList.length == total && orderList.length>4}}">暂无更多数据</view>
   </scroll-view>
 
 </view>

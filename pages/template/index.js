@@ -417,6 +417,9 @@ module.exports.textParsing = textParsing;
 var exportSrc = function (describe){
   var patt = /src="(.*?)"/gi;
   describe = patt.exec(describe);
+  if(describe == null){
+    return -1;
+  }
   return describe[1];
 }
 
