@@ -70,6 +70,7 @@ Page({
     }
     var goodsInfo = {
       goodsId: allVideoArray.goodsId,
+      commission: allVideoArray.goodsCommission,
       imagePath: [{
         resourceUrl: allVideoArray.goodsImageUrl
       }]
@@ -315,11 +316,13 @@ Page({
             postPageView: pageView
           }, function(res) {});
         }
+        wxPrevPage.setData({
+          ['videoList[' + index + ']']: allVideoArray[allVideoArrayIndex]
+        });
       }
-
-      wxPrevPage.setData({
-        ['videoList[' + index + ']']: allVideoArray[allVideoArrayIndex]
-      });
+    }
+    else if (wxPrevPage.route == "pages/dressingroom/index" && this.data.pageType == 0) {
+      wxPrevPage.getUserVideoShow();
     }
   },
   /**

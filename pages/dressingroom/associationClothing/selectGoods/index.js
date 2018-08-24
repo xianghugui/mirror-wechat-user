@@ -29,10 +29,9 @@ Page({
       url: 'filter/index?data=' + JSON.stringify(data),
     })
   },
-
   /**
-   * 输入框获取焦点时
-   */
+  * 输入框获取焦点时
+  */
   focus: function () {
     if (!this.data.iconAnimation) {
       this.setData({
@@ -44,17 +43,30 @@ Page({
   /**
    * 输入框失去焦点
    */
-  blur: function () {
-    if (this.data.searchStr.trim() == '') {
+  blur: function (e) {
+    if (e.detail.value !== '' && e.detail.value.trim() !== '') {
+      var searchStr = e.detail.value.replace(' ', '')
       this.setData({
-        iconAnimation: false
+        iconAnimation: true,
+        param: {
+          searchStr: searchStr
+        },
+        productsList: []
+      })
+    } else {
+      this.setData({
+        iconAnimation: false,
+        param: {
+          searchStr: ""
+        }
       })
     }
+    this.getGoods()
   },
 
   /**
- * 输入框输入时
- */
+   * 输入框输入时
+   */
   bindinput: function (e) {
     if (e.detail.cursor > 0 && this.data.close) {
       this.setData({
@@ -83,25 +95,6 @@ Page({
     }, function () {
       _self.getGoods();
     });
-  },
-
-  //*搜索框响应事件
-  bindSearch: function (e) {
-    //*如果输入空格自动删除
-    if (this.data.productsList.length === 0 || !this.data.close) {
-      var searchStr = e.detail.value.replace(' ', '')
-      this.setData({
-        param: {
-          searchStr: searchStr
-        },
-        productsList: []
-      })
-      this.getGoods()
-    } else {
-      this.setData({
-        iconAnimation: false
-      })
-    }
   },
 
   /**
