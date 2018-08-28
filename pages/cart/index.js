@@ -12,6 +12,7 @@ Page({
     sumPrice: 0,
     total: null, // 购物车商品数量
   },
+  
   /**
    * 全选点击事件
    */
