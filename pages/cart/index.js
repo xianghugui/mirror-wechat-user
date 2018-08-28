@@ -19,9 +19,9 @@ Page({
   selectallchange: function(e) {
     var selectAll = this.data.selectAll,
       items = this.data.items,
-      _self = this;
-    var value = e.detail.value[0];
-    var postCheckboxData = [];
+      _self = this,
+      value = e.detail.value[0],
+      postCheckboxData = [];
 
     if (!selectAll) {
       selectAll = true;
@@ -55,14 +55,14 @@ Page({
   selectgroupchange: function(e) {
     var items = this.data.items,
       values = e.detail.value,
-      _self = this;
-    var postCheckboxData = [];
+      _self = this,
+      postCheckboxData = [];
 
-    for (let i = 0; i < items.length; i++) {
+    for (let i = 0, len = items.length; i < len; i++) {
       items[i].checked = false;
     }
 
-    for (let i = 0; i < values.length; i++) {
+    for (let i = 0, len = values.length; i < len; i++) {
       items[values[i]].checked = true;
       postCheckboxData.push(items[values[i]]);
     }

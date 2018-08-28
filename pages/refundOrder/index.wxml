@@ -18,7 +18,7 @@
         <view class='info'>
           <view class='goods-name' wx:if="{{item.type != 2}}">{{item.goodsName}}</view>
           <view class='price textOrange' wx:if="{{item.price!=null}}">￥{{item.price}}</view>
-          <view class='size'>{{item.color}} {{item.size}} ×{{item.num}}
+          <view class='size'>{{item.color}} {{item.size}} x{{item.num}}
             <view class='status right textGreen' wx:if="{{item.refundType==0 && item.status==5 && item.refundType!=0}}">完成退款</view>
             <view class='status right textGreen' wx:elif="{{item.refundType==0 && item.type==1 && item.status==5}}">完成退货</view>
             <view class='status right textGreen' wx:else>{{status[item.status]}}</view>

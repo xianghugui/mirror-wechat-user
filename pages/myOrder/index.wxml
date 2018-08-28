@@ -17,7 +17,7 @@
         <view class='info'>
           <view class='goods-name'>{{item.goodsName}}</view>
           <view class='price textOrange'>￥{{item.price}}</view>
-          <view class='size'>{{item.color}} {{item.size}} ×{{item.num}}
+          <view class='size'>{{item.color}} {{item.size}} x{{item.num}}
             <view class='status right textGreen'>{{status[item.status]}}</view>
           </view>
         </view>

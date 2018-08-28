@@ -13,6 +13,10 @@ Page({
     pageType: 0, //页面类型: 0,试衣秀页面 1,试衣库页面
     isPriceDialog: false, //询价遮罩
     index: 0,
+    animationData: {},
+    videoStatus: false,
+    windowWidth: null,
+    windowHeight: null,
   },
 
   error: function(e) {
@@ -215,6 +219,23 @@ Page({
       isShowMore = true;
     }
 
+    //获取手机屏幕大小
+    wx.getSystemInfo({
+      success: function(res) {
+        _self.setData({
+          windowWidth: res.screenWidth,
+          windowHeight: res.screenHeight
+        });
+      }
+    })
+
+    //创建动画
+    var animation = wx.createAnimation({
+      duration: 1000,
+      timingFunction: 'linear',
+    })
+    this.animation = animation
+
     this.setData({
       allVideoArray: allVideoArray,
       isShowMore: isShowMore,
@@ -235,12 +256,15 @@ Page({
 
   touchE: function(e) {
     var allVideoArrayIndex = this.data.allVideoArrayIndex,
-      isShowMore = false;
+      isShowMore = false,
+      that = this;
     var disY = this.startY - this.endY;
 
     if (disY < -40 && allVideoArrayIndex > 0) {
+      this.down();
       allVideoArrayIndex--;
     } else if (disY > 40 && allVideoArrayIndex < this.data.allVideoArray.length - 1) {
+      this.up();
       allVideoArrayIndex++;
     } else {
       return;
@@ -262,6 +286,12 @@ Page({
       isShowMore: isShowMore,
       ['allVideoArray[' + allVideoArrayIndex + ']']: selectVideo
     })
+
+    setTimeout(function() {
+      that.setData({
+        videoStatus: false
+      });
+    }, 1000);
 
   },
 
@@ -320,10 +350,9 @@ Page({
           ['videoList[' + index + ']']: allVideoArray[allVideoArrayIndex]
         });
       }
-    }
-    else if (wxPrevPage.route == "pages/dressingroom/index" && this.data.pageType == 0) {
+    } else if (wxPrevPage.route == "pages/dressingroom/index" && this.data.pageType == 0) {
       wxPrevPage.setData({
-        videoShowList:allVideoArray
+        videoShowList: allVideoArray
       });
     }
   },
@@ -351,6 +380,25 @@ Page({
       path: '/pages/fittingShow/fittingShowInfo/index?videoInfo=' + JSON.stringify(videoInfo),
       // imageUrl: videoInfo.videoImageUrl
     }
-  }
+  },
+
+  //滑动动画
+  up: function() {
+    this.animation.translateY(-800).step()
+    this.animation.translateY(0).step()
+    this.setData({
+      animationData: this.animation.export(),
+      videoStatus: true
+    })
+  },
+
+  down: function() {
+    this.animation.translateY(800).step()
+    this.animation.translateY(0).step()
+    this.setData({
+      animationData: this.animation.export(),
+      videoStatus: true
+    })
+  },
 
 })
