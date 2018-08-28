@@ -1,19 +1,4 @@
 <!--pages/template/index.wxml-->
-<!-- 商品数量更改模板  -->
-<template name="goodsCount">
-  <view class='number-main' >
-    <!-- 数量控件主容器 -->
-    <view class="stepper}}">
-      <!-- 减号 -->
-      <text class="{{minusStatus}} {{quality==0?'disabled':''}}" catchtap="bindMinus" style='border-right:1px solid #ccc;' data-index='{{index}}'>-</text>
-      <!-- 数值 -->
-      <input type="number" bindchange="bindManual" value="{{num}}" style='color:black;' disabled='disabled' />
-      <!-- 加号 -->
-      <text class="{{maxStatus}} {{quality==0?'disabled':''}}" catchtap="bindPlus" style='border-left:1px solid #ccc;' data-index='{{index}}'>+</text>
-    </view>
-  </view>
-</template>
-
 <!-- 微信支付弹出  -->
 <template name="weixinPembayaran">
   <view class="commodity_screen" bindtap="hidePembayaranModal" wx:if="{{showModalStatus}}"></view>

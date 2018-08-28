@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "购物车",
   "usingComponents": {
-    "swider-left": "../components/sliderLeft/sliderLeft"
+    "swider-left": "../components/sliderLeft/sliderLeft",
+    "number-count":"../components/numberCount/numberCount"
   }
 }

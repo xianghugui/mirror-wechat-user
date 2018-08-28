@@ -12,7 +12,7 @@ Page({
     sumPrice: 0,
     total: null, // 购物车商品数量
   },
-  
+
   /**
    * 全选点击事件
    */
@@ -196,21 +196,14 @@ Page({
 
   //------------------数量控件----------------------------
 
-  /* 点击减号 */
-  bindMinus: function(e) {
+  /* 更新商品购买数量 */
+  onUpdateNum: function(e) {
     const that = this;
-    common.bindMinus(e, that, that.data.items, 'items');
+    that.setData({
+      ['items[' + e.detail.index + '].num']: e.detail.num
+    });
     that.updateGoodsCount(e, that);
   },
-
-
-  /* 点击加号 */
-  bindPlus: function(e) {
-    const that = this;
-    common.bindPlus(e, that, that.data.items, 'items');
-    that.updateGoodsCount(e, that);
-  },
-
 
 
   //跳转商品详情页面
@@ -231,16 +224,15 @@ Page({
 
   // 更改购物车中的商品数量
   updateGoodsCount: (e, that) => {
-    var index = e.currentTarget.dataset.index;
+    var index = e.detail.index;
     var item = that.data.items[index];
     var id = item.id;
     var postCheckboxData = that.data.postCheckboxData;
-    var i = e.currentTarget.dataset.index
-    var num = that.data.items[i].num;
-    for (var index = 0, len = postCheckboxData.length; index < len; index++) {
-      if (postCheckboxData[index].id == id) {
+    var num = that.data.items[index].num;
+    for (var count = 0, len = postCheckboxData.length; count < len; count++) {
+      if (postCheckboxData[count].id == id) {
         that.setData({
-          ['postCheckboxData[' + index + '].num']: num
+          ['postCheckboxData[' + count + '].num']: num
         }, function() {
           that.addPrice();
         });

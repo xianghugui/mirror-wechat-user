@@ -1,16 +1,16 @@
 <!--pages/cart/index.wxml-->
 <import src="../template/index.wxml" />
 <view class="page cart-content">
-    <!-- 没有数据 -->
-    <view class='no-data-box' wx:if='{{total === 0}}'>
-      <image class='no-data-image' src='../../static/imgs/box.png'></image>
-      <view class='no-data-text'>空空如也，快去添加商品吧</view>
-    </view>
+  <!-- 没有数据 -->
+  <view class='no-data-box' wx:if='{{total === 0}}'>
+    <image class='no-data-image' src='../../static/imgs/box.png'></image>
+    <view class='no-data-text'>空空如也，快去添加商品吧</view>
+  </view>
   <view class='select-all' wx:if='{{total > 0}}'>
     <checkbox-group bindchange='selectallchange'>
       <view class="check-all">
         <label>
-          <checkbox hidden value='all'/>全选
+          <checkbox hidden value='all' />全选
           <view class='checkall-box'>
             <image class='check-icon' src="../icons/{{selectAll?'check.png':'checkno.png'}}"></image>
           </view>
@@ -50,7 +50,7 @@
                   <image class='check-icon' src="../icons/{{item.checked?'check.png':'checkno.png'}}" mode="aspectFit"></image>
                 </view>
                 <view class="buy-count">
-                  <template is="goodsCount" data="{{...item,index}}"></template>
+                  <number-count index="{{index}}" num="{{item.num}}" maxNumber="{{item.quality}}" bind:showNum="onUpdateNum" />
                 </view>
               </label>
             </view>
@@ -58,7 +58,7 @@
         </block>
       </checkbox-group>
     </view>
-  </scroll-view> 
+  </scroll-view>
   <view class="foot-box" wx:if='{{total > 0}}'>
     <view>合计：
       <text class='total'>￥{{sumPrice}}</text>
