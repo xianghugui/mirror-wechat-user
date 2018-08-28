@@ -322,7 +322,9 @@ Page({
       }
     }
     else if (wxPrevPage.route == "pages/dressingroom/index" && this.data.pageType == 0) {
-      wxPrevPage.getUserVideoShow();
+      wxPrevPage.setData({
+        videoShowList:allVideoArray
+      });
     }
   },
   /**

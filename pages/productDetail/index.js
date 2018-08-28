@@ -28,10 +28,7 @@ Page({
     getSize: '',
     getColor: '',
     quality: 0, //商品库存
-    curCount: [{
-      num: 1,
-      minusStatus: false
-    }], //购买数量
+    curCount: 1, //购买数量
     latitude: '',
     longitude: '',
     imgUrls: [],
@@ -197,7 +194,7 @@ Page({
         id: this.data.shoppingCarId,
         goodsId: this.data.goodsInfo.uId,
         goodsSpecId: this.data.goodsSpecId,
-        num: this.data.curCount[0].num,
+        num: this.data.curCount,
         showUserId: this.data.showUserId,
         videoId: this.data.videoId,
         commission: this.data.goodsInfo.commission
@@ -236,7 +233,7 @@ Page({
     var goodsSpec = this.data.goodsSpec
     goodsSpec.color = this.data.getColor
     goodsSpec.size = this.data.getSize
-    goodsSpec.curCount = this.data.curCount[0].num
+    goodsSpec.curCount = this.data.curCount
     this.setData({
       goodsSpec: goodsSpec,
       isChoosetype: false
@@ -280,7 +277,7 @@ Page({
       var goodsIdList = []
       goodsIdList.push({
         goodsId: that.data.goodsInfo.uId,
-        num: that.data.curCount[0].num,
+        num: that.data.curCount,
         goodsSpecId: that.data.goodsSpecId,
         showUserId: that.data.showUserId,
         videoId: that.data.videoId,
@@ -443,7 +440,7 @@ Page({
           minusStatus: false
         };
       } else {
-        num = that.data.curCount[0];
+        num = that.data.curCount;
       }
       var selectNum = 'num[' + this.data.goodsSpec.index + ']';
       var selectGoods = 'goodsIdList[' + this.data.goodsSpec.index + '].goodsSpecId';
@@ -669,21 +666,10 @@ Page({
     });
   },
 
-  /* 点击减号 */
-  bindMinus: function(e) {
-    const that = this;
-    e.currentTarget.dataset.index = 0;
-    common.bindMinus(e, that, that.data.curCount, 'curCount');
-  },
-
-
-  /* 点击加号 */
-  bindPlus: function(e) {
-    const that = this;
-    e.currentTarget.dataset.index = 0;
-    var curCount = that.data.curCount;
-    curCount[0].quality = this.data.quality;
-    common.bindPlus(e, that, curCount, 'curCount');
+  onUpdateNum:function(e){
+    this.setData({
+      curCount: e.detail.num
+    });
   }
 
 })

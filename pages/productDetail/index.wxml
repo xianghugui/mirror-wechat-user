@@ -239,7 +239,7 @@
       <view class="type-title count-box">
         购买数量
         <view class="buy-count">
-          <template is="goodsCount" data="{{...curCount[0],index,quality}}"></template>
+          <number-count num="{{curCount}}" maxNumber="{{quality}}" bind:showNum="onUpdateNum" />
         </view>
       </view>
       <view class="typebtn-area">

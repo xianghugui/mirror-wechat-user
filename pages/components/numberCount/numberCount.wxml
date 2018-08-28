@@ -1,0 +1,14 @@
+<!-- 组件 numberCount.wxml -->
+<custom-component>
+  <view class='number-main'>
+    <!-- 数量控件主容器 -->
+    <view class="stepper">
+      <!-- 减号 -->
+      <text class="left-text" style="{{num===minNumber || maxNumber===0?'color:#ccc;':''}}" catchtap="_bindMinus">-</text>
+      <!-- 数值 -->
+      <input class='stepper-input' type="number" value="{{num}}" disabled='disabled' />
+      <!-- 加号 -->
+      <text class="right-text" style="{{num===maxNumber || maxNumber===0?'color:#ccc;':''}}" catchtap="_bindPlus">+</text>
+    </view>
+  </view>
+</custom-component>

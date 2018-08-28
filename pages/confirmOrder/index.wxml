@@ -23,7 +23,7 @@
 <scroll-view scroll-y="true">
   <block wx:for="{{orderList}}" wx:key="orderId">
     <view class='order'>
-      <view class='order-info-box' bindtap='jumpToProductDetail' data-index="{{index}}">
+      <view class='order-info-box' data-index="{{index}}">
         <view class='goods-div'>
           <image class='goods-img' mode="aspectFill" src='{{item.carouselImage[0].resourceUrl}}'></image>
         </view>
@@ -36,16 +36,17 @@
           </view>
           <view class='goods-title'>
             <view class="time">{{item.choseGoodsSpec.color}} {{item.choseGoodsSpec.size}}
-              <span style="float:right;">x{{num[index].num}}</span>
+              <span style="float:right;">x{{goodsIdList[index].num}}</span>
             </view>
           </view>
         </view>
         <view class='number-div'>
           <view class='buy-text'>购买数量</view>
-          <template is="goodsCount" data="{{...num[index],index}}"></template>
+          <number-count index="{{index}}" num="{{goodsIdList[index].num}}" maxNumber="{{item.choseGoodsSpec.quality}}" bind:showNum="onUpdateNum" />
         </view>
         <view class='cashBach-box' wx:if='{{item.cashBach > 0}}'>
-          <image class='cashBach-img' src='../../static/imgs/dd_f@2x.png'></image>返现{{item.cashBach}}元<span class='cashBach-text'>确认收货后立即返现</span>
+          <image class='cashBach-img' src='../../static/imgs/dd_f@2x.png'></image>返现{{item.cashBach}}元
+          <span class='cashBach-text'>确认收货后立即返现</span>
         </view>
       </view>
     </view>
