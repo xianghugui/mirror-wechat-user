@@ -28,7 +28,7 @@ Page({
       var videoName = options.q.substr(index);
     }
     var that = this;
-    getApp().requestFormGet('api/video/video/' + 'test1', {},
+    getApp().requestFormGet('api/video/video/' + 20180824173532, {},
     function(res){
       var videoInfo = res.data.data[0];
       videoInfo.address = videoInfo.address.replace(/,/g, '');
