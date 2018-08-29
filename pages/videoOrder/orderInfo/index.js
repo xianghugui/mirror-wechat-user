@@ -185,6 +185,12 @@ Page({
           orderDetail: orderDetail
         })
       },
+      //取消支付
+      function () {
+        that.setData({
+          disabled: false
+        });
+      },
       'api/clientvideoorder/updateClientVideoOrderBuyStatus');
 
   },

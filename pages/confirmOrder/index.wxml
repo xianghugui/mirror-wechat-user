@@ -1,14 +1,14 @@
 <!--pages/confirmOrder/index.wxml-->
 <import src="../template/index.wxml" />
-<view class='address-box' bindtap='allAddress' wx:if="{{userAddress.length > 0}}">
+<view class='address-box' bindtap='allAddress' wx:if="{{userAddress != null}}">
   <image class='marker' src='../../static/imgs/syx_wz@2x.png'></image>
   <view class='user-info'>
     <view class='user-info-top'>
-      <view class='user-name'>收货人：{{userAddress[0].userName}}</view>
-      <view class="user-phone">电话：{{userAddress[0].phone}}</view>
+      <view class='user-name'>收货人：{{userAddress.userName}}</view>
+      <view class="user-phone">电话：{{userAddress.phone}}</view>
     </view>
     <view class='user-address'>
-      收货地址：{{userAddress[0].address}}
+      收货地址：{{userAddress.address}}
     </view>
   </view>
   <view class="address-right"></view>

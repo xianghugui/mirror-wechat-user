@@ -25,7 +25,7 @@ Page({
       name: '待评价'
     }],
     status: ['待付款', '待发货', '待发货', '待收货', '待评价', '已评价', '退款/退货', '关闭订单', '订单已取消'],
-    url: [ null, 0, 2, 3, 4],
+    url: [null, 0, 2, 3, 4],
     pageSize: 10,
     orderList: [],
     total: null,
@@ -135,7 +135,7 @@ Page({
       pageIndex: refresh ? 0 : that.data.orderList.length,
       pageSize: that.data.pageSize,
     }
-    if(status !== null){
+    if (status !== null) {
       param.status = status
     }
     app.requestFormGet('api/clientorder/showClientOrders', param,
@@ -241,6 +241,11 @@ Page({
           orderList: data
         })
       }, // 当支付成功后需调用该方法隐藏支付弹出框
+      function(){
+        that.setData({
+          disabled:false
+        });
+      },
       'api/clientorder/updateClientOrderBuyStatus' // 支付成功之后调用的更改订单状态接口api
     );
 
@@ -265,7 +270,7 @@ Page({
    */
   onShow: function() {
     var that = this
-    that.getOrder(that.data.url[that.data.tabIndex],true)
+    that.getOrder(that.data.url[that.data.tabIndex], true)
   },
 
   /**

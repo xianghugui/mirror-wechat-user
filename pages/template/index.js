@@ -221,7 +221,8 @@ var countdown = function(end) {
 //data往后端传的处理数据
 //redirectToURL 支付成功跳转URL
 //hidePembayaranModal 支付成功调用处理函数
-var wxPay = function(url, data, redirectToURL, hidePembayaranModal, updateStatusApi) {
+//cancelFunction 支付取消后调用处理函数
+var wxPay = function(url, data, redirectToURL, hidePembayaranModal, cancelFunction, updateStatusApi) {
   // 变量
   var timestamp = String(Date.parse(new Date())) //时间戳
   var nonceStr = '' //随机字符串，后台返回
@@ -247,7 +248,6 @@ var wxPay = function(url, data, redirectToURL, hidePembayaranModal, updateStatus
           'signType': 'MD5',
           'paySign': paySign,
           'success': function(res) {
-            console.log(res);
             //支付成功更新订单状态
             // updateStatusApi 不同支付调用的更新订单支付成功状态的接口api
             // data 支付成功之后需要更改状态的订单数据
@@ -266,6 +266,9 @@ var wxPay = function(url, data, redirectToURL, hidePembayaranModal, updateStatus
                 duration: 2000
               })
             });
+          },
+          'fail': function(res) {
+            cancelFunction & cancelFunction();
           }
         })
       }
@@ -304,6 +307,12 @@ var wxPay = function(url, data, redirectToURL, hidePembayaranModal, updateStatus
     }
 
 
+  }, function(res) {
+    wx.showToast({
+      title: res.data.message,
+      icon: 'none',
+      duration: 2000
+    })
   });
 }
 module.exports.goodsComment = goodsComment;
@@ -357,10 +366,10 @@ module.exports.textParsing = textParsing;
  * 提取富文本中的第一张图片
  */
 
-var exportSrc = function (describe){
+var exportSrc = function(describe) {
   var patt = /src="(.*?)"/gi;
   describe = patt.exec(describe);
-  if(describe == null){
+  if (describe == null) {
     return -1;
   }
   return describe[1];

@@ -53,7 +53,7 @@ Page({
     delete data.addressInfo
     var url = 'api/user/insertAddress'
     if(this.data.uId != null){
-      url = 'api/user/insertAddress/' + this.data.uId
+      url = 'api/user/updateAddress/' + this.data.uId
     }
     // 调用腾讯地图接口，根据地址解析经纬度
     qqmapsdk.geocoder({

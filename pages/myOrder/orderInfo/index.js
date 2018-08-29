@@ -84,6 +84,12 @@ Page({
           orderDeatil: orderDeatil
         })
       },
+      //取消支付
+      function () {
+        that.setData({
+          disabled: false
+        });
+      },
       'api/clientorder/updateClientOrderBuyStatus');
 
   },

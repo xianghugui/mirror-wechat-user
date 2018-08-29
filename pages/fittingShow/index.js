@@ -128,8 +128,8 @@ Page({
 
   //加载试衣秀数据
   loadfittingShow: function() {
-    var that = this
-    var param = this.data.filtrate;
+    var that = this,
+    param = this.data.filtrate;
     param.pageIndex = that.data.videoList.length;
     param.pageSize = 10;
     param.searchStr = this.data.searchStr;
@@ -152,7 +152,7 @@ Page({
 
   //城市定位
   getLocation: function() {
-    var _self = this
+    var _self = this;
     if (_self.data.cityName == "") {
       wx.getLocation({
         type: 'wgs84',

@@ -12,7 +12,7 @@ Page({
     orderList: [],
 
     // 用户地址
-    userAddress: [],
+    userAddress: null,
 
     //自定义弹出框状态
     showModal: false,
@@ -90,11 +90,9 @@ Page({
     };
     //查询用户收货地址
     getApp().requestGet('api/goods/queryAllUserAddress/1', data, getApp().globalData.header, function(res) {
+      res.data.data.address = res.data.data.address.replace(/,/g, ' ');
       that.setData({
-        userAddress: res.data.data.map((x) => {
-          x.address = x.address.replace(/,/g, ' ')
-          return x
-        })
+        userAddress: res.data.data
       });
     });
     this.addPriceSum();
@@ -173,19 +171,20 @@ Page({
 
   // 提交订单按钮事件
   submitButton: function() {
-    if (!this.data.submit) {
-      this.setData({
-        submit: true
-      })
-      if (this.data.userAddress.length > 0) {
-        this.showPembayaranModal();
-      } else {
-        wx.showToast({
-          title: '请添加地址',
-          icon: 'none'
+
+    if (this.data.userAddress.length > 0) {
+      if (!this.data.submit) {
+        this.setData({
+          submit: true
         })
+        this.showPembayaranModal();
       }
+    } else {
+      wx.navigateTo({
+        url: '../me/setting/address/index',
+      })
     }
+
   },
   //------------------数量控件----------------------------
 
@@ -256,7 +255,12 @@ Page({
       });
 
       //调用统一的微信支付接口
-      common.wxPay('api/clientorder/ClientOrderBuy', data, '../myOrder/index', null, 'api/clientorder/updateClientOrderBuyStatus');
+      common.wxPay('api/clientorder/ClientOrderBuy', data, '../myOrder/index', null, //取消支付
+        function() {
+          that.setData({
+            disabled: false
+          });
+        }, 'api/clientorder/updateClientOrderBuyStatus');
     });
 
   },
