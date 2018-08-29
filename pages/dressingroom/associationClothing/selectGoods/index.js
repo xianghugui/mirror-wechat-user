@@ -44,7 +44,7 @@ Page({
    * 输入框失去焦点
    */
   blur: function (e) {
-    if (e.detail.value !== '' && e.detail.value.trim() !== '') {
+    if (!this.data.close) {
       var searchStr = e.detail.value.replace(' ', '')
       this.setData({
         iconAnimation: true,

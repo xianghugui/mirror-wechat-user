@@ -97,29 +97,31 @@ Page({
     var status = e.currentTarget.dataset.status;
     var showPrompt = '';
     app.requestFormGet('api/refundexchange/' + e.currentTarget.dataset.id +
-      '/showRefundsInfo', { orderType: this.data.orderList[index].type},
+      '/showRefundsInfo', {
+        orderType: this.data.orderList[index].type
+      },
       function(res) {
         var orderInfo = res.data.data
         common.refundReceipt(orderInfo.phone, orderInfo.name, orderInfo.applicationTime, orderInfo.refundId,
-        function(){
-          app.requestFormPut('api/clientrefund/clientRemindTime', {
-            id: orderInfo.refundId
+          function() {
+            app.requestFormPut('api/clientrefund/clientRemindTime', {
+                id: orderInfo.refundId
+              },
+              function(res) {
+                wx.showToast({
+                  title: '已提醒商家发货',
+                  icon: 'none'
+                })
+                var data = that.data.orderList
+                data[index].remindTime = parseInt(new Date().getTime() / 1000)
+                that.setData({
+                  orderList: data
+                })
+              })
           },
-          function (res) {
-            wx.showToast({
-              title: '已提醒商家发货',
-              icon: 'none'
-            })
-            var data = that.data.orderList
-            data[index].remindTime = parseInt(new Date().getTime() / 1000)
-            that.setData({
-              orderList: data
-            })
-          }) 
-        },
-        function(){
+          function() {
 
-        });
+          });
       })
   },
 
@@ -142,23 +144,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var data = this.data.title,
+      index;
     if (typeof options.index == 'undefined') {
-      this.getOrder(1);
-    }else{
-      var data = this.data.title
-      var index = options.index
-      for (let i = 0; i < data.length; i++) {
-        data[i].checked = false
-      }
-      data[index].checked = true
-      this.setData({
-        index: 1,
-        title: data,
-        orderList: []
-      })
-      //调用查询接口
-      this.getOrder(2)
+      index = 0;
+    } else {
+      index = parseInt(options.index);
     }
+    for (let i = 0; i < data.length; i++) {
+      data[i].checked = false
+    }
+    data[index].checked = true
+    this.setData({
+      index: index,
+      title: data,
+      orderList: []
+    })
+    //调用查询接口
+    this.getOrder(index+1)
   },
 
   /**

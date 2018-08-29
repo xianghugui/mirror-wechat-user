@@ -32,6 +32,6 @@
       </view>
     </view>
     <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
-    <view class="hasMoreData {{total !== 0 && profitList.length === total?'hasMoreDataDisPlay':''}}">暂无更多数据</view>
+    <view class="hasMoreData {{total !== 0 && profitList.length === total && profitList.length > 4?'hasMoreDataDisPlay':''}}">暂无更多数据</view>
   </scroll-view>
 </view>

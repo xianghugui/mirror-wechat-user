@@ -22,7 +22,7 @@
       </label>
     </radio-group>
     <view class='reason-box'>
-      <textarea class="content" name='content' placeholder='请输入更详细的退货原因'></textarea>
+      <textarea class="content" name='content' placeholder-class="placeholder-css" placeholder='请输入更详细的退货原因'></textarea>
       <view class="img-v">
         <block wx:for="{{imagesArray}}" wx:for-item="item" wx:key="resourceId">
           <view class='imgbox'>

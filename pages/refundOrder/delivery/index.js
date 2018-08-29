@@ -42,15 +42,15 @@ Page({
     })
   },
 
-  queryMultipleNodes: function () {
+  queryMultipleNodes: function() {
     const _self = this;
     var query = wx.createSelectorQuery();
     query.select('.user-name').boundingClientRect();
     query.selectViewport().scrollOffset();
-    query.exec(function (res) {
-        _self.setData({
-          width:res[0].width
-        });
+    query.exec(function(res) {
+      _self.setData({
+        width: res[0].width
+      });
     })
   },
 
@@ -90,8 +90,12 @@ Page({
           getApp().requestFormPost('api/clientrefund/' + that.data.orderId + '/delivery', formData,
             function(res) {
               if (res.data.code == 200) {
-                wx.navigateTo({
-                  url: '../index',
+                var index = that.data.orderType;
+                if (that.data.orderType === "2") {
+                  index = 1;
+                }
+                wx.redirectTo({
+                  url: '../index?index=' + index,
                 })
                 wx.showToast({
                   title: '商品已寄出',

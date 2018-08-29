@@ -38,7 +38,10 @@ page {
 
 .search-input {
   height: 100%;
-  width: 480rpx;
+  line-height: 62rpx;
+  /* width: 480rpx; */
+  margin: auto;
+  padding:0rpx 40rpx 0rpx 40rpx;
 }
 
 .filtrate {

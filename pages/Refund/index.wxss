@@ -1,5 +1,4 @@
 /* pages/Refund/index.wxss */
-
 .reason-group {
   width: 750rpx;
   min-height: 210rpx;
@@ -59,7 +58,7 @@ radio {
 .content {
   width: 630rpx;
   min-height: 240rpx;
-  line-height: 80rpx;
+  text-align: justify;
 }
 
 .reason-box:after {

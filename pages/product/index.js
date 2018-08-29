@@ -87,7 +87,7 @@ Page({
    * 输入框失去焦点
    */
   blur: function(e) {
-    if (e.detail.value !== '' && e.detail.value.trim() !== '') {
+    if (!this.data.close) {
       var searchStr = e.detail.value.replace(' ', '')
       this.setData({
         iconAnimation: true,
@@ -302,20 +302,7 @@ Page({
    * 当navigateTo或底部tab切换时调用
    */
   onHide: function() {
-    if (this.data.productsList.length == 0) {
-      this.setData({
-        filtrate: {
-          classId: 1,
-          brandId: 1,
-          level: 1
-        },
-        searchStr: '',
-        curIndex: 0,
-        close:true,
-        iconAnimation:false
-      });
-      this.getMusicInfo();
-    }
+    
   },
 
   /**

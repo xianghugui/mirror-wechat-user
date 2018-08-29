@@ -54,7 +54,7 @@ Page({
    * 输入框失去焦点
    */
   blur: function(e) {
-    if (e.detail.value !== '' && e.detail.value.trim() !== '') {
+    if (!this.data.close) {
       var searchStr = e.detail.value.replace(' ', '')
       this.setData({
         iconAnimation: true,
@@ -216,7 +216,18 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-
+    this.setData({
+      filtrate: {
+        classId: 1,
+        brandId: 1,
+        level: 1
+      },
+      searchStr: '',
+      curIndex: 0,
+      close: true,
+      iconAnimation: false
+    });
+    this.loadfittingShow();
   },
 
   /**

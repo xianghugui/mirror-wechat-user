@@ -321,3 +321,24 @@ page {
   top: 145rpx;
   left: -290rpx;
 }
+
+@media screen and (min-height: 500px) {
+  .video-image {
+    top: 164rpx;
+    left: -290rpx;
+  }
+}
+
+@media screen and (min-height: 600px){
+  .video-image {
+    top: 176rpx;
+    left: -291rpx;
+  }
+}
+
+@media screen and (min-height: 780px){
+  .video-image {
+    top: 176rpx;
+    left: -436rpx;
+  }
+}

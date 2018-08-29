@@ -1,10 +1,5 @@
-<video id='videoShow' enable-progress-gesture="{{false}}" class='video' src='{{allVideoArray[allVideoArrayIndex].videoUrl}}' autoplay='{{true}}' objectFit='fill' controls="{{false}}" loop='true' hidden='{{videoStatus}}'>
+<video id='videoShow' enable-progress-gesture="{{false}}" class='video' src='{{allVideoArray[allVideoArrayIndex].videoUrl}}' autoplay='{{true}}' objectFit='fill' controls="{{false}}" loop='true' hidden='{{videoStatus}}' custom-cache="{{false}}">
 </video>
-
-<view class='video' animation="{{animationData}}">
-  <image class='video-image' style='width:{{windowHeight}}px;height:{{windowWidth}}px;' src='{{allVideoArray[allVideoArrayIndex].videoImageUrl}}'></image>
-</view>
-
 <canvas canvas-id='canvas' class='canvas' bindtouchstart='touchS' bindtouchmove="touchM" bindtouchend='touchE'>
   <cover-image class='videoended' src='../../../static/imgs/back-home.png' catchtap="goToHome" hidden='{{isHome}}'></cover-image>
   <!-- 试衣秀详情 -->

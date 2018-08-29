@@ -27,6 +27,6 @@
       </view>
     </view>
     <view class='refresh fa fa-spinner' hidden='{{hideRefreshStatus}}'></view>
-    <view class="hasMoreData {{total !== 0 && tradingRecord.length == total?'hasMoreDataDisPlay':''}}">暂无更多数据</view>
+    <view class="hasMoreData {{total !== 0 && tradingRecord.length == total && tradingRecord.length > 4?'hasMoreDataDisPlay':''}}">暂无更多数据</view>
   </scroll-view>
 </view>
