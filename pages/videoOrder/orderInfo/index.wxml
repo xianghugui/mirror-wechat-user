@@ -2,7 +2,7 @@
 <import src="../../template/index.wxml" />
 <!-- 播放弹出框 -->
 <video id="myVideo" objectFit="fill" class='videoplayer' src='{{orderDetail.videoSrc}}' controls="{{true}}" autoplay wx:if="{{isPlay}}" bindfullscreenchange="fullscreenchange" bindended="videoended" bindtap="controltoggle">
-  <cover-image src="../../icons/close.png" class="closeVideo" hidden="{{closeHidden}}" bindtap="closeVideo">
+  <cover-image src="../../../static/imgs/close.png" class="closeVideo" hidden="{{closeHidden}}" bindtap="closeVideo">
 
   </cover-image>
 </video>

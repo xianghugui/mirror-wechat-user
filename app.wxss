@@ -1,15 +1,14 @@
 /**app.wxss**/
 @import 'static/fontAwesome.wxss';
 
-page {
-  font-family: "Hiragino Sans GB", "Microsoft YaHei", "SimSun", "SimHei";
-}
+/* page, label, radio, textarea,view {
+  font-family: 'FontAwesome' !important;
+} */
 
 .page {
   position: fixed;
   width: 100%;
   height: 100%;
-  font-family: "Hiragino Sans GB", "Microsoft YaHei", "SimSun", "SimHei";
   color: #2e2e2e;
 }
 

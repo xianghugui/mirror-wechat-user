@@ -23,7 +23,7 @@ Page({
       level: 1
     }, //筛选数据
     refresh: true, //加载更多图标的显示
-    close: true, //关闭按键状态
+    close: true, //搜索栏关闭按键状态
   },
 
 
@@ -88,7 +88,6 @@ Page({
   /**
    * 清空输入框
    */
-
   clearInput: function() {
     const _self = this;
     this.setData({
@@ -100,7 +99,10 @@ Page({
     });
   },
 
-  //跳转到试衣秀详情页
+  /**
+   *  跳转到试衣秀详情页
+   *  index: 选中视频下标
+   */
   jumpToFittingShowInfo: function(e) {
     var index = e.currentTarget.dataset.index,
       allVideoArray = this.data.videoList;
@@ -126,10 +128,12 @@ Page({
     });
   },
 
-  //加载试衣秀数据
+  /**
+   * 加载试衣秀数据
+   */
   loadfittingShow: function() {
     var that = this,
-    param = this.data.filtrate;
+      param = this.data.filtrate;
     param.pageIndex = that.data.videoList.length;
     param.pageSize = 10;
     param.searchStr = this.data.searchStr;
@@ -150,7 +154,9 @@ Page({
     });
   },
 
-  //城市定位
+  /**
+   * 城市定位
+   */
   getLocation: function() {
     var _self = this;
     if (_self.data.cityName == "") {
@@ -200,6 +206,7 @@ Page({
    */
   onShow: function() {
     if (this.data.total == 0) {
+      // 初始化筛选条件
       this.setData({
         filtrate: {
           classId: 1,
