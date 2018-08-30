@@ -40,7 +40,7 @@
     <view class="left-box">
       <block wx:for="{{productsList}}" wx:key="item.id">
         <view wx:if="{{index%2==0}}" class="img-box" catchtap="jumpToProductDetail" data-id='{{item.id}}'>
-          <image mode='widthFix' src="{{item.imagePath}}" data-index="{{index}}"></image>
+          <image class='goods-img' mode='widthFix' src="{{item.imagePath}}" data-index="{{index}}"></image>
           <view class="goods-content">
             <view class="goods-title">{{item.goodsName}}</view>
             <view class="goods-info">
@@ -52,7 +52,7 @@
                 <label class='goumai'>
                   <span class='fan'>返</span>购买立返{{item.cashBach}}元</label>
                 <view class='xiu' wx:if="{{(item.isShow != 0 && item.isShow!=null) || curIndex==1}}">
-                  <image wx:if="{{(item.isShow != 0 && item.isShow!=null) || curIndex==1}}" src='../../static/imgs/fx_x@2x.png'></image>
+                  <image src='../../static/imgs/fx_x@2x.png'></image>
                 </view>
               </span>
             </view>
@@ -63,7 +63,7 @@
     <view class="right-box">
       <block wx:for="{{productsList}}" wx:key="item.id">
         <view wx:if="{{index%2==1}}" class="img-box" catchtap="jumpToProductDetail" data-id='{{item.id}}'>
-          <image mode='widthFix' src="{{item.imagePath}}" data-index="{{index}}"></image>
+          <image class='goods-img' mode='widthFix' src="{{item.imagePath}}" data-index="{{index}}"></image>
           <view class="goods-content">
             <view class="goods-title">{{item.goodsName}}</view>
             <view class="goods-info">
