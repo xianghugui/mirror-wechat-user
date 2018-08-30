@@ -147,4 +147,5 @@ page{
   font-size: 24rpx;
   color: #c0c0c0;
   display: inline-block;
+  line-height: 50rpx;
 }

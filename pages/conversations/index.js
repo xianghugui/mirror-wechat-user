@@ -10,11 +10,11 @@ Page({
     conversations: [],
     total: null,
   },
-  
+
   /**
    * 隐藏所有删除按钮
    */
-  touchstart: function(e){
+  touchstart: function(e) {
     var conversations = this.data.conversations;
     conversations[e.detail.index].isOpen = false;
     this.setData({
@@ -23,9 +23,9 @@ Page({
   },
 
   /**
-      * 跳转到聊天界面
-      */
-  toChat: function (e) {
+   * 跳转到聊天界面
+   */
+  toChat: function(e) {
     wx.navigateTo({
       url: '../chat/index?userId=' + e.detail.itemid,
     })
@@ -34,7 +34,7 @@ Page({
   /**
    * 删除会话
    */
-  delConversation: function (e) {
+  delConversation: function(e) {
     var index = e.detail.index;
     var conversations = this.data.conversations;
     conversations.splice(index, 1);
@@ -81,13 +81,14 @@ Page({
   //判断是否有未读消息,
   hasUnread: function() {
     var conversations = wx.getStorageSync("conversations")
-    for (let i = 0, length = conversations.length; i < length; i++) {
-      conversations[i].mtime = JMCommon.toDate(conversations[i].mtime);
-      conversations[i].isOpen = false;
-      conversations[i].unread_msg_count = JMCommon.JIM.getUnreadMsgCnt({
-        'username': conversations[i].userId
+    conversations.map(function(conversation) {
+      conversation.mtime = JMCommon.toDate(conversation.mtime);
+      conversation.isOpen = false;
+      conversation.unread_msg_count = JMCommon.JIM.getUnreadMsgCnt({
+        'username': conversation.userId
       });
-    }
+      return conversation;
+    })
     this.setData({
       conversations: conversations,
       total: conversations.length

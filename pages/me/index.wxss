@@ -43,7 +43,7 @@
 
 .action-name {
   text-align: center;
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: #606060;
 }
 

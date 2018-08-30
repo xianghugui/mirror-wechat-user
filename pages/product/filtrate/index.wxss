@@ -23,11 +23,9 @@
   margin-right: calc((100% - 650rpx)/4);
   position: relative;
   overflow: hidden;
-  border: 2px solid transparent;
   box-sizing: border-box;
   background-color: rgb(243, 243, 243);
   margin-bottom: 20rpx;
-  border-radius: 5rpx;
 }
 
 .sort:after {

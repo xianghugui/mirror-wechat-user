@@ -8,7 +8,7 @@
   <!-- 没有数据时展示 -->
     <view class='no-data-box' wx:if='{{total === 0}}'>
       <image class='no-data-image' src='../../static/imgs/no-order.png'></image>
-      <view class='no-data-text'>抱歉，没有找到订单信息</view>
+      <view class='no-data-text'>暂无询价订单</view>
     </view>
     <view class="order-item" wx:for='{{orderList}}' wx:for-item='item' wx:key='{{item.orderId}}'>
       <view class='infoTop'>

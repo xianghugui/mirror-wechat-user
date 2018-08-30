@@ -29,17 +29,17 @@ page {
 }
 
 .balance-title {
-  font-size: 30rpx;
+  font-size: 32rpx;
   color: #fff;
   text-align: center;
 }
 
 .withdraw-cash {
   position: absolute;
-  right: 14.5px;
+  right: 40rpx;
   top: 40rpx;
   color: #fff;
-  font-size: 34rpx;
+  font-size: 32rpx;
 }
 
 /* 上拉加载动画 */

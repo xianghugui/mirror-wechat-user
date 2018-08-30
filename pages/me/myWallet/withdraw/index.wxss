@@ -1,7 +1,7 @@
 /* pages/me/myWallet/withdraw/index.wxss */
 page{
    background-color: #f3f3f3; 
-   font-size:36rpx;
+   font-size:30rpx;
 }
 .withdraw{
   width: 750rpx;
@@ -11,6 +11,8 @@ page{
 }
 .textColor{
   color:#4bc2ca;
+  font-size: 32rpx;
+  font-weight: bold;
 }
 .lint{
   width: 750rpx;
@@ -24,6 +26,9 @@ page{
   line-height: 120rpx;
   padding: 0 30rpx;
   box-sizing: border-box;
+}
+.lint radio{
+  transform: scale(0.7);
 }
 input{
   width:70%;
@@ -40,7 +45,5 @@ button{
   height: 80rpx;
   line-height: 80rpx;
   background-color: #4bc2ca;
-  transform:scale(1.2);
-  font-size:36rpx;
   color: white;
 }

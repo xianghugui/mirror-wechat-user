@@ -6,13 +6,17 @@
       <input type='number' placeholder='输入提现金额' name='price'></input>
       <view>元</view>
     </view>
-    <view class="can-withdraw">当前可提现:<text class='textColor'>{{earn}}</text>元</view>
+    <view class="can-withdraw">当前可提现:
+      <text class='textColor'> {{earn}} </text>元</view>
     <view class='lint'>
       <view>提现方式</view>
-      <radio checked='true'>提现到微信零钱</radio>
+      <label>
+        <radio checked='true'></radio>
+        提现到微信零钱
+      </label>
     </view>
     <view class="btn-area">
       <button formType="submit">立即提现</button>
-    </view> 
+    </view>
   </form>
 </view>

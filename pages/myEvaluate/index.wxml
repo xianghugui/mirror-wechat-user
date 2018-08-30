@@ -36,6 +36,6 @@
       </view>
     </view>
     <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
-    <view class="hasMoreData" wx:if="{{userCommentList.length == total && userCommentList.length>0}}">暂无更多评论 </view>
+    <view class="hasMoreData" wx:if="{{userCommentList.length == total && userCommentList.length>0}}">暂无更多评价 </view>
   </view>
 </view>
