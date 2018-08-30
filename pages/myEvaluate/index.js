@@ -81,13 +81,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    const _self = this;
-    setTimeout(function(){
-      _self.setData({
-        pageIndex: 0
-      })
-      _self.userCommentBind()
-    }, 1000);
+
   },
 
 

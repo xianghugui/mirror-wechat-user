@@ -79,27 +79,28 @@
   font-size: 30rpx;
   line-height: 80rpx;
   display: flex;
-  flex-flow: row wrap;
   justify-content: space-around;
   text-align: center;
 }
 
 .navigationBar > .title {
-  height: 70rpx;
+  height: 80rpx;
   width: 50%;
+  position: relative;
 }
 
 .selectNavigationBar {
   color: rgb(55, 200, 209);
 }
 
-.selectUnderline {
-  background-color: rgb(55, 200, 209);
-}
-
-.underline {
-  height: 5rpx;
-  width: 86rpx;
+.selectNavigationBar::after{
+  content: "";
+  width: 70%;
+  height: 6rpx;
+  position: absolute;
+  left: 15%;
+  bottom: 0;
+  background-color: #51c5c7;
 }
 
 .face-box, .goods-box, .price-box, .chat-box, .share-box, .videoended {

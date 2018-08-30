@@ -4,8 +4,6 @@
   <view class='navigationBar'>
     <view class='title {{navigationBar?"selectNavigationBar":""}}' bindtap='leftTabbar'>我的试衣库</view>
     <view class='title {{!navigationBar?"selectNavigationBar":""}}' bindtap='rightTabbar'>我的试衣秀</view>
-    <view class='underline {{navigationBar?"selectUnderline":""}}'></view>
-    <view class='underline {{!navigationBar?"selectUnderline":""}}'></view>
   </view>
   <!--我的试衣库  -->
   <block wx:if="{{navigationBar}}">

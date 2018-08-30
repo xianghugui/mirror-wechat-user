@@ -1,41 +1,39 @@
 <!--pages/myEvaluate/index.wxml-->
-<view class="eval-content">
-  <view class='no-data-box' wx:if='{{total === 0}}'>
-    <image class='no-data-image' src='../../static/imgs/comment.png'></image>
-    <view class='no-data-text'>您还没有写过评价呢</view>
-  </view>
-  <view class="eval-area" wx:else>
-    <view class="eval-item" wx:for="{{userCommentList}}" wx:key="{{item}}" wx:for-index="itemIndex">
-      <view class="product-info" bindtap='jumpToGoodsInfo' data-goodsId="{{item.goodsId}}">
-        <view class="img-box">
-          <image mode='aspectFit' src="{{item.goodsImagePath.resourceUrl}}"></image>
-        </view>
-        <view class="info-text">
-          <view class="product-title">
-            {{item.goodsName}}
-          </view>
-          <view class="product-price">￥{{item.price}}</view>
-          <view class="eval-star">
-            <image mode='aspectFit' src="../../static/imgs/{{(item.star)>starNum?'star.png':'starGray.png'}}" wx:for-item="starNum" wx:for="{{[0,1,2,3,4]}}" wx:key="{{item}}"></image>
-          </view>
-        </view>
+<view class='no-data-box' wx:if='{{total === 0}}'>
+  <image class='no-data-image' src='../../static/imgs/comment.png'></image>
+  <view class='no-data-text'>您还没有写过评价呢</view>
+</view>
+<view class="eval-area" wx:else>
+  <view class="eval-item" wx:for="{{userCommentList}}" wx:key="{{item}}" wx:for-index="itemIndex">
+    <view class="product-info" bindtap='jumpToGoodsInfo' data-goodsId="{{item.goodsId}}">
+      <view class="img-box">
+        <image mode='aspectFit' src="{{item.goodsImagePath.resourceUrl}}"></image>
       </view>
-      <view class="eval-detail">
-        <view class="eval-text">
-          {{item.content}}
+      <view class="info-text">
+        <view class="product-title">
+          {{item.goodsName}}
         </view>
-        <view class="eval-img">
-          <view class="img-item" wx:for="{{item.imagePath}}" wx:for-item="imageList" wx:key="{{imageList.resourceId}}">
-            <image mode='aspectFill' src="{{imageList.resourceUrl}}" bindtap='previewImage' data-src="{{imageList.resourceUrl}}" data-index="{{itemIndex}}"></image>
-          </view>
-        </view>
-        <view class="eval-date">
-          <span>{{item.createTime}}</span>
-          <span class="product-type">{{item.color}} {{item.size}}</span>
+        <view class="product-price">￥{{item.price}}</view>
+        <view class="eval-star">
+          <image mode='aspectFit' src="../../static/imgs/{{(item.star)>starNum?'star.png':'starGray.png'}}" wx:for-item="starNum" wx:for="{{[0,1,2,3,4]}}" wx:key="{{item}}"></image>
         </view>
       </view>
     </view>
-    <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
-    <view class="hasMoreData" wx:if="{{userCommentList.length == total && userCommentList.length>0}}">暂无更多评价 </view>
+    <view class="eval-detail">
+      <view class="eval-text">
+        {{item.content}}
+      </view>
+      <view class="eval-img">
+        <view class="img-item" wx:for="{{item.imagePath}}" wx:for-item="imageList" wx:key="{{imageList.resourceId}}">
+          <image mode='aspectFill' src="{{imageList.resourceUrl}}" bindtap='previewImage' data-src="{{imageList.resourceUrl}}" data-index="{{itemIndex}}"></image>
+        </view>
+      </view>
+      <view class="eval-date">
+        <span>{{item.createTime}}</span>
+        <span class="product-type">{{item.color}} {{item.size}}</span>
+      </view>
+    </view>
   </view>
+  <view class='refresh fa fa-spinner' hidden='{{refresh}}'></view>
+  <view class="hasMoreData" wx:if="{{userCommentList.length == total && userCommentList.length>0}}">暂无更多评价 </view>
 </view>
