@@ -153,7 +153,7 @@
         </view>
         <view class="distance-box" bindtap='map' data-index='{{index}}'>
           <view class="distance-icon fa fa-location-arrow">
-            <!-- <image src="../icons/distance.png"></image> -->
+            <!-- <image src="../../static/imgs/distance.png"></image> -->
           </view>
           <view class="distance-text">
             {{item.distance}}km
@@ -170,7 +170,7 @@
           <view class="f-img-box" bindtap="jumpToFittingShowInfo" data-index='{{index}}'>
             <image mode='aspectFill' src="{{item.videoImageUrl}}" data-index="{{index}}"></image>
             <view class='mini-play-box'>
-              <image class='play-icon' src='../icons/play.png'></image>
+              <image class='play-icon' src='../../static/imgs/play.png'></image>
             </view>
             <view class="info">
               <view class="f-user-info">

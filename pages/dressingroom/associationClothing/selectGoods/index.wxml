@@ -1,7 +1,7 @@
 <!--pages/dressingroom/associationClothing/selectGoods/index.wxml-->
 <view class='sys-search'>
     <view class="search-box">
-      <image class="icon-box {{iconAnimation !== null ? (iconAnimation ? 'iconShiftLeft': 'iconShiftRight') : ''}}" src="../../../icons/mysearch.png"></image>
+      <image class="icon-box {{iconAnimation !== null ? (iconAnimation ? 'iconShiftLeft': 'iconShiftRight') : ''}}" src="../../../../static/imgs/mysearch.png"></image>
       <input class="search-input" bindfocus="focus" bindblur="blur" type='text' bindinput="bindinput" placeholder='关键词搜索' value='{{searchStr}}'></input>
        <image hidden='{{close}}' class="close-icon" src='../../../../static/imgs/spxq_cn_gb@2x.png' bindtap='clearInput'></image>
     </view>

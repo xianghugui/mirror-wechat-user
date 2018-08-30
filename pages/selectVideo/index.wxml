@@ -10,10 +10,10 @@
         <checkbox hidden value='{{item.videoId}}' checked="{{item.checked}}"/>
         <image  class='select-img' src="{{item.videoImg}}"></image>
         <view class='play-box'>
-          <image  class='play-icon' src='../icons/play.png'></image>
+          <image  class='play-icon' src='../../static/imgs/play.png'></image>
         </view>
         <view class='check-box' style="opacity:{{item.checked ? 1: 0}}">
-          <image  class='check-icon' src='../icons/checked.png'></image>
+          <image  class='check-icon' src='../../static/imgs/checked.png'></image>
         </view>
         <view class='text-box'>
           <view class='text-title'>{{item.shopName}}</view>

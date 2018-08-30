@@ -6,7 +6,7 @@
   </movable-view>
   <view class="search" hidden="{{isSearch}}">
     <view class="search-box">
-      <image class="icon-box {{iconAnimation !== null ? (iconAnimation ? 'iconShiftLeft': 'iconShiftRight') : ''}}" src="../icons/mysearch.png"></image>
+      <image class="icon-box {{iconAnimation !== null ? (iconAnimation ? 'iconShiftLeft': 'iconShiftRight') : ''}}" src="../../static/imgs/mysearch.png"></image>
       <input class="search-input" bindfocus="focus" bindblur="blur" type='text' bindinput="bindinput" placeholder='按商品名搜索' value='{{searchStr}}'></input>
       <image hidden='{{close}}' class="close-icon" src='../../static/imgs/spxq_cn_gb@2x.png' bindtap='clearInput'></image>
     </view>
@@ -20,12 +20,12 @@
         </view>
         {{item.name}}
         <view class='sys-s-icon' wx:if="{{index === 2}}">
-          <image class='up-icon' src='../../static/imgs/{{saleSort && curIndex == index?"active-up":"up"}}.png'></image>
-          <image class='down-icon' src='../../static/imgs/{{!saleSort && curIndex == index?"active-down":"down"}}.png'></image>
+          <image class='up-icon' src='../../static/imgs/{{saleSort && curIndex == index?"active-up":"sort-up"}}.png'></image>
+          <image class='down-icon' src='../../static/imgs/{{!saleSort && curIndex == index?"active-down":"sort-down"}}.png'></image>
         </view>
         <view class='sys-s-icon' wx:if="{{index === 3}}">
-          <image class='down-icon' src='../../static/imgs/{{!curSort && curIndex == index?"active-down":"down"}}.png'></image>
-          <image class='up-icon' src='../../static/imgs/{{curSort && curIndex == index?"active-up":"up"}}.png'></image>
+          <image class='down-icon' src='../../static/imgs/{{!curSort && curIndex == index?"active-down":"sort-down"}}.png'></image>
+          <image class='up-icon' src='../../static/imgs/{{curSort && curIndex == index?"active-up":"sort-up"}}.png'></image>
         </view>
       </view>
     </block>

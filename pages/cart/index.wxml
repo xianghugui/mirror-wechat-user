@@ -12,7 +12,7 @@
         <label>
           <checkbox hidden value='all' />全选
           <view class='checkall-box'>
-            <image class='check-icon' src="../icons/{{selectAll?'check.png':'checkno.png'}}"></image>
+            <image class='check-icon' src="../../static/imgs/{{selectAll?'check.png':'checkno.png'}}"></image>
           </view>
         </label>
       </view>
@@ -47,7 +47,7 @@
                   </view>
                 </view>
                 <view class='check-box'>
-                  <image class='check-icon' src="../icons/{{item.checked?'check.png':'checkno.png'}}" mode="aspectFit"></image>
+                  <image class='check-icon' src="../../static/imgs/{{item.checked?'check.png':'checkno.png'}}" mode="aspectFit"></image>
                 </view>
                 <view class="buy-count">
                   <number-count index="{{index}}" num="{{item.num}}" maxNumber="{{item.quality}}" bind:showNum="onUpdateNum" />

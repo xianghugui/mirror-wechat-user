@@ -17,19 +17,19 @@
     </view>
     <view class="action-item" bindtap='gotoVideoOrder'>
       <view class="action-icon">
-        <image src="../icons/myprice.png"></image>
+        <image src="../../static/imgs/myprice.png"></image>
       </view>
       <view class="action-name">我的询价</view>
     </view>
     <view class="action-item" bindtap='gotoMyOrder'>
       <view class="action-icon">
-        <image src="../icons/myshopping.png"></image>
+        <image src="../../static/imgs/myshopping.png"></image>
       </view>
       <view class="action-name">我的购物</view>
     </view>
     <view class="action-item" bindtap='gotoRefundOrder'>
       <view class="action-icon">
-        <image src="../icons/myback.png"></image>
+        <image src="../../static/imgs/myback.png"></image>
       </view>
       <view class="action-name">退货/退款</view>
     </view>

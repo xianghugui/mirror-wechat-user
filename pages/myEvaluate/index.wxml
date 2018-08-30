@@ -16,7 +16,7 @@
           </view>
           <view class="product-price">￥{{item.price}}</view>
           <view class="eval-star">
-            <image mode='aspectFit' src="../icons/{{(item.star)>starNum?'star.png':'starGray.png'}}" wx:for-item="starNum" wx:for="{{[0,1,2,3,4]}}" wx:key="{{item}}"></image>
+            <image mode='aspectFit' src="../../static/imgs/{{(item.star)>starNum?'star.png':'starGray.png'}}" wx:for-item="starNum" wx:for="{{[0,1,2,3,4]}}" wx:key="{{item}}"></image>
           </view>
         </view>
       </view>
