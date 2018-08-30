@@ -89,6 +89,7 @@ page {
   box-sizing: border-box;
   position: relative;
   float: left;
+  border-radius: 16rpx;
 }
 
 .iconShiftLeft {
@@ -267,7 +268,8 @@ page {
 
 .hasMoreData {
   width: 100%;
-  height: 50rpx;
+  height: 70rpx;
+  line-height: 70rpx;
   text-align: center;
   font-size: 24rpx;
   color: #c0c0c0;

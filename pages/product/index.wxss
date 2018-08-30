@@ -56,7 +56,6 @@ page {
   height: 100%;
 }
 
-
 .close-icon {
   width: 37rpx;
   height: 37rpx;
@@ -275,14 +274,14 @@ label {
   width: 354rpx;
   margin-left: 14rpx;
   margin-top: 14rpx;
-  border-radius: 4px;
+  border-radius: 16rpx;
   overflow: hidden;
   background-color: #fff;
   box-sizing: border-box;
-  padding: 20rpx 20rpx;
+  padding: 15rpx 15rpx 10rpx 15rpx;
 }
 
-.img-box image {
+.goods-img {
   width: 100%;
 }
 
@@ -311,8 +310,6 @@ label {
   white-space: nowrap;
   box-sizing: border-box;
   padding-left: 10rpx;
-  margin-top: 10rpx;
-  margin-bottom: 12rpx;
 }
 
 .goods-info {

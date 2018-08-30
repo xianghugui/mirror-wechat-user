@@ -307,12 +307,6 @@ var wxPay = function(url, data, redirectToURL, hidePembayaranModal, cancelFuncti
     }
 
 
-  }, function(res) {
-    wx.showToast({
-      title: res.data.message,
-      icon: 'none',
-      duration: 2000
-    })
   });
 }
 module.exports.goodsComment = goodsComment;
