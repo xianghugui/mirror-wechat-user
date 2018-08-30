@@ -145,3 +145,7 @@ button {
   text-align: center;
   line-height: 30rpx;
 }
+
+.img-v{
+  margin-top: 20rpx;
+}

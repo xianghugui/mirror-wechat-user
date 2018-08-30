@@ -143,7 +143,7 @@ Page({
     //有多个订单，将每个订单，循环遍历存储进数组中传入后台，
     for (var i = 0; i < this.data.goodsIdList.length; i++) {
       data.push({
-        "addressId": that.data.userAddress[0].uId,
+        "addressId": that.data.userAddress.id,
         "goodsId": that.data.goodsIdList[i].goodsId,
         "goodsSpecId": that.data.goodsIdList[i].goodsSpecId,
         "num": that.data.goodsIdList[i].num,
@@ -172,7 +172,7 @@ Page({
   // 提交订单按钮事件
   submitButton: function() {
 
-    if (this.data.userAddress.length > 0) {
+    if (this.data.userAddress != null) {
       if (!this.data.submit) {
         this.setData({
           submit: true
