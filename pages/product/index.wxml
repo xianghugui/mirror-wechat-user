@@ -1,6 +1,6 @@
 <!--pages/product/index.wxml-->
 <movable-area class="product-content">
-  <movable-view direction="all" class="global-cart" bindtap='toCart'>
+  <movable-view direction="all" class="global-cart" bindtap='toCart' wx:if="{{cartnum!==0}}">
     <image src='../../static/imgs/xq_gwc@2x.png'></image>
     <view class="globalcart-num">{{cartnum}}</view>
   </movable-view>

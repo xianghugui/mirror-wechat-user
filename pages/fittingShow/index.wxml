@@ -3,7 +3,7 @@
 <view class='sys-search'>
   <view class='location-container' bindtap='loadCity'>
     <image class='sys-s-icon' src='../../static/imgs/syx_wz@2x.png'></image>
-    <span class="sys-s-text">{{cityName}}</span>
+    <span class="sys-s-text">{{cityName===""?"定位失败":cityName}}</span>
   </view>
   <view class="search-box">
     <image class="icon-box {{iconAnimation !== null ? (iconAnimation ? 'iconShiftLeft': 'iconShiftRight') : ''}}" src="../../static/imgs/mysearch.png"></image>

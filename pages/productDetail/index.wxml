@@ -1,7 +1,7 @@
 <!--pages/productDetail/index.wxml-->
 <import src="../template/index.wxml" />
 <scroll-view scroll-y="true" style="height:calc({{scrollHeight}}px - 100rpx);background-color:#f3f3f3;" lower-threshold='1' bindscrolltolower="onReachBottom">
-  <view class='cart-icon' bindtap='toCart'>
+  <view class='cart-icon' bindtap='toCart' wx:if="{{cartnum!==0}}">
     <image src='../../static/imgs/fx_xq_gwc@2x.png'></image>
     <view class="globalcart-num">{{cartnum}}</view>
   </view>
@@ -161,6 +161,9 @@
         </view>
       </view>
       <view class='evaluate-no' wx:if="{{sellerList.length==0}}">暂无在卖商家</view>
+      <view class='evaluate-getLocation' wx:if="{{sellerList == null}}">
+        <button open-type="openSetting" class='getLocation' lang="zh_CN" bindopensetting='getLocation'>位置授权</button>
+      </view>
     </view>
 
     <view id="fittingShow" class="fittingShow-content" wx:if="{{curIndex==3 && showUserId==null}}">

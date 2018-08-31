@@ -70,6 +70,22 @@ App({
       }
     })
   },
+
+  //授权
+  userAuthorization: function (authorization, noAuthorization) {
+    const _self = this;
+    wx.getSetting({
+      success: function(res) {
+        if (res.authSetting['scope.userInfo']) {
+          authorization && authorization();
+        }
+        else{
+          noAuthorization && noAuthorization();
+        } 
+      }
+    })
+  },
+
   registered: function(data, successCallback) {
     const that = this
     // 登录
@@ -89,19 +105,25 @@ App({
       }
     })
   },
+
   onLaunch: function() {
     var that = this
-    setInterval(function(){
+    setInterval(function() {
       wx.login({
         success: res => {
-            that.requestPut('api/user/registered', { code: res.code }, {
+          that.requestPut('api/user/registered', {
+            code: res.code
+          }, {
             'content-type': 'application/x-www-form-urlencoded'
-          }, function (res) {
+          }, function(res) {
             that.globalData.header.Cookie = 'JSESSIONID=' + res.data.data.session;
           })
         }
       })
-    },300000)
+    }, 300000);
+    this.userAuthorization();
   },
+
+
 
 })

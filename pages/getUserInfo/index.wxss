@@ -1,0 +1,29 @@
+/* pages/getUserInfo/index.wxss */
+
+.authorization-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 32rpx;
+  text-align: center;
+  padding: 50rpx 50rpx;
+  box-sizing: border-box;
+  color: rgb(50, 50, 50);
+}
+
+.authorization-box > view {
+  margin: 50rpx 0;
+}
+
+.authorization {
+  width: 360rpx;
+  height: 80rpx;
+  padding: 0 60rpx;
+  border-radius: 8rpx;
+  line-height: 80rpx;
+  background: rgb(56, 140, 245);
+  color: #fff;
+}

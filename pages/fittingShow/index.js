@@ -122,7 +122,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var _self = this;
+    const _self = this;
     getApp().registered({}, function() {
       _self.getLocation();
     });
@@ -139,18 +139,28 @@ Page({
     param.searchStr = this.data.searchStr;
 
     getApp().requestFormGet('api/revised/allVideoShowList', param, function(res) {
-      var contentlistTem = that.data.videoList;
-      var contentlist = res.data.data.data;
-      for (var i = 0; i < contentlist.length; i++) {
+      var contentlistTem = that.data.videoList,
+        contentlist = res.data.data.data,
+        i = contentlist.length,
+        params = {};
+
+      while (i--) {
+        params.toLat = contentlist[i].latitude;
+        params.toLon = contentlist[i].longtitude;
         contentlist[i].videoUrl = contentlist[i].videoUrl.substr(0, contentlist[i].videoUrl.length - 4);
         contentlist[i].userName = util.partlyHidden(contentlist[i].userName)
-        contentlist[i].distance = common.shopDistance(contentlist[i].latitude, contentlist[i].longtitude);
+        contentlist[i].distance = common.shopDistance(params);
       }
       that.setData({
         refresh: true,
         videoList: contentlistTem.concat(contentlist),
         total: res.data.data.total,
       })
+
+      contentlistTem = null;
+      contentlist = null;
+      i = null;
+      params = null;
     });
   },
 
@@ -180,17 +190,11 @@ Page({
               _self.setData({
                 cityName: cityName
               });
-              _self.loadfittingShow();
             }
-          });
-        },
-        fail: function() {
-          wx.showToast({
-            title: '定位失败',
-            icon: 'none'
           });
         }
       })
+      _self.loadfittingShow();
     }
   },
 
@@ -205,6 +209,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    const _self = this;
+    if (getApp().globalData.userLat === "" && _self.data.total !== null) {
+      _self.getLocation();
+    }
     if (this.data.total == 0) {
       // 初始化筛选条件
       this.setData({
@@ -223,6 +231,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
+    const _self = this;
     this.setData({
       filtrate: {
         classId: 1,

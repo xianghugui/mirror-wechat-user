@@ -40,7 +40,8 @@
     "pages/refundOrder/delivery/index",
     "pages/chat/index",
     "pages/conversations/index",
-    "pages/videoShare/index"
+    "pages/videoShare/index",
+    "pages/getUserInfo/index"
   ],  
   "window": {
     "backgroundTextStyle": "light",

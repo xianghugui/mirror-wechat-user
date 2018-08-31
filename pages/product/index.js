@@ -45,19 +45,12 @@ Page({
   },
 
   /**
-  * 跳转购物车页面
-  */
-  toCart: function (e) {
-    if (this.data.cartnum === 0) {
-      wx.showToast({
-        title: '购物车没有商品',
-        icon: 'none',
-      })
-    } else {
-      wx.navigateTo({
-        url: '../cart/index',
-      })
-    }
+   * 跳转购物车页面
+   */
+  toCart: function(e) {
+    wx.navigateTo({
+      url: '../cart/index',
+    })
   },
 
   queryCartNum: function() {
@@ -103,15 +96,15 @@ Page({
   },
 
   /**
- * 输入框输入时
- */
-  bindinput:function(e){
-    if (e.detail.cursor > 0 && this.data.close){
+   * 输入框输入时
+   */
+  bindinput: function(e) {
+    if (e.detail.cursor > 0 && this.data.close) {
       this.setData({
         close: false
       });
     }
-    if (e.detail.cursor == 0 && !this.data.close){
+    if (e.detail.cursor == 0 && !this.data.close) {
       this.setData({
         close: true
       });
@@ -122,13 +115,13 @@ Page({
    * 清空输入框
    */
 
-  clearInput:function(){
+  clearInput: function() {
     const _self = this;
     this.setData({
-      searchStr:"",
+      searchStr: "",
       close: true,
       iconAnimation: false
-    },function(){
+    }, function() {
       _self.getMusicInfo();
     });
   },
@@ -199,44 +192,50 @@ Page({
     var _self = this;
     var curIndex = e.currentTarget.id;
     var statusId = e.currentTarget.id;
-    if (curIndex == 0) {
-      this.setData({
-        filtrate: {
-          classId: 1,
-          brandId: 1,
-          level: 1
-        },
-        searchStr: ''
-      });
-    }
-    if (curIndex == 2) {
-      if (curIndex == this.data.curIndex) {
+    switch (curIndex) {
+      case "0":
         _self.setData({
-          saleSort: !_self.data.saleSort
-        })
-      }
-      if (this.data.saleSort) {
-        statusId = parseInt(curIndex) + 2;
-      }
-    }
+          filtrate: {
+            classId: 1,
+            brandId: 1,
+            level: 1
+          },
+          searchStr: ''
+        });
+        break;
 
-    if (curIndex == 3) {
-      if (curIndex == this.data.curIndex) {
-        _self.setData({
-          curSort: !_self.data.curSort
-        })
-      }
-      if (this.data.curSort) {
-        statusId = parseInt(curIndex) + 2;
-      }
-    }
+      case "2":
+        if (curIndex == this.data.curIndex) {
+          _self.setData({
+            saleSort: !_self.data.saleSort
+          })
+        }
+        if (this.data.saleSort) {
+          statusId = parseInt(curIndex) + 2;
+        };
+        break;
 
-    if (curIndex == 4) {
-      wx.navigateTo({
-        url: './filtrate/index'
-      })
-    }
+      case "3":
+        if (curIndex == this.data.curIndex) {
+          _self.setData({
+            curSort: !_self.data.curSort
+          })
+        }
+        if (this.data.curSort) {
+          statusId = parseInt(curIndex) + 2;
+        };
+        break;
 
+      case "4":
+        wx.navigateTo({
+          url: './filtrate/index'
+        });
+        break;
+
+      default:
+        break;
+
+    }
     _self.setData({
       productsList: [],
       statusId: statusId,
@@ -248,15 +247,17 @@ Page({
 
   // 分页加载数据
   getMusicInfo: function() {
-    var that = this
-    var param = this.data.filtrate;
+    var that = this,
+      param = this.data.filtrate;
     param.pageIndex = that.data.productsList.length,
       param.pageSize = 10,
       param.searchStr = that.data.searchStr,
       param.statusId = that.data.statusId;
+
     getApp().requestFormGet('api/goods/queryGoods', param, function(res) {
-      var contentlistTem = that.data.productsList;
-      var contentlist = res.data.data.data;
+      var contentlistTem = that.data.productsList,
+        contentlist = res.data.data.data;
+
       if (res.data.code == that.data.statusId) {
         that.setData({
           refresh: true,
@@ -302,7 +303,7 @@ Page({
    * 当navigateTo或底部tab切换时调用
    */
   onHide: function() {
-    
+
   },
 
   /**
@@ -316,18 +317,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    that.setData({
-      productsList: []
-    });
-    const that = this;
-    wx.showToast({
-      title: '正在刷新中',
-      icon: 'none'
-    })
-    setTimeout(function() {
-      that.getMusicInfo()
-      wx.stopPullDownRefresh();
-    }, 1000)
+
   },
 
   /**

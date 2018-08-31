@@ -9,23 +9,23 @@ Page({
     earn: 0.00,
     agentNum: 0,
     tryNum: 0,
-    showModalStatus: null,//获取用户头像名称授权弹框
+    showModalStatus: null, //获取用户头像名称授权弹框
     userHeader: null,
     userName: null,
     openId: null,
     hasUnread: false, //是否有未读消息
   },
-  gotoMyWallet: function (e) {
+  gotoMyWallet: function(e) {
     wx.navigateTo({
       url: 'myWallet/index?earn=' + this.data.earn,
     })
   },
-  gotoTryTimes: function (e) {
+  gotoTryTimes: function(e) {
     wx.navigateTo({
       url: 'tryTimes/index?tryNum=' + this.data.tryNum,
     })
   },
-  gotoRepresent: function (e) {
+  gotoRepresent: function(e) {
     if (this.data.agentNum == 0) {
       wx.navigateTo({
         url: '../gotoRepresent/index',
@@ -37,27 +37,27 @@ Page({
     }
 
   },
-  gotoTryOrder: function (e) {
+  gotoTryOrder: function(e) {
     wx.navigateTo({
       url: '../dressingroom/index',
     })
   },
-  gotoVideoOrder: function (e) {
+  gotoVideoOrder: function(e) {
     wx.navigateTo({
       url: '../videoOrder/index'
     })
   },
-  gotoMyOrder: function (e) {
+  gotoMyOrder: function(e) {
     wx.navigateTo({
       url: '../myOrder/index'
     })
   },
-  gotoRefundOrder: function (e) {
+  gotoRefundOrder: function(e) {
     wx.navigateTo({
       url: '../refundOrder/index'
     })
   },
-  getUserInfo: function (e) {
+  getUserInfo: function(e) {
     var data = JSON.parse(e.detail.rawData)
     this.setData({
       showModalStatus: true,
@@ -73,41 +73,41 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    const that = this
-    wx.getSetting({
-      success: function (res) {
-        if (!res.authSetting['scope.userInfo']) {
-          that.setData({
-            showModalStatus: false
-          })
-        } else {
-          that.setData({ showModalStatus: true })
-          wx.getUserInfo({
-            lang: 'zh_CN',
-            success: function (res) {
-              that.setData({
-                userHeader: res.userInfo.avatarUrl,
-                userName: res.userInfo.nickName
-              })
-            }
-          })
-        }
-      }
-    })
+  onLoad: function(options) {
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
+    if (this.data.showModalStatus === null || !this.data.showModalStatus) {
+      getApp().userAuthorization(function() {
+        that.setData({
+          showModalStatus: true
+        })
+        wx.getUserInfo({
+          lang: 'zh_CN',
+          success: function(res) {
+            that.setData({
+              userHeader: res.userInfo.avatarUrl,
+              userName: res.userInfo.nickName
+            })
+          }
+        })
+      }, function() {
+        that.setData({
+          showModalStatus: false
+        })
+      });
+    }
     var hasUnread = getApp().globalData.hasUnread
     this.setData({
       hasUnread: hasUnread
@@ -120,7 +120,7 @@ Page({
     var that = this
     getApp().requestGet('api/user/home', null,
       getApp().globalData.header,
-      function (res) {
+      function(res) {
         var data = res.data.data
         that.setData({
           earn: data.earn == null ? 0 : data.earn,
@@ -145,28 +145,28 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   }
 })

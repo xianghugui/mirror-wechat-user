@@ -1,0 +1,6 @@
+<!--pages/getUserInfo/index.wxml-->
+<view class='authorization-box'>
+  <icon type='info' size='50'></icon>
+  <view>为了更好的体验，此应用需要获取您的昵称、头像等基本信息授权。</view>
+  <button open-type="getUserInfo" class='authorization' bindgetuserinfo='getUserInfo'>确定授权</button>
+</view>

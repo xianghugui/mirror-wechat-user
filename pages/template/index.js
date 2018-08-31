@@ -363,7 +363,7 @@ module.exports.textParsing = textParsing;
 var exportSrc = function(describe) {
   var patt = /src="(.*?)"/gi;
   describe = patt.exec(describe);
-  if (describe == null) {
+  if (describe === null) {
     return -1;
   }
   return describe[1];
@@ -377,17 +377,23 @@ module.exports.exportSrc = exportSrc;
  * toLon:商店纬度
  */
 
-var shopDistance = function(toLat, toLon) {
+var shopDistance = function(params) {
+  var cacheKey = JSON.stringify(params);
+  var cache = wx.getStorageSync(cacheKey);
+  if (cache !== ""){
+    return cache;
+  }
   var fromLat = getApp().globalData.userLat;
   var fromLon = getApp().globalData.userLon;
   var radLat1 = fromLat * Math.PI / 180.0;
-  var radLat2 = toLat * Math.PI / 180.0;
+  var radLat2 = params.toLat * Math.PI / 180.0;
   var a = radLat1 - radLat2;
-  var b = fromLon * Math.PI / 180.0 - toLon * Math.PI / 180.0;
+  var b = fromLon * Math.PI / 180.0 - params.toLon * Math.PI / 180.0;
   var distance = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) +
     Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
   distance = distance * 6378.137; // EARTH_RADIUS;
   distance = Math.round(distance);
+  wx.setStorageSync(cacheKey,distance);
   return distance;
 }
 

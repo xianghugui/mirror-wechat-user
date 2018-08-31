@@ -29,8 +29,6 @@ Page({
     getColor: '',
     quality: 0, //商品库存
     curCount: 1, //购买数量
-    latitude: '',
-    longitude: '',
     imgUrls: [],
     price: 0.00,
     indicatorDots: true, //是否显示面板指示点
@@ -189,43 +187,57 @@ Page({
 
   // 加入购物车事件
   addtoCard: function() {
-    if (JSON.stringify(this.data.goodsSpec) != "{}") {
-      var data = {
-        id: this.data.shoppingCarId,
-        goodsId: this.data.goodsInfo.uId,
-        goodsSpecId: this.data.goodsSpecId,
-        num: this.data.curCount,
-        showUserId: this.data.showUserId,
-        videoId: this.data.videoId,
-        commission: this.data.goodsInfo.commission
-      }
-      getApp().requestPost('/api/goods/insertShoppingCart', data, getApp().globalData.header, function(res) {
-        if (res.data.code == 200) {
-          wx.navigateTo({
-            url: '../cart/index',
-          })
+    const _self = this;
+    getApp().userAuthorization(function() {
+      if (JSON.stringify(_self.data.goodsSpec) != "{}") {
+        var data = {
+          id: _self.data.shoppingCarId,
+          goodsId: _self.data.goodsInfo.uId,
+          goodsSpecId: _self.data.goodsSpecId,
+          num: _self.data.curCount,
+          showUserId: _self.data.showUserId,
+          videoId: _self.data.videoId,
+          commission: _self.data.goodsInfo.commission
         }
-      });
-    } else {
-      this.setData({
-        isChoosetype: true,
-        cartOrBuy: true
+        getApp().requestPost('/api/goods/insertShoppingCart', data, getApp().globalData.header, function(res) {
+          if (res.data.code == 200) {
+            wx.navigateTo({
+              url: '../cart/index',
+            })
+          }
+        });
+      } else {
+        _self.setData({
+          isChoosetype: true,
+          cartOrBuy: true
+        })
+      }
+    }, function() {
+      wx.navigateTo({
+        url: '../getUserInfo/index',
       })
-    }
+    });
   },
 
 
   // 立即购买事件
   buy: function(e) {
-    if (this.data.goodsId.status == 0) {
-      wx.showToast({
-        title: '商品已下架',
-        icon: 'none',
-        duration: 1000
+    const _self = this;
+    getApp().userAuthorization(function () {
+      if (_self.data.goodsId.status == 0) {
+        wx.showToast({
+          title: '商品已下架',
+          icon: 'none',
+          duration: 1000
+        })
+        return
+      }
+      _self.getOrder(2);
+    },function() {
+      wx.navigateTo({
+        url: '../getUserInfo/index',
       })
-      return
-    }
-    this.getOrder(2);
+    })
   },
 
   //选择规格
@@ -484,7 +496,7 @@ Page({
 
       }
     }
-    if (curIndex == 3 && this.data.fittingShowList.length < this.data.fittingShowListTotal){
+    if (curIndex == 3 && this.data.fittingShowList.length < this.data.fittingShowListTotal) {
       this.loadFittingShow();
     }
   },
@@ -541,34 +553,27 @@ Page({
   selectShopAddress: function() {
     const that = this;
     var goodsId = this.data.goodsId;
-    if (getApp().globalData.userLat == "" && getApp().globalData.userLon == "") {
-      wx.showToast({
-        title: '定位中...',
-        icon: 'none'
-      });
-      wx.getLocation({
-        type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标  
-        success: function(res) {
-          getApp().globalData.userLat = res.latitude;
-          getApp().globalData.userLon = res.longitude;
+    wx.getLocation({
+      type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标  
+      success: function(res) {
+        var data = {
+          goodsId: goodsId,
+          laltitude: res.latitude,
+          longtitude: res.longitude
         }
-      })
-    }
-
-    var data = {
-      goodsId: goodsId,
-      laltitude: getApp().globalData.userLat,
-      longtitude: getApp().globalData.userLon
-    }
-    getApp().requestPost('api/goods/queryAroundShop', JSON.stringify(data), getApp().globalData.header, function(res) {
-      if (res.data.code == 200) {
-        that.setData({
-          sellerList: res.data.data
+        getApp().requestPost('api/goods/queryAroundShop', JSON.stringify(data), getApp().globalData.header, function(result) {
+          if (result.data.code == 200) {
+            that.setData({
+              sellerList: result.data.data
+            });
+          }
         });
-        // that.swiperChange();
       }
-    });
+    })
+  },
 
+  getLocation: function() {
+    this.selectShopAddress();
   },
 
   //查询商品库存
@@ -666,7 +671,7 @@ Page({
     });
   },
 
-  onUpdateNum:function(e){
+  onUpdateNum: function(e) {
     this.setData({
       curCount: e.detail.num
     });

@@ -42,14 +42,21 @@ Page({
    * 跳转到聊天界面
    */
   toChat: function() {
-    var videoInfo = this.data.allVideoArray[this.data.allVideoArrayIndex];
-    if (videoInfo != null) {
-      var videoContext = wx.createVideoContext('videoShow');
-      videoContext.pause();
+    const _self = this;
+    getApp().userAuthorization(function() {
+      var videoInfo = _self.data.allVideoArray[_self.data.allVideoArrayIndex];
+      if (videoInfo != null) {
+        var videoContext = wx.createVideoContext('videoShow');
+        videoContext.pause();
+        wx.navigateTo({
+          url: '../../chat/index?userId=' + videoInfo.userId + '&withUser=1',
+        })
+      }
+    }, function() {
       wx.navigateTo({
-        url: '../../chat/index?userId=' + videoInfo.userId + '&withUser=1',
+        url: '../../getUserInfo/index',
       })
-    }
+    })
   },
 
   //跳转到商品详情
@@ -151,21 +158,27 @@ Page({
   //点赞
   checkLike: function() {
     const _self = this;
-    var videoInfo = _self.data.allVideoArray[this.data.allVideoArrayIndex];
+    getApp().userAuthorization(function() {
+      var videoInfo = _self.data.allVideoArray[this.data.allVideoArrayIndex];
 
-    if (videoInfo.isLike == 0) {
-      videoInfo.isLike = 1;
-      //点赞数
-      videoInfo.likeNum = videoInfo.likeNum + 1;
-    } else {
-      videoInfo.isLike = 0;
-      videoInfo.likeNum = videoInfo.likeNum - 1;
-    }
+      if (videoInfo.isLike == 0) {
+        videoInfo.isLike = 1;
+        //点赞数
+        videoInfo.likeNum = videoInfo.likeNum + 1;
+      } else {
+        videoInfo.isLike = 0;
+        videoInfo.likeNum = videoInfo.likeNum - 1;
+      }
 
-    getApp().requestFormGet('api/revised/like/' + videoInfo.videoId, {}, function(res) {});
+      getApp().requestFormGet('api/revised/like/' + videoInfo.videoId, {}, function(res) {});
 
-    _self.setData({
-      ['allVideoArray[' + _self.data.allVideoArrayIndex + ']']: videoInfo
+      _self.setData({
+        ['allVideoArray[' + _self.data.allVideoArrayIndex + ']']: videoInfo
+      })
+    }, function() {
+      wx.navigateTo({
+        url: '../../getUserInfo/index',
+      })
     })
   },
 
