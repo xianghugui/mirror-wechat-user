@@ -40,7 +40,7 @@
     <view class="left-box">
       <block wx:for="{{productsList}}" wx:key="item.id">
         <view wx:if="{{index%2==0}}" class="img-box" catchtap="jumpToProductDetail" data-id='{{item.id}}'>
-          <image class='goods-img' mode='widthFix' src="{{item.imagePath}}" data-index="{{index}}"></image>
+          <image class='goods-img' lazy-load mode='widthFix' src="{{item.imagePath}}" data-index="{{index}}"></image>
           <view class="goods-content">
             <view class="goods-title">{{item.goodsName}}</view>
             <view class="goods-info">
@@ -63,7 +63,7 @@
     <view class="right-box">
       <block wx:for="{{productsList}}" wx:key="item.id">
         <view wx:if="{{index%2==1}}" class="img-box" catchtap="jumpToProductDetail" data-id='{{item.id}}'>
-          <image class='goods-img' mode='widthFix' src="{{item.imagePath}}" data-index="{{index}}"></image>
+          <image class='goods-img' lazy-load mode='widthFix' src="{{item.imagePath}}" data-index="{{index}}"></image>
           <view class="goods-content">
             <view class="goods-title">{{item.goodsName}}</view>
             <view class="goods-info">

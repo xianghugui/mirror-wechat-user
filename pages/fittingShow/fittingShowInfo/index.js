@@ -159,7 +159,7 @@ Page({
   checkLike: function() {
     const _self = this;
     getApp().userAuthorization(function() {
-      var videoInfo = _self.data.allVideoArray[this.data.allVideoArrayIndex];
+      var videoInfo = _self.data.allVideoArray[_self.data.allVideoArrayIndex];
 
       if (videoInfo.isLike == 0) {
         videoInfo.isLike = 1;

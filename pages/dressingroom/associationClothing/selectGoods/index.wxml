@@ -46,7 +46,7 @@
           <image src='../../../../static/imgs/gl_xz@2x.png' class='mask-image'></image>
           <button class='mask-button' data-id='{{item.id}}' bindtap='select'>确定关联</button>
         </view>
-        <image mode='aspectFit' src="{{item.imagePath[0].resourceUrl}}"></image>
+        <image mode='aspectFit' lazy-load src="{{item.imagePath[0].resourceUrl}}"></image>
         <!--商品信息  -->
         <view class="goods-content">
           <view class="goods-title">{{item.goodsName}}</view>
