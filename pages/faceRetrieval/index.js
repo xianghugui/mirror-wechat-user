@@ -93,7 +93,7 @@ Page({
   error: function (e) {
     wx.showModal({
       title: '您没有授权摄像头的权限',
-      content: '请点击右上菜单-关于衣魅欧-右上角菜单-设置中打开摄像头权限',
+      content: '请点击右上角菜单-关于衣魅欧-右上角菜单-设置中打开摄像头权限',
     })
   },
 
@@ -138,11 +138,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      hasPhone: getApp().globalData.hasPhone
-    })
-
-
 
   },
 

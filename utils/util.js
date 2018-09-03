@@ -19,27 +19,6 @@ const formatNumber = n => {
  * 保留字符串头尾其他用*代替
  */
 var partlyHidden = function(str) {
-  // var s;
-  // var array = str.match(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g);
-  // var start = -2;
-  // var end = -2;
-  // var length = str.length - 2;
-  // if (array != null && array.length > 0) {
-  //   start = str.indexOf(array[0]);
-  //   end = str.lastIndexOf(array[array.length - 1]);
-  //   length -= array.length;
-  // }
-  // s = start === 0 ? array[0] : str.charAt(0);
-  // for (let i = 0; i < length; i++) {
-  //   s += "*";
-  // }
-  // if (end === str.length - 2) {
-  //   if (start !== end) {
-  //     s += array[array.length - 1]
-  //   }
-  // } else {
-  //   s += str.charAt(str.length - 1)
-  // }
   var array = str.match(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g);
   var start = -1;
   if (array != null && array.length > 0) {
