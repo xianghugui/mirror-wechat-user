@@ -71,6 +71,16 @@ page {
   right: 20rpx;
 }
 
+.getLocation{
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 25rpx;
+  padding: 0;
+  background: none;
+  color: rgb(187, 187, 187);
+}
+
 /* 视频列表 */
 
 .products-box {

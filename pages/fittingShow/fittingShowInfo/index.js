@@ -160,7 +160,6 @@ Page({
     const _self = this;
     getApp().userAuthorization(function() {
       var videoInfo = _self.data.allVideoArray[_self.data.allVideoArrayIndex];
-
       if (videoInfo.isLike == 0) {
         videoInfo.isLike = 1;
         //点赞数
