@@ -147,6 +147,7 @@ Page({
       while (i--) {
         params.toLat = contentlist[i].latitude;
         params.toLon = contentlist[i].longtitude;
+        params.shopId = contentlist[i].shopId;
         contentlist[i].videoUrl = contentlist[i].videoUrl.substr(0, contentlist[i].videoUrl.length - 4);
         contentlist[i].userName = util.partlyHidden(contentlist[i].userName)
         contentlist[i].distance = common.shopDistance(params);

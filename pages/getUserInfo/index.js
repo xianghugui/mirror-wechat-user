@@ -22,6 +22,7 @@ Page({
       name: data.nickName
     }
     getApp().requestFormPut('api/user/update', param,function(){
+      getApp().globalData.userAuthorization = true;
       wx.navigateBack({
         delta: 1,
       })

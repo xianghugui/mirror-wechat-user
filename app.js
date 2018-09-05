@@ -12,7 +12,8 @@ App({
     key: '0528YIMEIOU1425mirrorZXWL2018318',
     hasUnread: false, //是否有未读消息
     userLat: '', //经度
-    userLon: '' //纬度
+    userLon: '', //纬度
+    userAuthorization: false
   },
   requestGet: function(url, data, header, successCallback, failCallback) {
     this.requestMethod(url, 'GET', data, header, successCallback, failCallback)
@@ -72,16 +73,13 @@ App({
   },
 
   //授权
-  userAuthorization: function (authorization, noAuthorization) {
+  userAuthorization: function() {
     const _self = this;
     wx.getSetting({
       success: function(res) {
         if (res.authSetting['scope.userInfo']) {
-          authorization && authorization();
+          _self.globalData.userAuthorization = true
         }
-        else{
-          noAuthorization && noAuthorization();
-        } 
       }
     })
   },

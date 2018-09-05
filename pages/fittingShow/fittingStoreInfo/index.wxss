@@ -1,23 +1,20 @@
 /* pages/fittingShow/fittingStoreInfo/index.wxss */
 @import '../../dressingroom/index.wxss';
+
 page {
   width: 100%;
   height: 100%;
   position: fixed;
 }
-.video-box {
-  width: 100%;
-  height: 100%;
-}
 
-.video-swiper {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  transition-duration: 800ms;
-  transition-timing-function: linear;
+.videoended {
+  right: 14.5px;
+  bottom: 14.5px;
+  color: white;
+  text-align: center;
+  line-height: 88rpx;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 30rpx;
 }
 
 .global-cart {
@@ -25,6 +22,64 @@ page {
   position: absolute;
   left: calc(100% - 120rpx);
   top: calc(100% - 140rpx);
+}
+
+.k-shop-info {
+  position: absolute;
+  left: 14.5px;
+  top: 20px;
+  padding: 5px 0;
+  border-radius: 25px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.k-shop-name {
+  font-size: 30rpx;
+  padding: 0 20px;
+}
+
+.k-shop-time {
+  font-size: 23rpx;
+  margin-top: 10rpx;
+  padding: 0 20px;
+}
+
+.face-box, .goods-box, .price-box, .chat-box, .share-box, .videoended {
+  width: 88rpx;
+  height: 88rpx;
+  position: absolute;
+  right: 14.5px;
+  border-radius: 50%;
+}
+
+.goods-box {
+  top: 54px;
+}
+
+.chat-box {
+  top: 108px;
+}
+
+.price-box {
+  top: 162px;
+}
+
+.share-box {
+  top: 216px;
+}
+
+.face-box {
+  top: 270px;
+}
+
+.share-button {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.share-image {
+  width: 100%;
+  height: 100%;
 }
 
 .cover-image {
@@ -44,4 +99,85 @@ page {
   display: block !important;
   width: 100%;
   height: 100%;
+}
+
+.price-dialogbox {
+  width: 514rpx;
+  background-color: #fff;
+  position: absolute;
+  top: calc((100% - 256px)/2);
+  left: 50%;
+  margin-left: -257rpx;
+  z-index: 999;
+  border-radius: 10px;
+  padding: 36rpx 0rpx;
+  box-sizing: border-box;
+}
+
+.mask-box {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.3;
+  z-index: 998;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.dialog-title {
+  text-align: center;
+  font-weight: bolder;
+  padding-bottom: 36rpx;
+  font-size: 34rpx;
+  color: rgb(0, 0, 0);
+}
+
+.size-box {
+  padding: 0 20rpx;
+}
+
+.size-item {
+  height: 56rpx;
+  width: 80rpx;
+  text-align: center;
+  float: left;
+  line-height: 56rpx;
+  border: 4rpx solid rgb(152, 152, 152);
+  border-radius: 10rpx;
+  margin: 8rpx calc((100% - 320rpx)/8);
+  font-size: 26rpx;
+  box-sizing: border-box;
+  color: rgb(152, 152, 152);
+}
+
+.borderShow1 {
+  border: 4rpx solid #3fc0c5;
+  color: #3fc0c5;
+}
+
+.btn-area {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0rpx 20rpx;
+}
+
+.btn-box {
+  font-size: 30rpx;
+  text-align: center;
+  height: 68rpx;
+  width: 200rpx;
+  line-height: 68rpx;
+  color: rgb(152, 152, 152);
+  border: 1rpx solid rgb(152, 152, 152);
+  border-radius: 30px;
+  margin: 0rpx calc((100% - 400rpx)/4);
+  box-sizing: border-box;
+}
+
+.btn-submit {
+  border: 1rpx solid rgb(55, 200, 209);
+  background: rgb(55, 200, 209);
+  color: rgb(255, 255, 255);
 }

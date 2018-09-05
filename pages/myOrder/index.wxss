@@ -1,6 +1,4 @@
 /* pages/myOrder/index.wxss */
-@import "../template/index.wxss";
-
 page {
   background-color: #f3f3f3;
   width: 100%;
@@ -302,4 +300,13 @@ scroll-view {
   to{
     transform: rotate(360deg)
   }
+}
+
+.hasMoreData {
+  background-color: #fff;
+  text-align: center;
+  font-size: 20rpx;
+  padding: 10rpx;
+  color: #c0c0c0;
+  margin-top:15rpx;
 }

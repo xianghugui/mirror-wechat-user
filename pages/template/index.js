@@ -305,8 +305,6 @@ var wxPay = function(url, data, redirectToURL, hidePembayaranModal, cancelFuncti
         duration: 2000
       })
     }
-
-
   });
 }
 module.exports.goodsComment = goodsComment;
@@ -378,9 +376,9 @@ module.exports.exportSrc = exportSrc;
  */
 
 var shopDistance = function(params) {
-  var cacheKey = JSON.stringify(params);
+  var cacheKey = JSON.stringify(params.shopId);
   var cache = wx.getStorageSync(cacheKey);
-  if (cache !== ""){
+  if (cache !== "") {
     return cache;
   }
   var fromLat = getApp().globalData.userLat;
@@ -393,7 +391,7 @@ var shopDistance = function(params) {
     Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
   distance = distance * 6378.137; // EARTH_RADIUS;
   distance = Math.round(distance);
-  wx.setStorageSync(cacheKey,distance);
+  wx.setStorageSync(cacheKey, distance);
   return distance;
 }
 

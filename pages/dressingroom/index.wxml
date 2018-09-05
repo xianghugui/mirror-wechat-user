@@ -48,6 +48,7 @@
         <view class='videoshow-box' bindtap='toMyVideoShow' data-index='{{index}}'>
           <image mode='aspectFill' class='videoshow-image' src='{{item.videoImageUrl}}'></image>
           <image class='videoshow-play' src='../../static/imgs/play.png'></image>
+          <view class='show-mask'></view>
           <view class='videoshow-lick'>
             <image src='../../static/imgs/wdsyx_dz@2x.png'></image>
             {{item.likeNum}}

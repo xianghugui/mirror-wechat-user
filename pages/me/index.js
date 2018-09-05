@@ -20,11 +20,13 @@ Page({
       url: 'myWallet/index?earn=' + this.data.earn,
     })
   },
+
   gotoTryTimes: function(e) {
     wx.navigateTo({
       url: 'tryTimes/index?tryNum=' + this.data.tryNum,
     })
   },
+
   gotoRepresent: function(e) {
     if (this.data.agentNum == 0) {
       wx.navigateTo({
@@ -37,26 +39,31 @@ Page({
     }
 
   },
+
   gotoTryOrder: function(e) {
     wx.navigateTo({
       url: '../dressingroom/index',
     })
   },
+
   gotoVideoOrder: function(e) {
     wx.navigateTo({
       url: '../videoOrder/index'
     })
   },
+
   gotoMyOrder: function(e) {
     wx.navigateTo({
       url: '../myOrder/index'
     })
   },
+
   gotoRefundOrder: function(e) {
     wx.navigateTo({
       url: '../refundOrder/index'
     })
   },
+
   getUserInfo: function(e) {
     var data = JSON.parse(e.detail.rawData)
     this.setData({
@@ -68,7 +75,9 @@ Page({
       avatar: data.avatarUrl,
       name: data.nickName
     }
-    getApp().requestFormPut('api/user/update', param);
+    getApp().requestFormPut('api/user/update', param,function(){
+      getApp().globalData.userAuthorization = true;
+    });
   },
   /**
    * 生命周期函数--监听页面加载
@@ -88,25 +97,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    if (this.data.showModalStatus === null || !this.data.showModalStatus) {
-      getApp().userAuthorization(function() {
-        that.setData({
-          showModalStatus: true
-        })
-        wx.getUserInfo({
-          lang: 'zh_CN',
-          success: function(res) {
-            that.setData({
-              userHeader: res.userInfo.avatarUrl,
-              userName: res.userInfo.nickName
-            })
-          }
-        })
-      }, function() {
-        that.setData({
-          showModalStatus: false
-        })
-      });
+    var that = this;
+    if (getApp().globalData.userAuthorization) {
+      that.setData({
+        showModalStatus: true
+      })
+      wx.getUserInfo({
+        lang: 'zh_CN',
+        success: function(res) {
+          that.setData({
+            userHeader: res.userInfo.avatarUrl,
+            userName: res.userInfo.nickName
+          })
+        }
+      })
+    } else {
+      that.setData({
+        showModalStatus: false
+      })
     }
     var hasUnread = getApp().globalData.hasUnread
     this.setData({
@@ -117,7 +125,6 @@ Page({
         index: 3,
       })
     }
-    var that = this
     getApp().requestGet('api/user/home', null,
       getApp().globalData.header,
       function(res) {
