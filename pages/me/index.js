@@ -17,12 +17,7 @@ Page({
   },
   gotoMyWallet: function(e) {
     wx.navigateTo({
-      url: 'myWallet/index?earn=' + this.data.earn,
-    })
-  },
-  gotoTryTimes: function(e) {
-    wx.navigateTo({
-      url: 'tryTimes/index?tryNum=' + this.data.tryNum,
+      url: 'myWallet/index',
     })
   },
   gotoRepresent: function(e) {
@@ -123,9 +118,6 @@ Page({
       function(res) {
         var data = res.data.data
         that.setData({
-          earn: data.earn == null ? 0 : data.earn,
-          agentNum: data.agentNum == null ? 0 : data.agentNum,
-          tryNum: data.tryNum == null ? 0 : data.tryNum,
           openId: data.openId
         })
         if (that.data.userHeader != null && data.avatar != that.data.userHeader) {

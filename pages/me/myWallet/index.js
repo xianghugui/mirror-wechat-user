@@ -39,8 +39,9 @@ Page({
         if (res.data.data.data.length > 0) {
           that.setData({
             hideRefreshStatus: true,
-            tradingRecord: tradingRecord.concat(res.data.data.data),
-            total: res.data.data.total
+            tradingRecord: tradingRecord.concat(res.data.data.data.data),
+            total: res.data.data.data.total,
+            earn: res.data.data.earn
           })
         }
       }
@@ -51,9 +52,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.setData({
-      earn: options.earn
-    })
     this.loadTransactionRecord();
   },
 
