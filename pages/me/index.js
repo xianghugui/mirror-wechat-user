@@ -63,13 +63,38 @@ Page({
       avatar: data.avatarUrl,
       name: data.nickName
     }
-    getApp().requestFormPut('api/user/update', param);
+    getApp().requestFormPut('api/user/update', param, function() {
+      getApp().globalData.userAuthorization = true;
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    const that = this;
+    getApp().requestGet('api/user/home', null,
+      getApp().globalData.header,
+      function(res) {
+        var data = res.data.data
+        that.setData({
+          earn: data.earn == null ? 0 : data.earn,
+          agentNum: data.agentNum == null ? 0 : data.agentNum,
+          tryNum: data.tryNum == null ? 0 : data.tryNum,
+          openId: data.openId
+        })
+        var param = {};
+        if (that.data.userHeader != null && data.avatar != that.data.userHeader) {
+          param.avatar = that.data.userHeader
+        }
+        if (that.data.userName != null && data.userName != that.data.userName) {
+          param.name = that.data.userName
+        }
+        if (param.avatar || param.name){
+          //更新用户名头像，名称
+          getApp().requestFormPut('api/user/update', param);
+        }
+      }
+    );
   },
 
   /**
@@ -112,26 +137,6 @@ Page({
         index: 3,
       })
     }
-    var that = this
-    getApp().requestGet('api/user/home', null,
-      getApp().globalData.header,
-      function(res) {
-        var data = res.data.data
-        that.setData({
-          openId: data.openId
-        })
-        if (that.data.userHeader != null && data.avatar != that.data.userHeader) {
-          var param = {
-            avatar: that.data.userHeader
-          }
-          if (that.data.userName != null && data.userName != that.data.userName) {
-            param.name = that.data.userName
-          }
-          //更新用户名头像，名称
-          getApp().requestFormPut('api/user/update', param);
-        }
-      }
-    );
   },
 
   /**
