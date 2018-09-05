@@ -188,7 +188,7 @@ Page({
   // 加入购物车事件
   addtoCard: function() {
     const _self = this;
-    getApp().userAuthorization(function() {
+    if (getApp().globalData.userAuthorization) {
       if (JSON.stringify(_self.data.goodsSpec) != "{}") {
         var data = {
           id: _self.data.shoppingCarId,
@@ -212,18 +212,18 @@ Page({
           cartOrBuy: true
         })
       }
-    }, function() {
+    } else {
       wx.navigateTo({
         url: '../getUserInfo/index',
       })
-    });
+    };
   },
 
 
   // 立即购买事件
   buy: function(e) {
     const _self = this;
-    getApp().userAuthorization(function () {
+    if (getApp().globalData.userAuthorization) {
       if (_self.data.goodsId.status == 0) {
         wx.showToast({
           title: '商品已下架',
@@ -233,11 +233,11 @@ Page({
         return
       }
       _self.getOrder(2);
-    },function() {
+    } else {
       wx.navigateTo({
         url: '../getUserInfo/index',
       })
-    })
+    }
   },
 
   //选择规格

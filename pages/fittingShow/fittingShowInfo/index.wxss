@@ -1,5 +1,4 @@
 /* pages/fittingShow/fittingShowInfo/index.wxss */
-
 page {
   width: 100%;
   height: 100%;

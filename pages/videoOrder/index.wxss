@@ -1,6 +1,4 @@
 /* pages/videoOrder/index.wxss */
-@import "../template/index.wxss";
-
 page {
   background-color: #f3f3f3;
   width: 100%;

@@ -43,7 +43,7 @@ Page({
    */
   toChat: function() {
     const _self = this;
-    getApp().userAuthorization(function() {
+    if (getApp().globalData.userAuthorization) {
       var videoInfo = _self.data.allVideoArray[_self.data.allVideoArrayIndex];
       if (videoInfo != null) {
         var videoContext = wx.createVideoContext('videoShow');
@@ -52,11 +52,11 @@ Page({
           url: '../../chat/index?userId=' + videoInfo.userId + '&withUser=1',
         })
       }
-    }, function() {
+    }else {
       wx.navigateTo({
         url: '../../getUserInfo/index',
       })
-    })
+    };
   },
 
   //跳转到商品详情
@@ -158,9 +158,8 @@ Page({
   //点赞
   checkLike: function() {
     const _self = this;
-    getApp().userAuthorization(function() {
+    if (getApp().globalData.userAuthorization) {
       var videoInfo = _self.data.allVideoArray[_self.data.allVideoArrayIndex];
-
       if (videoInfo.isLike == 0) {
         videoInfo.isLike = 1;
         //点赞数
@@ -175,11 +174,11 @@ Page({
       _self.setData({
         ['allVideoArray[' + _self.data.allVideoArrayIndex + ']']: videoInfo
       })
-    }, function() {
+    }else {
       wx.navigateTo({
         url: '../../getUserInfo/index',
       })
-    })
+    };
   },
 
   //隐藏弹出框
