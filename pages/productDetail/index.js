@@ -189,7 +189,12 @@ Page({
   addtoCard: function() {
     const _self = this;
     if (getApp().globalData.userAuthorization) {
-      if (JSON.stringify(_self.data.goodsSpec) != "{}") {
+      if (_self.data.goodsInfo.status == 0) {
+        wx.showToast({
+          title: '商品已下架',
+          icon: 'none'
+        })
+      } else if (JSON.stringify(_self.data.goodsSpec) != "{}") {
         var data = {
           id: _self.data.shoppingCarId,
           goodsId: _self.data.goodsInfo.uId,
@@ -224,7 +229,7 @@ Page({
   buy: function(e) {
     const _self = this;
     if (getApp().globalData.userAuthorization) {
-      if (_self.data.goodsId.status == 0) {
+      if (_self.data.goodsInfo.status == 0) {
         wx.showToast({
           title: '商品已下架',
           icon: 'none',
