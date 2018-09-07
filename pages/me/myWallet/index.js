@@ -36,14 +36,12 @@ Page({
     };
     getApp().requestFormGet('api/user/transactionRecord', param,
       function(res) {
-        if (res.data.data.data.length > 0) {
           that.setData({
             hideRefreshStatus: true,
             tradingRecord: tradingRecord.concat(res.data.data.data.data),
             total: res.data.data.data.total,
             earn: res.data.data.earn
           })
-        }
       }
     );
   },

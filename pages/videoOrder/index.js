@@ -101,7 +101,11 @@ Page({
         if (res.confirm) {
           app.requestPut('api/clientvideoorder/' + e.currentTarget.dataset.id + '/ClientCancelOrder', null, app.globalData.header,
             function(res) {
-              that.onShow();
+              var data = that.data.orderList
+              data.splice(e.currentTarget.dataset.index, 1);
+              that.setData({
+                orderList: data
+              })
             });
         }
       }
@@ -123,13 +127,13 @@ Page({
   },
 
   //获取订单
-  getOrder: function (status) {
+  getOrder: function(status) {
     var that = this
     var param = {
       pageIndex: that.data.orderList.length,
       pageSize: that.data.pageSize
     }
-    if(status !== null){
+    if (status !== null) {
       param.status = status
     }
     app.requestFormGet('api/clientvideoorder/showClientVideoOrders', param,
@@ -199,7 +203,7 @@ Page({
     this.setData({
       disabled: true
     });
-    
+
     //调用统一的微信支付接口
     var that = this;
     common.wxPay('api/clientvideoorder/ClientPay', data, null,
@@ -212,7 +216,7 @@ Page({
         })
       },
       //取消支付
-      function () {
+      function() {
         that.setData({
           disabled: false
         });
@@ -228,15 +232,15 @@ Page({
       function(res) {
         var orderInfo = res.data.data
         common.shipment(orderInfo.phone, orderInfo.name, orderInfo.createTime, orderInfo.videoOrderId,
-          function (res) {
+          function(res) {
             wx.showToast({
               title: '已提醒商家发货',
               icon: 'none'
             })
             app.requestFormPut('api/clientvideoorder/clientRemindTime', {
-              id: orderInfo.videoOrderId
-            },
-              function (res) {
+                id: orderInfo.videoOrderId
+              },
+              function(res) {
                 var data = that.data.orderList
                 data[index].remindTime = parseInt(new Date().getTime() / 1000)
                 that.setData({
@@ -244,7 +248,7 @@ Page({
                 })
               })
           },
-          function (res) {
+          function(res) {
             console.log(res)
           }
         );
@@ -273,7 +277,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    
+
   },
 
   /**
