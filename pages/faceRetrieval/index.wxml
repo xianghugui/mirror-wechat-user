@@ -1,6 +1,6 @@
 <!--pages/faceRetrieval/index.wxml-->
 <view class="page">
-  <camera device-position="front" flash="off" binderror="error" class="normal-camera" wx:if="{{isPreview==false}}">
+   <camera device-position="front" flash="off" binderror="error" class="normal-camera" wx:if="{{isPreview==false}}">
     <cover-view class="up-mask"></cover-view>
     <cover-view class="down-mask"></cover-view>
     <cover-view class="left-mask"></cover-view>
