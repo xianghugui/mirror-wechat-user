@@ -110,20 +110,18 @@ Page({
   onShow: function() {
     const that = this;
     if (getApp().globalData.userAuthorization) {
-      if (this.data.showModalStatus == null) {
-        wx.getUserInfo({
-          lang: 'zh_CN',
-          success: function(res) {
-            that.setData({
-              userHeader: res.userInfo.avatarUrl,
-              userName: res.userInfo.nickName
-            })
-          }
-        })
-        this.setData({
-          showModalStatus: true
-        })
-      }
+      this.setData({
+        showModalStatus: true
+      })
+      wx.getUserInfo({
+        lang: 'zh_CN',
+        success: function(res) {
+          that.setData({
+            userHeader: res.userInfo.avatarUrl,
+            userName: res.userInfo.nickName
+          })
+        }
+      })
     } else {
       this.setData({
         showModalStatus: false

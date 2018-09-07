@@ -32,6 +32,11 @@
     </block>
   </radio-group>
 </view>
+<!-- 没有数据 -->
+  <view class='no-data-box' wx:if='{{total === 0}}'>
+    <image class='no-data-image' src='../../static/imgs/nodata.png'></image>
+    <view class='no-data-text'>抱歉，没有找到商品</view>
+  </view>
 <scroll-view scroll-y bindscrolltolower="lower" lower-threshold='20'>
   <!-- 没有数据时展示 -->
   <view class='no-data-box' wx:if='{{total === 0}}'>

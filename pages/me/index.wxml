@@ -1,5 +1,5 @@
 <!--pages/me/index.wxml-->
-<scroll-view scroll-y="true" class="me-content page"  wx:if="{{showModalStatus !== null && showModalStatus}}">
+<scroll-view scroll-y="true" class="me-content page"  wx:if="{{showModalStatus  &&showModalStatus !== null}}">
   <view class="logo-box">
     <navigator url='../conversations/index' class='conversations'>
     <image src='../../static/imgs/wd_xx.png'></image>
