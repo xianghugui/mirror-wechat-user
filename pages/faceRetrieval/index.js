@@ -87,31 +87,23 @@ Page({
     })
   },
 
-  /**
- * 用户拒绝了相机授权
- */
-  error: function (e) {
+  error: function () {
     wx.showModal({
-      title: '您没有授权摄像头的权限',
-      content: '请点击右上角菜单-关于衣魅欧-右上角菜单-设置中打开摄像头权限',
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.camera']) {
-          wx.authorize({
-            scope: 'scope.camera',
-            success: function (res) {
-              console.log(res)
-            },
-            fail: function(res) {
-              console.log(res)
+      content: '请授权摄像头权限',
+      success: function (res) {
+        if (res.confirm) {
+          wx.openSetting({
+            success: (res) => {
+              if (!res.authSetting['scope.camera']) {
+                wx.navigateBack({
+                  delta: 1
+                })
+              }
             }
+          })
+        } else if (res.cancel) {
+          wx.navigateBack({
+            delta: 1
           })
         }
       }
@@ -119,26 +111,31 @@ Page({
   },
 
   /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
+  },
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    var _self = this;
-    if (wx.createCameraContext()) {
-      this.cameraContext = wx.createCameraContext('myCamera')
-    } else {
-      // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示  
-      wx.showModal({
-        title: '提示',
-        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
-      })
-    }
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (wx.createCameraContext()) {
+      this.cameraContext = wx.createCameraContext()
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
   },
 
   /**

@@ -74,7 +74,7 @@ var JMLogin = function(userId) {
                 });
                 if( i == dataLength - 1){
                   conversations.sort(function (a, b) {
-                    return b.mtime - a.mtime;
+                    return parseInt(b.mtime) - parseInt(a.mtime);
                   })
                   wx.setStorageSync('conversations', conversations);
                 }
@@ -105,7 +105,7 @@ var JMLogin = function(userId) {
                       });
                       if (i == dataLength - 1) {
                         conversations.sort(function (a, b) {
-                          return b.mtime - a.mtime;
+                          return parseInt(b.mtime) - parseInt(a.mtime);
                         })
                         wx.setStorageSync('conversations', conversations);
                       }
