@@ -1,8 +1,8 @@
 //app.js
 var JMCommon = require('utils/JMCommon.js');
 App({
-  // BASE_URL: 'https://mirror.lmlm.cn/',
-  BASE_URL: 'http://localhost:8080/',
+  BASE_URL: 'https://mirror.lmlm.cn/',
+  // BASE_URL: 'http://localhost:8080/',
   globalData: {
     header: {
       'Cookie': ''

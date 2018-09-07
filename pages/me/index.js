@@ -89,7 +89,7 @@ Page({
         if (that.data.userName != null && data.userName != that.data.userName) {
           param.name = that.data.userName
         }
-        if (param.avatar || param.name){
+        if (param.avatar || param.name) {
           //更新用户名头像，名称
           getApp().requestFormPut('api/user/update', param);
         }
@@ -108,11 +108,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    if (this.data.showModalStatus === null || !this.data.showModalStatus) {
-      getApp().userAuthorization(function() {
-        that.setData({
-          showModalStatus: true
-        })
+    const that = this;
+    if (getApp().globalData.userAuthorization) {
+      if (this.data.showModalStatus == null) {
         wx.getUserInfo({
           lang: 'zh_CN',
           success: function(res) {
@@ -122,12 +120,16 @@ Page({
             })
           }
         })
-      }, function() {
-        that.setData({
-          showModalStatus: false
+        this.setData({
+          showModalStatus: true
         })
-      });
-    }
+      }
+    } else {
+      this.setData({
+        showModalStatus: false
+      })
+    };
+
     var hasUnread = getApp().globalData.hasUnread
     this.setData({
       hasUnread: hasUnread
