@@ -17,7 +17,8 @@
     </view>
   </view>
   <view class='user-message' wx:if="{{orderDetail.userName!=null}}">
-    <icon class='fa  fa-map-marker'></icon>
+    <!-- <icon class='fa  fa-map-marker'></icon> -->
+    <image class='marker' src='../../../static/imgs/syx_wz@2x.png'></image>
     <view class='user-content'>
       <view class='user-div'>
         <span>收货人：{{orderDetail.userName}}</span>
@@ -67,4 +68,33 @@
   </view>
 </view>
 <!-- 微信弹出框 -->
-<template is="weixinPembayaran" data="{{showModalStatus,priceSum,userEarn,disabled}}"></template>
+<!-- 微信弹出框 -->
+
+<view class="commodity_screen" bindtap="hidePembayaranModal" wx:if="{{showModalStatus}}"></view>
+  <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+    <form bindsubmit="formSubmit">
+      <view class='title-tile'>付款</view>
+      <view>选择支付方式</view>
+      <radio-group name='payType' class='pembayaran-type'>
+        <view class='pembayaran-line'>
+          <icon class='fa fa-money pembayaran-icon'/>
+          <text>账户余额: {{userEarn}} </text>
+          <radio value='1' class='pembayaran-radio' wx:if="{{userEarn>=priceSum}}"></radio>
+          <radio value='1' class='pembayaran-radio' disabled='disabled' wx:else></radio>
+        </view>
+        <view class='pembayaran-line'>
+          <icon class='fa fa-comments pembayaran-icon' style='color:#67cc48;'/>
+          <text>微信:</text>
+          <radio value='0' class='pembayaran-radio' checked='checked'></radio>
+        </view>
+      </radio-group>
+      <view class='show-money'>
+        <text>需支付</text>
+        <text class='money'>{{priceSum}}元</text>
+      </view>
+      <button class='sumbit-button' formType="submit" disabled='{{disabled}}'>确定支付</button>
+    </form>
+    <view class="close-btn" bindtap='hidePembayaranModal'>
+      <image src='../../../static/imgs/spxq_cn_gb@2x.png'></image>
+    </view>
+  </view>

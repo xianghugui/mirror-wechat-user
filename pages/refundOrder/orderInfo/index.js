@@ -57,6 +57,7 @@ Page({
       orderDeatil.num = options.num
       orderDeatil.goodsImage = options.imageSrc
       orderDeatil.goodsName = options.goodsName
+      orderDeatil.remindTime = parseInt(new Date().getTime(orderDeatil.remindTime) / 1000)
       orderDeatil.applicationTimestamp = parseInt(new Date(orderDeatil.applicationTime).getTime() / 1000)
       that.setData({
         index: options.index,

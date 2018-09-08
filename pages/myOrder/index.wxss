@@ -310,3 +310,15 @@ scroll-view {
   color: #c0c0c0;
   margin-top:15rpx;
 }
+
+.close-btn {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 60rpx;
+  top: 20rpx;
+}
+ .close-btn image {
+  width: 50rpx;
+  height: 50rpx;
+} 

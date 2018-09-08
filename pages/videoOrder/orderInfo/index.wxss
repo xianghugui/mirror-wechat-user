@@ -40,3 +40,11 @@
   left: -25rpx;
   transform:rotate(90deg);
 }
+
+.marker{
+  width: 40rpx;
+  height: 45rpx;
+  position: absolute;
+  top: calc(50% - 22.5rpx);
+  left: 25rpx;
+}
