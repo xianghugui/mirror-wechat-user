@@ -57,7 +57,6 @@ Page({
       orderDeatil.num = options.num
       orderDeatil.goodsImage = options.imageSrc
       orderDeatil.goodsName = options.goodsName
-      orderDeatil.remindTime = parseInt(new Date().getTime(orderDeatil.remindTime) / 1000)
       orderDeatil.applicationTimestamp = parseInt(new Date(orderDeatil.applicationTime).getTime() / 1000)
       that.setData({
         index: options.index,
@@ -95,34 +94,32 @@ Page({
   shipment: function(e) {
     var that = this
     var orderDeatil = that.data.orderDeatil;
-    var showPrompt = '';
     app.requestFormGet('api/refundexchange/' + orderDeatil.refundId +
-      '/showRefundsInfo', {},
-      function(res) {
+      '/showRefundsInfo', {
+        orderType: this.data.orderDeatil.type
+      },
+      function (res) {
         var orderInfo = res.data.data
-        var data = {
-          formId: e.detail.formId,
-          openId: orderInfo.openId,
-          express: orderInfo.expressName + '：' + orderInfo.expressNumber,
-          goodsName: typeof that.data.orderDeatil.goodsName == 'undefined' ? '询价视频商品' : that.data.orderDeatil.goodsName,
-          price: orderInfo.price + '',
-          prompt: '买家提醒您确认收货\n买家昵称：' + orderInfo.userName + '\n买家手机：' + orderInfo.userPhone
-        }
-        common.refundReceipt(data);
-        app.requestFormPut('api/clientrefund/clientRemindTime', {
-            id: orderInfo.refundId
+        common.refundReceipt(orderInfo.phone, orderInfo.name, orderInfo.applicationTime, orderInfo.refundId,
+          function () {
+            app.requestFormPut('api/clientrefund/clientRemindTime', {
+              id: orderInfo.refundId
+            },
+              function (res) {
+                wx.showToast({
+                  title: '已提醒商家发货',
+                  icon: 'none'
+                })
+                var data = that.data.orderDeatil
+                data.remindTime = parseInt(new Date().getTime() / 1000)
+                that.setData({
+                  orderList: data
+                })
+              })
           },
-          function(res) {
-            orderDeatil.remindTime = new Date().getTime() * 1000
-            that.setData({
-              orderDeatil: orderDeatil
-            })
-          })
-        const wxCurrPage = getCurrentPages(); //:获取当前页面的页面栈
-        const wxPrevPage = wxCurrPage[wxCurrPage.length - 2]; //:获取上级页面的page对象
-        wxPrevPage.setData({
-          ['orderList[' + that.data.index + '].remindTime']: new Date().getTime() * 1000
-        });
+          function () {
+
+          });
       })
   },
 

@@ -34,7 +34,7 @@
       <view class='infoBottom' wx:if="{{item.status != 3}}">
         <button class='weixin fa fa-weixin' open-type="contact" wx:if="{{item.status != 3 || item.status != 6}}"/> 
         <view class="action-area">
-          <form bindsubmit='shipment' report-submit data-id="{{item.refundId}}" data-index='{{index}}' data-status='{{item.status}}' data-refundType='{{item.refundType}}' data-type='{{item.type}}' wx:if='{{item.status == 1 && (item.remindTime == null || item.remindTime > nowDate)}}'>
+          <form bindsubmit='shipment' report-submit data-id="{{item.refundId}}" data-index='{{index}}' data-status='{{item.status}}' data-refundType='{{item.refundType}}' data-type='{{item.type}}' wx:if='{{item.status == 1 && (item.remindTime == null || item.remindTime < nowDate)}}'>
             <button formType="submit" class="action-item" class='action-item btncolor'>提醒商家收货</button>
           </form>
           <view wx:if='{{item.status == 0}}' data-id='{{item.refundId}}' bindtap='gotoRefund' class='action-item btncolor' data-index='{{order_index}}'>查看退货地址</view>
