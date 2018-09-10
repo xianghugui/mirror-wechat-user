@@ -4,6 +4,7 @@
   width:100%;
   height:calc(100% - 100rpx);
 }
+
 .order-info{
   font-size:28rpx;
   color:#B2B2B2;
@@ -12,4 +13,12 @@
   background-color: #fff;
   margin-top:20rpx;
   margin-bottom:20rpx;
+}
+
+.marker{
+  width: 40rpx;
+  height: 45rpx;
+  position: absolute;
+  top: calc(50% - 22.5rpx);
+  left: 25rpx;
 }

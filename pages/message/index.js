@@ -81,8 +81,10 @@ Page({
    */
   onPullDownRefresh: function() {
     var that = this
+    wx.showNavigationBarLoading();
     setTimeout(function() {
       that.loadMessageData(0);
+      wx.hideNavigationBarLoading();
     }, 1000)
   },
 

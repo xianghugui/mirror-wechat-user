@@ -1,7 +1,5 @@
 /* pages/template/index.wxss */
-
 /* 订单详情 */
-/* pages/orderInfo/index.wxss */
 page {
   background-color: #f3f3f3;
   font-size: 15px;

@@ -1,5 +1,5 @@
 <!--pages/me/index.wxml-->
-<scroll-view scroll-y="true" class="me-content page"  wx:if="{{showModalStatus  &&showModalStatus !== null}}">
+<scroll-view scroll-y="true" class="me-content page"  wx:if="{{showModalStatus !== null && showModalStatus}}">
   <view class="logo-box">
     <navigator url='../conversations/index' class='conversations'>
     <image src='../../static/imgs/wd_xx.png'></image>
@@ -62,7 +62,7 @@
 </scroll-view>
 
 <!-- 授权 -->
-<view class='authorization-box' wx:else>
+<view class='authorization-box' wx:elif="{{showModalStatus !== null && !showModalStatus}}">
   <icon type='info' size='50'></icon>
   <view>为了更好的体验，此应用需要获取您的昵称、头像等基本信息授权。</view>
   <button open-type="getUserInfo" class='authorization' bindgetuserinfo='getUserInfo'>确定授权</button>
