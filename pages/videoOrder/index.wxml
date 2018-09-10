@@ -30,7 +30,7 @@
       <view class='infoBottom' wx:if="{{item.status != 4 && item.status != 5 }}">
         <view class="action-area">
           <view wx:if='{{item.status == 1}}' class='action-item btncolor' bindtap='buy' data-index='{{index}}'>立即购买</view>
-          <form bindsubmit='remind' report-submit data-id="{{item.orderId}}" data-index='{{index}}' wx:if='{{item.status == 2 && item.assignOrderTime < nowDate && (item.remindTime == null || item.remindTime > nowDate)}}'>
+          <form bindsubmit='remind' report-submit data-id="{{item.orderId}}" data-index='{{index}}' wx:if='{{item.status == 2 && item.assignOrderTime < nowDate && (item.remindTime == null || item.remindTime < nowDate)}}'>
             <button formType="submit" class="action-item" class='action-item btncolor'>提醒发货</button>
           </form>
           <view wx:if='{{item.status == 2}}' class="action-item" data-index='{{index}}' bindtap='gotoRefund'>退款</view>

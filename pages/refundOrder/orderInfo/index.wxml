@@ -37,7 +37,7 @@
   <view class="action-area">
     <view class="action-item btncolor " bindtap='jumpToRefundAddress' wx:if="{{orderDeatil.status == 0}}">查看退货地址</view>
     <view class="action-item" bindtap='cancel' wx:if="{{orderDeatil.status == 0}}">取消</view>
-    <form bindsubmit='shipment' report-submit wx:if='{{orderDeatil.status == 1 && (orderDeatil.remindTime == null || orderDeatil.remindTime < nowDate)}}'>
+    <form bindsubmit='shipment' report-submit wx:if='{{orderDeatil.status == 1 && orderDeatil.applicationTimestamp < nowDate && (orderDeatil.remindTime == null || orderDeatil.remindTime < nowDate)}}'>
       <button formType="submit" class="action-item" class='action-item btncolor'>提醒商家收货</button>
     </form>
   </view>

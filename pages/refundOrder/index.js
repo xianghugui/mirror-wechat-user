@@ -81,6 +81,10 @@ Page({
       function(res) {
         var data = res.data.data
         var orderList = that.data.orderList
+        var len = data.data.length;
+        for (var i = 0; i < len; i++) {
+          data.data[i].applicationTimestamp = parseInt(new Date(data.data[i].applicationTime).getTime() / 1000)
+        }
         that.setData({
           refresh: true,
           orderList: orderList.concat(data.data),
@@ -90,7 +94,7 @@ Page({
       });
   },
 
-  //提醒发货
+  //提醒收货
   shipment: function(e) {
     var that = this
     var index = e.currentTarget.dataset.index;
@@ -109,13 +113,13 @@ Page({
               },
               function(res) {
                 wx.showToast({
-                  title: '已提醒商家发货',
+                  title: '已提醒商家确认收货',
                   icon: 'none'
                 })
-                var data = that.data.orderList
-                data[index].remindTime = parseInt(new Date().getTime() / 1000)
+
+                var remindTime = parseInt(new Date().getTime() / 1000);
                 that.setData({
-                  orderList: data
+                  ['orderList[' + index + '].remindTime']: remindTime
                 })
               })
           },
@@ -161,7 +165,7 @@ Page({
       orderList: []
     })
     //调用查询接口
-    this.getOrder(index+1)
+    this.getOrder(index + 1)
   },
 
   /**

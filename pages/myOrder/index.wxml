@@ -33,7 +33,7 @@
         <view class="action-area">
           <view wx:if='{{item.status == 0}}' class='action-item btncolor' bindtap='buy' data-index='{{index}}'>立即付款</view>
           <view class="action-item" wx:if='{{item.status == 0}}' data-id='{{item.orderId}}' bindtap='cancel' data-index='{{index}}'>取消</view>
-          <form bindsubmit='shipment' report-submit data-id="{{item.orderId}}" data-index='{{index}}' wx:if='{{item.status == 2 && item.assignOrderTime < nowDate && (item.remindTime == null || item.remindTime > nowDate)}}'>
+          <form bindsubmit='shipment' report-submit data-id="{{item.orderId}}" data-index='{{index}}' wx:if='{{item.status == 2 && item.assignOrderTime < nowDate && (item.remindTime == null || item.remindTime < nowDate)}}'>
             <button formType="submit" class="action-item" class='action-item btncolor'>提醒发货</button>
           </form>
           <view class="action-item" wx:if='{{item.status == 2 || item.status == 1}}' data-id='{{item.orderId}}' data-status='{{item.status}}' bindtap='gotoRefund'>退款</view>

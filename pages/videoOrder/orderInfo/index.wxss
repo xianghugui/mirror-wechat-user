@@ -46,5 +46,5 @@
   height: 45rpx;
   position: absolute;
   top: calc(50% - 22.5rpx);
-  left: 25rpx;
+  left: 35rpx;
 }

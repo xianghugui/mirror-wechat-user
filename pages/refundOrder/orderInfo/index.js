@@ -90,7 +90,7 @@ Page({
     common.jumpRefundAddress(data.refundId, data.type, '../delivery/');
   },
 
-  //提醒发货
+  //提醒收货
   shipment: function(e) {
     var that = this
     var orderDeatil = that.data.orderDeatil;
@@ -107,7 +107,7 @@ Page({
             },
               function (res) {
                 wx.showToast({
-                  title: '已提醒商家发货',
+                  title: '已提醒商家确认收货',
                   icon: 'none'
                 })
                 var data = that.data.orderDeatil

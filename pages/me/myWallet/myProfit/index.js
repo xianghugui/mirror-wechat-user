@@ -40,16 +40,10 @@ Page({
     const that = this
     getApp().requestGet('api/revised/tradeRecordPagerList/' + this.data.curIndex,
       param, getApp().globalData.header,
-      function(res) {
-        if (res.data.data.total == 0) {
-          that.setData({
-            refresh: true,
-            totalRecord: res.data.data.data[0].totalRecord
-          })
-          return
-        }
+      function(res){
         var data = that.data.profitList
         that.setData({
+          refresh: true,
           profitList: data.concat(res.data.data.data),
           totalRecord: res.data.data.data[0].totalRecord,
           total: res.data.data.total
