@@ -1,7 +1,7 @@
 <!--pages/mywallet/index.wxml-->
 <view class="page">
   <view class="balance-box">
-    <view class="balance-text">{{earn}}</view>
+    <view class="balance-text">{{earn===null?0:earn}}</view>
     <view class="balance-title">钱包余额</view>
     <navigator class="withdraw-cash" url='withdraw/index?earn={{earn}}'>提现</navigator>
   </view>

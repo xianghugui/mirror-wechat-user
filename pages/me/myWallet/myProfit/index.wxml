@@ -10,7 +10,7 @@
   </view>
   <view>
     <view class="balance-box">
-      <view class="balance-text">{{totalRecord}}</view>
+      <view class="balance-text">{{totalRecord===null?0:totalRecord}}</view>
       <view class="balance-title">总收益</view>
     </view>
   </view>

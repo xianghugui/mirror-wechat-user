@@ -36,7 +36,7 @@ Page({
     const that = this;
     var param = {
       pageIndex: that.data.pageIndex,
-      pageSize: 5
+      pageSize: 10
     }
     getApp().requestGet('api/user/userComment', param, getApp().globalData.header, function(res) {
       var contentlistTem = that.data.userCommentList;

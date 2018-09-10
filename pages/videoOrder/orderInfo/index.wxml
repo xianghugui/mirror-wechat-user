@@ -56,7 +56,7 @@
   <icon class='fa fa-weixin'></icon>
   <view class="action-area">
     <view class="action-item btncolor " bindtap='yes' wx:if="{{orderDetail.status == 1}}">立即购买</view>
-    <form bindsubmit='remind' report-submit data-id="{{orderDetail.orderId}}" wx:if='{{orderInfo.status == 2 && orderInfo.assignOrderTime < nowDate && (orderInfo.remindTime == null || orderInfo.remindTime > nowDate)}}'>
+    <form bindsubmit='remind' report-submit data-id="{{orderDetail.orderId}}" wx:if='{{orderInfo.status == 2 && orderInfo.assignOrderTime < nowDate && (orderInfo.remindTime == null || orderInfo.remindTime < nowDate)}}'>
       <button formType="submit" class="action-item" class='action-item btncolor'>提醒发货</button>
     </form>
     <view class="action-item btncolor " bindtap='yes' wx:if="{{orderDetail.status == 3}}">确定收货</view>
