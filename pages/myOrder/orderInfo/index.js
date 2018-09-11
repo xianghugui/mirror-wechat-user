@@ -85,7 +85,7 @@ Page({
         })
       },
       //取消支付
-      function () {
+      function() {
         that.setData({
           disabled: false
         });
@@ -136,8 +136,13 @@ Page({
   //取消
   cancel: function() {
     common.cancel(this.data.orderDeatil.orderId, this, 1, function() {
-      wx.redirectTo({
-        url: '../index',
+      wx.navigateBack({
+        delta: 1,
+        success: function() {
+          const wxCurrPage = getCurrentPages(), //获取当前页面的页面栈
+            wxPrevPage = wxCurrPage[wxCurrPage.length - 2]; //获取上级页面的page对象
+          wxPrevPage.getOrder(0, true);
+        }
       })
     });
   },
@@ -203,7 +208,7 @@ Page({
           endTime = new Date(data.fahuoTime)
           endTime.setDate(endTime.getDate() + 7)
           if (endTime <= new Date()) {
-            common.receipt(this.data.orderInfo.orderId, this, 1, function () {
+            common.receipt(this.data.orderInfo.orderId, this, 1, function() {
               var data = that.data.orderDeatil
               data.status = 4
               that.setData({
@@ -217,7 +222,7 @@ Page({
           endTime = new Date(data.createTime)
           endTime.setHours(endTime.getHours() + 2)
           if (endTime <= new Date()) {
-            common.cancel(this.data.orderDeatil.orderId, this, 1, function () {
+            common.cancel(this.data.orderDeatil.orderId, this, 1, function() {
               wx.redirectTo({
                 url: '../index',
               });

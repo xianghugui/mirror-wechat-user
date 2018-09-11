@@ -8,7 +8,7 @@
 </video>
 <scroll-view scroll-y="true" class="page">
   <view class='navbar'>
-    <view class='show-navbar' style='font-size:40rpx;padding-top:25px;'>{{buttonList[orderDetail.status].status}}</view>
+    <view class='show-navbar' style='font-size:40rpx;padding-top:25px;'>{{buttonList[orderDetail.status]}}</view>
     <view wx:if="{{orderDetail.status == 3}}" class='show-navbar'>
       还剩{{countdown}}自动确认收货
     </view>
@@ -55,16 +55,15 @@
 <view class='operation' wx:if="{{showVideoModalStatus==false}}">
   <icon class='fa fa-weixin'></icon>
   <view class="action-area">
-    <view class="action-item btncolor " bindtap='yes' wx:if="{{orderDetail.status == 1}}">立即购买</view>
+    <view class="action-item btncolor " bindtap='buy' wx:if="{{orderDetail.status == 1}}">立即购买</view>
     <form bindsubmit='remind' report-submit data-id="{{orderDetail.orderId}}" wx:if='{{orderInfo.status == 2 && orderInfo.assignOrderTime < nowDate && (orderInfo.remindTime == null || orderInfo.remindTime < nowDate)}}'>
       <button formType="submit" class="action-item" class='action-item btncolor'>提醒发货</button>
     </form>
-    <view class="action-item btncolor " bindtap='yes' wx:if="{{orderDetail.status == 3}}">确定收货</view>
-    <!-- <view class="action-item btncolor " bindtap='yes' wx:if="{{orderDetail.status == 4}}">详情</view> -->
-    <view class="action-item" bindtap='no' wx:if="{{orderDetail.status == 0}}">取消</view>
-    <view class="action-item" bindtap='no' wx:if="{{orderDetail.status == 1}}">取消</view>
-    <view class="action-item" bindtap='no' wx:if="{{orderDetail.status == 2}}">退款</view>
-    <view class="action-item" bindtap='no' wx:if="{{orderDetail.status == 3}}">退货／退款</view>
+    <view class="action-item btncolor " bindtap='receipt' wx:if="{{orderDetail.status == 3}}">确定收货</view>
+    <view class="action-item" bindtap='cancel' wx:if="{{orderDetail.status == 0}}">取消</view>
+    <view class="action-item" bindtap='cancel' wx:if="{{orderDetail.status == 1}}">取消</view>
+    <view class="action-item" bindtap='gotoRefund' wx:if="{{orderDetail.status == 2}}">退款</view>
+    <view class="action-item" bindtap='gotoRefund' wx:if="{{orderDetail.status == 3}}">退货／退款</view>
   </view>
 </view>
 <!-- 微信弹出框 -->

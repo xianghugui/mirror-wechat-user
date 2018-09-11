@@ -61,12 +61,14 @@ Page({
         searchStr: searchStr,
         videoList: []
       })
-      this.loadfittingShow()
     } else {
       this.setData({
-        iconAnimation: false
+        iconAnimation: false,
+        searchStr: "",
+        videoList: []
       })
     }
+    this.loadfittingShow()
   },
 
   /**

@@ -49,8 +49,9 @@
             </view>
             <view class="goods-fan" wx:if="{{(item.cashBach != null && item.cashBach != 0) || item.isShow!=0}}">
               <span wx:if="{{item.cashBach != null && item.cashBach != 0}}">
-                <label class='goumai'>
-                  <span class='fan'>返</span>购买立返{{item.cashBach}}元</label>
+                <view class='goumai'>
+                  <view class='fan'>返</view>购买立返{{item.cashBach}}元
+                  </view>
                 <view class='xiu' wx:if="{{(item.isShow != 0 && item.isShow!=null) || curIndex==1}}">
                   <image src='../../static/imgs/fx_x@2x.png'></image>
                 </view>

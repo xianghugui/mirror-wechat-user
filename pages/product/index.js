@@ -87,12 +87,14 @@ Page({
         searchStr: searchStr,
         productsList: []
       })
-      this.getMusicInfo()
     } else {
       this.setData({
-        iconAnimation: false
+        iconAnimation: false,
+        searchStr: "",
+        productsList: []
       })
     }
+    this.getMusicInfo()
   },
 
   /**

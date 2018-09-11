@@ -9,7 +9,7 @@
         <radio-group name="allclassify" class='swiper-content choose-box'>
           <label class="swiper-tab {{classId === item.classId?'checkedTab':''}}" wx:for="{{classList}}"
            wx:key="{{item.classId}}" bindtap='selectClass' data-id='{{item.classId}}'>
-              <radio hidden checked="{{classId === item.classId}}"/>{{item.name}}
+              <radio hidden checked="{{classId === item.classId}}"/>{{item.name?item.name:'全部'}}
           </label>
         </radio-group>
       </view>
@@ -22,7 +22,7 @@
         <radio-group name="brandTabs" class='swiper-content choose-box'>
           <label class="swiper-tab {{brandId === item.brandId?'checkedTab':''}}" wx:for="{{brandList}}" 
           wx:key="{{item.brandId}}" bindtap='selectBrand' data-id='{{item.brandId}}'>
-              <radio hidden checked="{{brandId === item.brandId}}" />{{item.name}}
+              <radio hidden checked="{{brandId === item.brandId}}" />{{item.name?item.name:'全部'}}
           </label>
         </radio-group>
       </view>

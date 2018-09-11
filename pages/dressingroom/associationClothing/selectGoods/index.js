@@ -58,7 +58,8 @@ Page({
         iconAnimation: false,
         param: {
           searchStr: ""
-        }
+        },
+        productsList: []
       })
     }
     this.getGoods()
