@@ -112,6 +112,7 @@ Page({
     })
   },
 
+  //退货
   gotoRefund: function(e) {
     let index = e.currentTarget.dataset.index;
     var selectOrder = this.data.orderList[index];
@@ -123,14 +124,14 @@ Page({
     this.setData({
       orderList: []
     });
-    this.getOrder(this.data.url[this.data.tabIndex]);
+    this.getOrder(this.data.url[this.data.tabIndex],true);
   },
 
   //获取订单
-  getOrder: function(status) {
+  getOrder: function(status, refresh) {
     var that = this
     var param = {
-      pageIndex: that.data.orderList.length,
+      pageIndex: refresh ? 0 : that.data.orderList.length,
       pageSize: that.data.pageSize
     }
     if (status !== null) {
@@ -261,7 +262,7 @@ Page({
     var data = this.data.orderList[i];
     if (data != null) {
       wx.navigateTo({
-        url: './orderInfo/index?orderInfo=' + JSON.stringify(data),
+        url: './orderInfo/index?orderInfo=' + JSON.stringify(data)+'&index='+i,
       })
     }
   },
@@ -270,7 +271,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.getOrder(this.data.url[this.data.tabIndex])
+    this.getOrder(this.data.url[this.data.tabIndex],true)
   },
 
   /**
@@ -295,7 +296,7 @@ Page({
     });
     wx.showNavigationBarLoading() //在标题栏中显示加载
     setTimeout(function() {
-      that.getOrder(that.data.url[that.data.tabIndex]);
+      that.getOrder(that.data.url[that.data.tabIndex],false);
     }, 1000);
   }
 })

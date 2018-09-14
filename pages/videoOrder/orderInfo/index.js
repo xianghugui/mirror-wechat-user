@@ -14,46 +14,15 @@ Page({
     isPlay: false,
     orderDetail: {},
     orderInfo: {},
-    buttonList: [{
-        status: "待报价",
-        no: "取消",
-        yes: "null"
-      },
-      {
-        status: "待付款",
-        no: "取消",
-        yes: "立即购买"
-      },
-      {
-        status: "待发货",
-        no: "退款",
-        yes: "提醒发货"
-      },
-      {
-        status: "待收货",
-        no: "退货／退款",
-        yes: "确定收货"
-      },
-      {
-        status: "退回",
-        no: "null",
-        yes: "null"
-      },
-      {
-        status: "订单完成",
-        no: "null",
-        yes: "null"
-      },
-      {
-        status: "用户取消",
-        no: "null",
-        yes: "null"
-      },
-      {
-        status: "缺货",
-        no: "null",
-        yes: "null"
-      }
+    buttonList: [
+      "待报价",
+      "待付款",
+      "待发货",
+      "待收货",
+      "退回",
+      "订单完成",
+      "用户取消",
+      "缺货"
     ],
     //付款遮罩层状态
     showModalStatus: false,
@@ -64,6 +33,7 @@ Page({
     countdown: '', //倒计时
     nowDate: null, //用来和提醒时间比较，用户一天之内不能重复提醒
     disabled: false, //支付按钮状态
+    index: null, //选中详情下标
   },
 
   fullscreenchange: function(e) {
@@ -113,18 +83,21 @@ Page({
    */
   onLoad: function(options) {
     var orderInfo = JSON.parse(options.orderInfo);
+    var index = options.index;
     const that = this;
     getApp().requestGet('api/videoOrder/' + orderInfo.orderId + '/showOrderInfo', {}, getApp().globalData.header, function(res) {
       var data = res.data.data
-      if (data.userAddress != null){
+      if (data.userAddress != null) {
         data.userAddress = data.userAddress.replace(/,/g, ' ');
       }
       that.setData({
         orderDetail: data,
         orderInfo: orderInfo,
         priceSum: data.goodsPrice,
-        nowDate: parseInt(new Date().getTime() / 1000) - 86400000
+        nowDate: parseInt(new Date().getTime() / 1000) - 86400000,
+        index: index
       });
+
       //倒计时
       var status = data.status
       if (status == 3 || status == 1) {
@@ -134,7 +107,7 @@ Page({
           time = new Date(data.theDeliveryTime)
           time.setDate(time.getDate() + 7)
           if (time <= new Date()) {
-            common.receipt(data.orderId, that, 2, function () {
+            common.receipt(data.orderId, that, 2, function() {
               var orderDetail = that.data.orderDetail;
               orderDetail.status = 5;
               that.setData({
@@ -146,14 +119,23 @@ Page({
         } else {
           //2小时取消订单
           time = new Date(data.updateTime)
-          time.setDate(time.getDate() + 2)
+          time.setHours(time.getHours() + 2)
+          console.log(time);
+          console.log(new Date());
           if (time <= new Date()) {
-            common.cancel(data.orderId, this, 2, function () {
-              wx.navigateBack({
-                delta: 1,
+            app.requestPut('api/clientvideoorder/' + that.data.orderInfo.orderId + '/ClientCancelOrder', null, app.globalData.header,
+              function(res) {
+                wx.navigateBack({
+                  delta: 1,
+                  success: function() {
+                    var data = wxPrevPage.data.orderList;
+                    data.splice(that.data.index, 1);
+                    wxPrevPage.setData({
+                      orderList: data
+                    });
+                  }
+                })
               });
-              return;
-            });
           }
         }
         var countdown = common.countdown(time)
@@ -184,9 +166,14 @@ Page({
         that.setData({
           orderDetail: orderDetail
         })
+        const wxCurrPage = getCurrentPages(), //获取当前页面的页面栈
+          wxPrevPage = wxCurrPage[wxCurrPage.length - 2]; //获取上级页面的page对象
+        wxPrevPage.setData({
+          ['orderList[' + that.data.index + '].status']: 2
+        });
       },
       //取消支付
-      function () {
+      function() {
         that.setData({
           disabled: false
         });
@@ -200,58 +187,64 @@ Page({
     common.hidePembayaranModal(this);
   },
 
-  yes: function() {
-    var data = this.data.orderInfo;
-    var that = this;
-    switch (data.status) {
-      case 1:
-        this.buy();
-        break;
-      case 3:
-        common.receipt(data.orderId, that, 2, function() {
-          var orderDetail = that.data.orderDetail;
-          orderDetail.status = 5;
-          that.setData({
-            orderDetail: orderDetail
-          });
-        });
-        break;
-      case 4:
-        wx.redirectTo({
-          url: '../../refundOrder/index'
-        });
-        break;
-      default:
-        break;
-    }
+  //确认收货
+  receipt: function() {
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '您确定已收到货么',
+      success: function(res) {
+        if (res.confirm) {
+          app.requestPut('api/clientvideoorder/' + that.data.orderInfo.orderId + '/ClientConfirmReceipt', null, app.globalData.header,
+            function(res) {
+              const wxCurrPage = getCurrentPages(), //获取当前页面的页面栈
+                wxPrevPage = wxCurrPage[wxCurrPage.length - 2]; //获取上级页面的page对象
+              var orderDetail = that.data.orderDetail;
+              orderDetail.status = 5;
+              that.setData({
+                orderDetail: orderDetail
+              });
+              wxPrevPage.setData({
+                ['orderList[' + that.data.index + '].status']: 5
+              });
+            });
+        }
+      }
+    })
   },
 
-  no: function() {
+  //退货
+  gotoRefund: function() {
     var data = this.data.orderInfo;
-    switch (data.status) {
-      case 0:
-        common.cancel(data.orderId, this, 2, function() {
-          wx.navigateBack({
-            delta: 1,
-          })
-        });
-        break;
-      case 1:
-        common.cancel(data.orderId, this, 2, function() {
-          wx.navigateBack({
-            delta: 1,
-          })
-        });
-        break;
-      case 2:
-        common.gotoRefund(data.orderId, 2, data.status, '../../Refund/');
-        break;
-      case 3:
-        common.gotoRefund(data.orderId, 2, data.status, '../../Refund/');
-        break;
-      default:
-        break;
-    }
+    common.gotoRefund(data.orderId, 2, data.status, '../../Refund/');
+  },
+
+  //取消
+  cancel: function(e) {
+    var that = this
+    const wxCurrPage = getCurrentPages(), //获取当前页面的页面栈
+      wxPrevPage = wxCurrPage[wxCurrPage.length - 2]; //获取上级页面的page对象
+    wx.showModal({
+      title: '提示',
+      content: '确定要取消订单么',
+      success: function(res) {
+        if (res.confirm) {
+          app.requestPut('api/clientvideoorder/' + that.data.orderInfo.orderId + '/ClientCancelOrder', null, app.globalData.header,
+            function(res) {
+              wx.navigateBack({
+                delta: 1,
+                success: function() {
+                  var data = wxPrevPage.data.orderList;
+                  data.splice(that.data.index, 1);
+                  wxPrevPage.setData({
+                    orderList: data
+                  });
+                }
+              })
+            });
+        }
+      }
+    })
   },
 
   //提醒发货
@@ -322,4 +315,5 @@ Page({
   onShow: function() {
 
   }
+
 })
