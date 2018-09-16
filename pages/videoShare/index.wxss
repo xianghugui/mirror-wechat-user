@@ -1,5 +1,5 @@
 /* pages/videoShare/index.wxss */
-@import '../dressingroom/index.wxss';
+@import '../fittingShow/fittingStoreInfo/index.wxss';
 
 video{
   width:100%;

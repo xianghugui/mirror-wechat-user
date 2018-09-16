@@ -171,8 +171,7 @@ Page({
         videoInfo.isLike = 1;
         //点赞数
         videoInfo.likeNum = videoInfo.likeNum + 1;
-      } 
-      else if(videoInfo.isLike !== 0 && videoInfo.likeNum > 0) {
+      } else if (videoInfo.isLike !== 0 && videoInfo.likeNum > 0) {
         videoInfo.isLike = 0;
         videoInfo.likeNum = videoInfo.likeNum - 1;
       }
@@ -244,6 +243,11 @@ Page({
       allVideoArrayIndex: allVideoArrayIndex,
       index: options.index
     });
+
+    // var videoContext = wx.createVideoContext('videoShow');
+    // videoContext.requestFullScreen({
+    //   direction: 90
+    // })
   },
 
   //手指刚放到屏幕触发
@@ -292,7 +296,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function(res) {
-    this.videoContext = wx.createVideoContext('videoShow');
   },
 
   /**
