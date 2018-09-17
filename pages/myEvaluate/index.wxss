@@ -87,9 +87,10 @@ page {
 }
 
 .img-item {
-  width: 165rpx;
-  height: 165rpx;
+  width: 170rpx;
+  height: 170rpx;
   padding: 10rpx;
+  box-sizing: border-box;
 }
 
 .img-item image {

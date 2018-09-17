@@ -80,21 +80,20 @@ Page({
    * 输入框失去焦点
    */
   blur: function(e) {
-    if (!this.data.close) {
-      var searchStr = e.detail.value.replace(' ', '')
+    var searchStr = e.detail.value.replace(/ /g, '');
+    if (searchStr != '') {
       this.setData({
         iconAnimation: true,
         searchStr: searchStr,
         productsList: []
       })
+      this.getMusicInfo()
     } else {
       this.setData({
         iconAnimation: false,
-        searchStr: "",
-        productsList: []
+        searchStr: ""
       })
     }
-    this.getMusicInfo()
   },
 
   /**
@@ -123,8 +122,6 @@ Page({
       searchStr: "",
       close: true,
       iconAnimation: false
-    }, function() {
-      _self.getMusicInfo();
     });
   },
 

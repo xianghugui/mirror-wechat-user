@@ -54,21 +54,20 @@ Page({
    * 输入框失去焦点
    */
   blur: function(e) {
-    if (!this.data.close) {
-      var searchStr = e.detail.value.replace(' ', '')
+    var searchStr = e.detail.value.replace(/ /g, '');
+    if (searchStr != '') {
       this.setData({
         iconAnimation: true,
         searchStr: searchStr,
         videoList: []
       })
+      this.loadfittingShow()
     } else {
       this.setData({
         iconAnimation: false,
-        searchStr: "",
-        videoList: []
+        searchStr: ""
       })
     }
-    this.loadfittingShow()
   },
 
   /**
@@ -96,8 +95,6 @@ Page({
       searchStr: "",
       close: true,
       iconAnimation: false
-    }, function() {
-      _self.loadfittingShow();
     });
   },
 
@@ -241,12 +238,11 @@ Page({
         brandId: 1,
         level: 1
       },
-      searchStr: '',
-      curIndex: 0,
-      close: true,
       iconAnimation: false
     });
-    this.loadfittingShow();
+    if (this.data.videoList.length === 0) {
+      this.loadfittingShow();
+    }
   },
 
   /**

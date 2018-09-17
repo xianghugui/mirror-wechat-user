@@ -128,15 +128,6 @@ page {
   width: 100%;
 }
 
-.f-img-box > image:first-child {
-  position: absolute;
-  top: 103.5rpx;
-  left: -103.5rpx;
-  height: 342rpx;
-  width: 549rpx;
-  transform: rotate(90deg);
-}
-
 .f-img-box:last-child {
   margin-bottom: 28rpx;
 }

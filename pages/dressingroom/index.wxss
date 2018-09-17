@@ -98,12 +98,14 @@
 }
 
 .videoshow-image {
-  height: 354rpx;
+  /* height: 354rpx;
   width: 630rpx;
   position: absolute;
   top: 138rpx;
   left: -138rpx;
-  transform: rotate(90deg);
+  transform: rotate(90deg); */
+  width: 100%;
+  height: 100%;
 }
 
 .videoshow-play, .videoshow-lick, .videoshow-cashBach, delete-icon {

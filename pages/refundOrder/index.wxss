@@ -2,12 +2,14 @@
 @import '../myOrder/index.wxss';
 
 .video-image{
-  height: 100rpx;
+  /* height: 100rpx;
   width: 150rpx;
   position: absolute;
   top: 25rpx;
   left: -25rpx;
-  transform: rotate(90deg); 
+  transform: rotate(90deg);  */
+  height: 100%;
+  width: 100%;
 }
 
 .order-image{
