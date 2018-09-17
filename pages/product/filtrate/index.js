@@ -172,7 +172,7 @@ Page({
         filtrate: formData,
         videoList: []
       }, function() {
-        wxPrevPage.loadfittingShow();
+        wxPrevPage.loadfittingShow(true);
       });
     }
 
