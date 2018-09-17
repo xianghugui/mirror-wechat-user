@@ -354,7 +354,7 @@
      return {
        title: '亲，这件衣服什么样？帮忙给个建议哦！',
        path: '/pages/fittingShow/fittingStoreInfo/index?videoInfo=' + JSON.stringify(videoInfo),
-       // imageUrl: videoInfo.videoImageUrl
+       imageUrl: videoInfo.videoImageUrl
      }
    }
 

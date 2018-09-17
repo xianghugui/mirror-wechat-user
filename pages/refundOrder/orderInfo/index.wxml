@@ -10,7 +10,7 @@
   </view>
   <view class='goods-message1'>
     <view class='goods-img' wx:if='{{orderDeatil.type === 2}}'>
-      <image class='video-image' src='{{orderDeatil.goodsImage}}'></image>
+      <image mode='aspectFill' class='video-image' src='{{orderDeatil.goodsImage}}'></image>
     </view>
     <image wx:else class='goods-img' src='{{orderDeatil.goodsImage}}'></image>
     <view class='goods-content'>

@@ -363,7 +363,7 @@ Page({
     return {
       title: videoInfo.goodsName,
       path: '/pages/fittingShow/fittingShowInfo/index?videoInfo=' + JSON.stringify(videoInfo),
-      // imageUrl: videoInfo.videoImageUrl
+      imageUrl: videoInfo.videoImageUrl
     }
   }
 

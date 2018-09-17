@@ -72,12 +72,14 @@ button{
 }
 
 .left>image{
-  position: absolute;
+  /* position: absolute;
   top: 85rpx;
   left: -85rpx;
   height: 280rpx;
   width: 450rpx;
-  transform:rotate(90deg);
+  transform:rotate(90deg); */
+  width: 100%;
+  height: 100%;
 }
 
 .notSelect{
