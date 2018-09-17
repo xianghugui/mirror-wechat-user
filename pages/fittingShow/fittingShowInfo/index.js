@@ -52,7 +52,7 @@ Page({
           url: '../../chat/index?userId=' + videoInfo.userId + '&withUser=1',
         })
       }
-    }else {
+    } else {
       wx.navigateTo({
         url: '../../getUserInfo/index',
       })
@@ -120,12 +120,7 @@ Page({
 
             if (wxPrevPage.route == "pages/fittingShow/index") {
               //初始化数据
-              wxPrevPage.setData({
-                videoShowList: [],
-              }, function() {
-                // 调用返回页的函数
-                wxPrevPage.loadfittingShow();
-              });
+              wxPrevPage.loadfittingShow(true);
             }
 
             if (allVideoArray.length == 0) {
@@ -136,15 +131,27 @@ Page({
               wx.navigateBack({
                 delta: 1
               })
+              return;
             }
-            if (allVideoArrayIndex == allVideoArray.length - 1) {
+
+            if (allVideoArrayIndex === allVideoArray.length - 1) {
               _self.setData({
                 allVideoArrayIndex: allVideoArrayIndex - 1
               });
             }
+
+            //判断是否是自己的视频
+            var isShowMore = false;
+            var selectVideo = _self.data.allVideoArray[allVideoArrayIndex];
+            if (getApp().globalData.userId == selectVideo.userId) {
+              isShowMore = true;
+            }
             _self.setData({
+              showModalStatus: false,
               allVideoArray: allVideoArray,
+              isShowMore: isShowMore
             });
+
             wx.showToast({
               title: '解除成功',
               icon: 'none',
@@ -160,11 +167,12 @@ Page({
     const _self = this;
     if (getApp().globalData.userAuthorization) {
       var videoInfo = _self.data.allVideoArray[_self.data.allVideoArrayIndex];
-      if (videoInfo.isLike == 0) {
+      if (videoInfo.isLike === 0) {
         videoInfo.isLike = 1;
         //点赞数
         videoInfo.likeNum = videoInfo.likeNum + 1;
-      } else {
+      } 
+      else if(videoInfo.isLike !== 0 && videoInfo.likeNum > 0) {
         videoInfo.isLike = 0;
         videoInfo.likeNum = videoInfo.likeNum - 1;
       }
@@ -174,7 +182,7 @@ Page({
       _self.setData({
         ['allVideoArray[' + _self.data.allVideoArrayIndex + ']']: videoInfo
       })
-    }else {
+    } else {
       wx.navigateTo({
         url: '../../getUserInfo/index',
       })
@@ -313,12 +321,6 @@ Page({
       allVideoArrayIndex = _self.allVideoArrayIndex;
 
     if (wxPrevPage.route == "pages/fittingShow/index") {
-      var index = 0;
-      if (_self.index >= 50 && allVideoArray.length == 100) {
-        index = allVideoArrayIndex + _self.index - 50;
-      } else {
-        index = allVideoArrayIndex;
-      }
       var videoId,
         pageView;
       //添加视频浏览量
@@ -331,9 +333,7 @@ Page({
             postPageView: pageView
           }, function(res) {});
         }
-        wxPrevPage.setData({
-          ['videoList[' + index + ']']: allVideoArray[allVideoArrayIndex]
-        });
+        wxPrevPage.loadfittingShow(true);
       }
     } else if (wxPrevPage.route == "pages/dressingroom/index" && this.data.pageType == 0) {
       wxPrevPage.setData({

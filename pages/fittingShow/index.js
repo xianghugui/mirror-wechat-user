@@ -64,11 +64,10 @@ Page({
     } else {
       this.setData({
         iconAnimation: false,
-        searchStr: "",
-        videoList: []
+        searchStr: ""
       })
     }
-    this.loadfittingShow()
+    this.loadfittingShow(true)
   },
 
   /**
@@ -97,7 +96,7 @@ Page({
       close: true,
       iconAnimation: false
     }, function() {
-      _self.loadfittingShow();
+      _self.loadfittingShow(true);
     });
   },
 
@@ -132,11 +131,12 @@ Page({
 
   /**
    * 加载试衣秀数据
+   * reLoad:是否重新加载状态
    */
-  loadfittingShow: function() {
+  loadfittingShow: function(reLoad) {
     var that = this,
       param = this.data.filtrate;
-    param.pageIndex = that.data.videoList.length;
+    param.pageIndex = reLoad ? 0 : that.data.videoList.length;
     param.pageSize = 10;
     param.searchStr = this.data.searchStr;
 
@@ -156,7 +156,7 @@ Page({
       }
       that.setData({
         refresh: true,
-        videoList: contentlistTem.concat(contentlist),
+        videoList: reLoad ? contentlist : contentlistTem.concat(contentlist),
         total: res.data.data.total,
       })
 
@@ -197,7 +197,7 @@ Page({
           });
         }
       })
-      _self.loadfittingShow();
+      _self.loadfittingShow(true);
     }
   },
 
@@ -226,7 +226,7 @@ Page({
         },
         searchStr: ''
       });
-      this.loadfittingShow();
+      this.loadfittingShow(true);
     }
   },
 
@@ -246,7 +246,7 @@ Page({
       close: true,
       iconAnimation: false
     });
-    this.loadfittingShow();
+    this.loadfittingShow(true);
   },
 
   /**
@@ -262,10 +262,7 @@ Page({
     wx.showNavigationBarLoading();
     setTimeout(function() {
       wx.stopPullDownRefresh();
-      that.setData({
-        videoList: []
-      });
-      that.loadfittingShow();
+      that.loadfittingShow(true);
       wx.hideNavigationBarLoading();
     }, 1000);
   },
@@ -280,7 +277,7 @@ Page({
       });
       var that = this
       setTimeout(function() {
-        that.loadfittingShow();
+        that.loadfittingShow(false);
       }, 1000);
     }
   },

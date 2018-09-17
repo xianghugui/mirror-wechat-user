@@ -9,7 +9,7 @@
   <cover-view class='icon-content'>
     <cover-view class='icon'>
       <cover-view class='check-icon' bindtap='checkLike'>
-        <cover-image wx:if="{{allVideoArray[allVideoArrayIndex].isLike==0}}" src='../../../static/imgs/xq_wdz.png'></cover-image>
+        <cover-image wx:if="{{allVideoArray[allVideoArrayIndex].isLike == 0}}" src='../../../static/imgs/xq_wdz.png'></cover-image>
         <cover-image wx:else src='../../../static/imgs/xq_dz.png'></cover-image>
       </cover-view>
       <cover-view>{{allVideoArray[allVideoArrayIndex].likeNum}}</cover-view>
