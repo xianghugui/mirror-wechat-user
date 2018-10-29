@@ -57,6 +57,9 @@ Page({
               }else if(data.data.length ===0){
                 _self.showToast('没有试衣信息');
               }else{
+                for(var i = 0;i<data.data.length;i++){
+                  data.data[i].videoImg = encodeURIComponent(data.data[i].videoImg);
+                }
                 wx.redirectTo({
                   url: '../selectVideo/index?list=' + JSON.stringify(data.data),
                 })
