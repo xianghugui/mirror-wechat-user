@@ -403,3 +403,20 @@ var formatDateTime = function(inputTime)  {    
 };
 
 module.exports.formatDateTime = formatDateTime;
+
+
+/**
+ * 功能描述: 把url链接重新进行编码,避免stringify转换时报错
+ * allVideoArray: 含videoURL,videoImageUrl属性的数组
+ */
+var recodeForURL =  function(allVideoArray) {
+  var length = allVideoArray.length;
+  for (let i = 0, length = allVideoArray.length; i < length; i++) {
+    //encodeURIComponent() 函数可把字符串作为 URI 组件进行编码
+    allVideoArray[i].videoUrl = encodeURIComponent(allVideoArray[i].videoUrl);
+    allVideoArray[i].videoImageUrl = encodeURIComponent(allVideoArray[i].videoImageUrl);
+  }
+  return allVideoArray;
+}
+
+module.exports.recodeForURL = recodeForURL;

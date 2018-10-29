@@ -1,7 +1,7 @@
 <!--pages/tryOrder/orderInfo/index.wxml-->
 <import src="../../template/index.wxml" />
 <!-- 播放弹出框 -->
-<video id="myVideo" objectFit="fill" class='videoplayer' src='{{orderDetail.videoSrc}}' controls="{{true}}" autoplay wx:if="{{isPlay}}" bindfullscreenchange="fullscreenchange" bindended="videoended" bindtap="controltoggle">
+<video id="myVideo" objectFit="fill" class='videoplayer' src='{{orderDetail.videoUrl}}' controls="{{true}}" autoplay wx:if="{{isPlay}}" bindfullscreenchange="fullscreenchange" bindended="videoended" bindtap="controltoggle">
   <cover-image src="../../../static/imgs/close.png" class="closeVideo" hidden="{{closeHidden}}" bindtap="closeVideo">
 
   </cover-image>
@@ -31,8 +31,8 @@
   </view>
   <view class='goods-info'>
     <view class='goods-message1'>
-      <view class="videoImage-box" bindtap="videoPlay" wx:if="{{orderDetail.videoSrc!=null}}">
-        <image mode="aspectFill" class="goods-img" src="{{orderDetail.imageSrc}}"></image>
+      <view class="videoImage-box" bindtap="videoPlay" wx:if="{{orderDetail.videoUrl!=null}}">
+        <image mode="aspectFill" class="goods-img" src="{{orderDetail.videoImageUrl}}"></image>
         <icon class="play"></icon>
       </view>
       <view class='goods-content'>

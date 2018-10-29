@@ -105,12 +105,12 @@ Page({
   jumpToFittingShowInfo: function(e) {
     var index = e.currentTarget.dataset.index,
       allVideoArray = this.data.videoList;
-
     //取前后共一百条数据
     if (index > 50 && allVideoArray.length > 100) {
       allVideoArray = allVideoArray.slice(index - 50, index + 50);
     }
     if (allVideoArray.length > 0) {
+      allVideoArray = common.recodeForURL(allVideoArray);
       wx.navigateTo({
         url: './fittingShowInfo/index?allVideoArray=' + JSON.stringify(allVideoArray) + '&index=' + index,
       })
@@ -148,7 +148,6 @@ Page({
         params.toLat = contentlist[i].latitude;
         params.toLon = contentlist[i].longtitude;
         params.shopId = contentlist[i].shopId;
-        contentlist[i].videoUrl = contentlist[i].videoUrl.substr(0, contentlist[i].videoUrl.length - 4);
         contentlist[i].userName = util.partlyHidden(contentlist[i].userName)
         contentlist[i].distance = common.shopDistance(params);
       }

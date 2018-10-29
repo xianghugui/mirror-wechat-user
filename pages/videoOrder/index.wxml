@@ -17,7 +17,7 @@
       </view>
       <view class='infoMid'>
         <view class="videoImage-box" bindtap="videoPlay" data-index='{{index}}'>
-            <image class='videoImage' mode="aspectFill" src='{{item.videoImageSrc.resourceUrl}}'></image>
+            <image class='videoImage' mode="aspectFill" src='{{item.videoImageUrl}}'></image>
             <icon class="play"></icon>
         </view>
         <view class='info' bindtap='jumpOrderInfo' data-id='{{index}}'>

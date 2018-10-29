@@ -58,6 +58,8 @@
        isShowMore = true;
      }
 
+     allVideoArray[allVideoArrayIndex].videoImageUrl = decodeURIComponent(allVideoArray[allVideoArrayIndex].videoImageUrl);
+     allVideoArray[allVideoArrayIndex].videoUrl = decodeURIComponent(allVideoArray[allVideoArrayIndex].videoUrl);
      this.setData({
        allVideoArray: allVideoArray,
        isShowMore: isShowMore,
@@ -95,6 +97,8 @@
        isShowMore = true;
      }
 
+     allVideoArray[allVideoArrayIndex].videoImageUrl = decodeURIComponent(allVideoArray[allVideoArrayIndex].videoImageUrl);
+     allVideoArray[allVideoArrayIndex].videoUrl = decodeURIComponent(allVideoArray[allVideoArrayIndex].videoUrl);
      this.setData({
        allVideoArrayIndex: allVideoArrayIndex,
        isShowMore: isShowMore
@@ -181,7 +185,7 @@
      //传递视频信息(店铺id，视频id，视频图片Src)
      var item = this.data.allVideoArray[this.data.allVideoArrayIndex]
      var videoInfo = {
-       videoImageUrl: item.videoImageUrl,
+       videoImageUrl: encodeURIComponent(item.videoImageUrl),
        shopId: item.shopId,
        videoId: item.videoId,
        goodsId: item.goodsId

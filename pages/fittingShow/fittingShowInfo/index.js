@@ -74,7 +74,7 @@ Page({
     var allVideoArray = this.data.allVideoArray[allVideoArrayIndex];
     var videoInfo = {
       videoId: allVideoArray.videoId,
-      videoImageUrl: allVideoArray.videoImageUrl,
+      videoImageUrl: encodeURIComponent(allVideoArray.videoImageUrl),
       goodsId: allVideoArray.goodsId,
       shopId: allVideoArray.shopId
     }
@@ -231,7 +231,9 @@ Page({
       }
     }
     allVideoArray[allVideoArrayIndex].pageView = 1;
-
+    //url decodeURIComponent解密
+    allVideoArray[allVideoArrayIndex].videoImageUrl = decodeURIComponent(allVideoArray[allVideoArrayIndex].videoImageUrl);
+    allVideoArray[allVideoArrayIndex].videoUrl = decodeURIComponent(allVideoArray[allVideoArrayIndex].videoUrl);
     //判断是否是自己的视频
     if (getApp().globalData.userId == allVideoArray[allVideoArrayIndex].userId) {
       isShowMore = true;
@@ -285,6 +287,9 @@ Page({
       isShowMore = true;
     }
 
+    //url decodeURIComponent解密
+    selectVideo.videoImageUrl = decodeURIComponent(selectVideo.videoImageUrl);
+    selectVideo.videoUrl = decodeURIComponent(selectVideo.videoUrl);
     this.setData({
       isShowMore: isShowMore,
       allVideoArrayIndex: allVideoArrayIndex,

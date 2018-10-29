@@ -116,6 +116,7 @@ page {
 
 .goods-size {
   color: #c0c0c0;
+  margin-left: 20rpx;
 }
 
 .goods-message2 {

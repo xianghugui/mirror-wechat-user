@@ -95,7 +95,6 @@ Page({
       var contentlistTem = _self.data.fittingShowList;
       var contentlist = res.data.data.data;
       for (var i = 0; i < contentlist.length; i++) {
-        contentlist[i].videoUrl = contentlist[i].videoUrl.substr(0, contentlist[i].videoUrl.length - 4);
         contentlist[i].distance = common.shopDistance(contentlist[i].latitude, contentlist[i].longtitude);
       }
       _self.setData({
@@ -114,6 +113,7 @@ Page({
       allVideoArray = allVideoArray.slice(index - 50, index + 50);
     }
     if (allVideoArray != null) {
+      allVideoArray = common.recodeForURL(allVideoArray);
       wx.navigateTo({
         url: '../fittingShow/fittingShowInfo/index?allVideoArray=' + JSON.stringify(allVideoArray) + '&index=' + index,
       })

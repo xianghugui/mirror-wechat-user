@@ -165,7 +165,7 @@
         <button open-type="openSetting" class='getLocation' lang="zh_CN" bindopensetting='getLocation'>位置授权</button>
       </view>
     </view>
-
+    <!-- 试衣秀 -->
     <view id="fittingShow" class="fittingShow-content" wx:if="{{curIndex==3 && showUserId==null}}">
       <view class='evaluate-no' wx:if="{{fittingShowListTotal===0}}">暂无试衣秀</view>
       <view>

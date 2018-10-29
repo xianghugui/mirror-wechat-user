@@ -42,8 +42,8 @@ Page({
   },
 
   videoPlay: function(e) {
-    var videoSrc = this.data.orderList[e.currentTarget.dataset.index].videoSrc.resourceUrl;
-    videoSrc = videoSrc.substr(0, videoSrc.length - 4);
+    var videoSrc = this.data.orderList[e.currentTarget.dataset.index].videoUrl;
+    videoSrc = encodeURIComponent(videoSrc);
     wx.navigateTo({
       url: 'video/index?videoSrc=' + videoSrc,
     })
@@ -260,6 +260,8 @@ Page({
   jumpOrderInfo: function(e) {
     var i = e.currentTarget.dataset.id;
     var data = this.data.orderList[i];
+    delete data.videoImageUrl;
+    delete data.videoUrl;
     if (data != null) {
       wx.navigateTo({
         url: './orderInfo/index?orderInfo=' + JSON.stringify(data)+'&index='+i,

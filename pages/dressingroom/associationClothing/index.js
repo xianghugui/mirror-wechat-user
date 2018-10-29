@@ -38,6 +38,7 @@ Page({
    */
   selectGoods: function (e) {
     var videoInfo = this.data.videoInfo;
+    videoInfo.videoImageUrl = encodeURIComponent(videoInfo.videoImageUrl);
     if(this.data.goodsInfo !== null){
       videoInfo.goodsId = this.data.goodsInfo.goodsId;
     }
@@ -51,6 +52,7 @@ Page({
    */
   onLoad: function (options) {
     var videoInfo = JSON.parse(options.videoInfo);
+    videoInfo.videoImageUrl = decodeURIComponent(videoInfo.videoImageUrl);
     this.setData({
       videoInfo: videoInfo,
       disable: videoInfo.goodsId === null || videoInfo.goodsId < 0 ? false : true

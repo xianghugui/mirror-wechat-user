@@ -61,9 +61,6 @@ Page({
       function(res) {
         var videoShowList = that.data.videoShowList
         var data = res.data.data.data;
-        for (let i = 0, length = data.length; i < length; i++) {
-          data[i].videoUrl = data[i].videoUrl.substr(0, data[i].videoUrl.length - 4);
-        }
         that.setData({
           refresh: true,
           videoShowList: videoShowList.concat(data),
@@ -86,9 +83,6 @@ Page({
       function(res) {
         var items = that.data.items;
         var data = res.data.data.data;
-        for (let i = 0, length = data.length; i < length; i++) {
-          data[i].videoUrl = data[i].videoUrl.substr(0, data[i].videoUrl.length - 4);
-        }
         that.setData({
           items: items.concat(data),
           total: res.data.data.total
@@ -130,6 +124,7 @@ Page({
   toMyVideoShow: function(e) {
     var allVideoArray = this.data.videoShowList,
       pageType = 0;
+    allVideoArray = common.recodeForURL(allVideoArray);
     wx.navigateTo({
       url: '../fittingShow/fittingShowInfo/index?allVideoArray=' +
         JSON.stringify(allVideoArray) + '&index=' + e.currentTarget.dataset.index,
@@ -145,6 +140,7 @@ Page({
     if (this.endTime - this.startTime < 350 && this.data.deleteIndex == null) {
       var allVideoArray = this.data.items,
         pageType = 1;
+      allVideoArray = common.recodeForURL(allVideoArray);
       wx.navigateTo({
         url: '../fittingShow/fittingStoreInfo/index?allVideoArray=' +
           JSON.stringify(allVideoArray) + '&index=' + e.currentTarget.dataset.index,

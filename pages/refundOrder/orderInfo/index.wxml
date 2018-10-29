@@ -33,7 +33,7 @@
   </view>
 </scroll-view>
 <view class='operation'>
-  <button class='weixin fa fa-weixin' open-type="contact" />
+  <button class='weixin fa fa-weixin' open-type="contact" wx:if="{{orderDeatil.status!== 3 && orderDeatil.status!== 6}}"/>
   <view class="action-area">
     <view class="action-item btncolor " bindtap='jumpToRefundAddress' wx:if="{{orderDeatil.status == 0}}">查看退货地址</view>
     <view class="action-item" bindtap='cancel' wx:if="{{orderDeatil.status == 0}}">取消</view>
