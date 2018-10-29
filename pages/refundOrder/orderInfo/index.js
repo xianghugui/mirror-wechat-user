@@ -55,6 +55,10 @@ Page({
       }
       orderDeatil.size = options.size
       orderDeatil.num = options.num
+      //判断是询价订单,给图片链接解码
+      if(orderType === "1"){
+        options.imageSrc = decodeURIComponent(options.imageSrc);
+      }
       orderDeatil.goodsImage = options.imageSrc
       orderDeatil.goodsName = options.goodsName
       orderDeatil.applicationTimestamp = parseInt(new Date(orderDeatil.applicationTime).getTime() / 1000)
