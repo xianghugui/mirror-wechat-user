@@ -132,6 +132,10 @@ Page({
   //跳转详情页面
   jumpOrderInfo: function(e) {
     var goodsList = this.data.orderList[e.currentTarget.dataset.index]
+    //判断是询价订单,给图片链接重新编码
+    if(this.data.index === 1){
+      goodsList.imageSrc = encodeURIComponent(goodsList.imageSrc);
+    }
     wx.navigateTo({
       url: './orderInfo/index?orderId=' + e.currentTarget.dataset.id + '&size=' + goodsList.size + '&num=' + goodsList.num + '&imageSrc=' + goodsList.imageSrc + '&goodsName=' + goodsList.goodsName + '&orderType=' + this.data.index + '&index=' + e.currentTarget.dataset.index + '&color=' + goodsList.color
     })

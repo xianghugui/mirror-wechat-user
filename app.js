@@ -1,3 +1,6 @@
+
+
+
 //app.js
 var JMCommon = require('utils/JMCommon.js');
 App({
