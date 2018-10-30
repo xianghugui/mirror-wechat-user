@@ -54,13 +54,15 @@ Page({
             if (data.success) {
               if(data.data == null){
                 _self.showToast('没有检测到人脸');
-              }else if(data.data.length ===0){
-                _self.showToast('没有试衣信息');
-              }else{
-                wx.redirectTo({
-                  url: '../selectVideo/index?list=' + JSON.stringify(data.data),
-                })
+                return;
               }
+              if(data.data.length ===0){
+                _self.showToast('没有试衣信息');
+                return;
+              }
+              wx.redirectTo({
+                url: '../selectVideo/index?list=' + JSON.stringify(data.data),
+              })
             } else {
               _self.showToast('没有检测到人脸');
             }
