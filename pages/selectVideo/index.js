@@ -60,6 +60,9 @@ Page({
     }
     var data = options.list
     data = JSON.parse(data)
+    for (i = 0,len = data.length; i < len; i++) {
+      data[i].videoImg = decodeURIComponent(data[i].videoImg);
+    }
     that.setData({
       items: data
     })
