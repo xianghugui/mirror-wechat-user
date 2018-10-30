@@ -57,7 +57,7 @@ Page({
               }else if(data.data.length ===0){
                 _self.showToast('没有试衣信息');
               }else{
-                for(var i = 0;i<data.data.length;i++){
+                for (i = 0, len = data.data.length;i<len;i++){
                   data.data[i].videoImg = encodeURIComponent(data.data[i].videoImg);
                 }
                 wx.redirectTo({
