@@ -19,13 +19,14 @@
   margin-bottom:16rpx;
 }
 .select-item{
-  width: 220rpx;
+  width: calc(100%/3 - 10rpx);
   /* min-width:31%; */
   height:280rpx;
   border-radius:20rpx;
   overflow: hidden;
   margin-bottom:20rpx;
   position:relative;
+  margin-left:10rpx;
 }
 .mrlr{
   margin-left:3.5%;

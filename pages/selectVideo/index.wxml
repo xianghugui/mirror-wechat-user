@@ -6,7 +6,7 @@
     <scroll-view scroll-y="true" class="select-scroll">
       <checkbox-group name="checkbox" class='select-box' bindchange="checkboxChange">
       <block wx:for="{{items}}" wx:key="{{item.videoId}}">
-      <label class="select-item {{(index+2)%3==0?'mrlr':''}}">
+      <label class="select-item">
         <checkbox hidden value='{{item.videoId}}' checked="{{item.checked}}"/>
         <image  class='select-img' src="{{item.videoImg}}"></image>
         <view class='play-box'>
